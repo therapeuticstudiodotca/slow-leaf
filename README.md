@@ -1,6 +1,6 @@
 # Slow Leaf — Therapeutic Studio
 
-Slow Leaf is a small, self-contained website about tea, built as four connected experiences. It has no build server and no external services at runtime: every page is plain HTML that runs by opening it or by serving the folder with GitHub Pages.
+Slow Leaf is a small project about tea, built as four connected experiences. It has no build server and no external services at runtime: every page is plain HTML that runs by opening it or by serving the folder with GitHub Pages.
 
 | Experience | File | Status |
 | --- | --- | --- |
@@ -10,7 +10,6 @@ Slow Leaf is a small, self-contained website about tea, built as four connected 
 | **Practicing Tea** | `practicing-tea.html` | Scaffolded — guides to preparing each kind of tea |
 | **Tea Room** | `tea-room.html` | Scaffolded — a year-long seasonal experience |
 
-The three scaffolded pages are branded, navigable placeholders that describe what each will hold; they are built out one at a time.
 
 ## Living Atlas
 
