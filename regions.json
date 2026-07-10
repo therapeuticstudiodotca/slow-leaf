@@ -1,0 +1,1625 @@
+[
+  {
+    "id": "yunnan",
+    "name": "Yunnan",
+    "country": "China",
+    "coords": [
+      24.5,
+      101.5
+    ],
+    "leaf": "assamica",
+    "varietal": "Camellia sinensis var. assamica (dà yè, “big-leaf”)",
+    "teas": [
+      "Pu-erh (sheng and shou)",
+      "Dian Hong black"
+    ],
+    "history": "Yunnan sits within the native range of the tea plant, and its broad-leaf assamica trees are among the oldest cultivated in the world. Compressed cakes travelled north on the Ancient Tea Horse Road toward Tibet; caravan traders observed that the tea matured and improved over the long journey, which anchored the enduring value placed on aged tea.",
+    "practices": "Yunnan is the protected origin of Pu-erh tea. Sheng (raw) Pu-erh is pressed and aged slowly over years; shou (ripe) Pu-erh is wet-piled to accelerate fermentation. Both are typically sold as pressed cakes, bricks or nests, and the region also produces the malty Dian Hong black tea.",
+    "sources": [
+      "Lu Yu, The Classic of Tea (Cha Jing), c. 760 CE",
+      "V. Mair & E. Hoh, The True History of Tea (Thames & Hudson, 2009)"
+    ],
+    "tier": "major",
+    "teaword": "chá",
+    "wordfamily": "cha",
+    "language": "Mandarin chá (chah) sits at the root of the cha branch, which spread overland along the Silk Road and the Tea Horse Road into Tibet, Persia and Russia.",
+    "place": "Broad-leaf trees on warm, misty subtropical mountains and old-growth forest gardens; spring and autumn harvests.",
+    "flavor": "Earthy and woody with a deep, mellow sweetness in ripe Pu-erh; brisk and bittersweet when raw and young.",
+    "social": "Trade, hospitality and daily life.",
+    "vessel": "A seasoned purple-clay pot or a gaiwan, with tea pressed from an aged cake.",
+    "ritual": "The cake is gently pried apart, rinsed, and steeped in many short infusions that shift with each pour.",
+    "movement": "Carried north on the Ancient Tea Horse Road by mule caravan to Tibet.",
+    "types": [
+      "dark",
+      "black"
+    ]
+  },
+  {
+    "id": "fujian",
+    "name": "Fujian",
+    "country": "China",
+    "coords": [
+      26,
+      118
+    ],
+    "leaf": "needle",
+    "varietal": "Camellia sinensis var. sinensis",
+    "teas": [
+      "Wuyi rock oolong (yancha)",
+      "Anxi Tieguanyin",
+      "Silver Needle & White Peony",
+      "Lapsang Souchong"
+    ],
+    "history": "The Wuyi Mountains are widely regarded as the birthplace of both oolong and the world’s first black tea, Lapsang Souchong, developed in the seventeenth century. Fujian’s coastal counties later became the home of white tea, whose minimal processing preserves the downy unopened bud.",
+    "practices": "Fujian remains the most versatile producing province in China. Wuyi produces mineral-rich “rock” oolongs; Anxi is known for Tieguanyin; Fuding and Zhenghe produce Silver Needle and White Peony white teas, which are simply withered and dried.",
+    "sources": [
+      "Lu Yu, The Classic of Tea (Cha Jing), c. 760 CE",
+      "V. Mair & E. Hoh, The True History of Tea (Thames & Hudson, 2009)"
+    ],
+    "tier": "major",
+    "teaword": "tê",
+    "wordfamily": "te",
+    "language": "In the Min Nan speech of Fujian's ports, tea is tê (teh) — the very word that Dutch traders carried by sea to become tea, thé and teh across the world.",
+    "place": "Mineral-rich mountain slopes and mist at Wuyi and Anxi, coastal counties for white tea; spring picking.",
+    "flavor": "Floral and roasted with a mineral 'rock' character in oolong; soft hay, melon and honey in white tea.",
+    "social": "Shared tasting, fragrance appreciation and hospitality.",
+    "vessel": "A gaiwan or small clay pot with tiny cups, for gongfu brewing.",
+    "ritual": "Many short, attentive infusions, pausing to take in the fragrance between pours.",
+    "movement": "Shipped from the ports of Amoy (Xiamen); the source of the maritime 'te' word.",
+    "types": [
+      "oolong",
+      "white",
+      "black"
+    ]
+  },
+  {
+    "id": "zhejiang",
+    "name": "Zhejiang (West Lake)",
+    "country": "China",
+    "coords": [
+      30.15,
+      120.1
+    ],
+    "leaf": "flat",
+    "varietal": "Camellia sinensis var. sinensis",
+    "teas": [
+      "West Lake Longjing (Dragon Well)"
+    ],
+    "history": "The hills around West Lake in Hangzhou are the classical heart of Chinese green tea. Longjing rose to prominence under imperial patronage and is closely tied to the Qing court, which helped establish its reputation as a benchmark green tea.",
+    "practices": "Longjing is pan-fired by hand in a heated wok, a technique that fixes the leaf and presses it flat into its characteristic smooth blade. Production around West Lake is governed by protected-origin standards.",
+    "sources": [
+      "Lu Yu, The Classic of Tea (Cha Jing), c. 760 CE",
+      "UNESCO World Heritage — West Lake Cultural Landscape of Hangzhou"
+    ],
+    "tier": "major",
+    "teaword": "chá",
+    "wordfamily": "cha",
+    "language": "Mandarin chá (chah), of the overland cha branch; Longjing travelled the Grand Canal as imperial tribute.",
+    "place": "Terraced hills and lakeshore mist around West Lake, Hangzhou; prized before the spring rains.",
+    "flavor": "Chestnut sweetness, fresh and smooth, with gentle umami and no bitterness when well made.",
+    "social": "Daily refreshment and scholarly appreciation.",
+    "vessel": "A tall glass or a porcelain gaiwan.",
+    "ritual": "Steeped in clear glass so the flat leaves can be watched as they open and settle.",
+    "movement": "Carried north along the Grand Canal as tribute to the imperial court.",
+    "types": [
+      "green"
+    ]
+  },
+  {
+    "id": "uji",
+    "name": "Uji",
+    "country": "Japan",
+    "coords": [
+      34.88,
+      135.8
+    ],
+    "leaf": "sinensis",
+    "varietal": "Camellia sinensis var. sinensis",
+    "teas": [
+      "Matcha",
+      "Gyokuro",
+      "Sencha"
+    ],
+    "history": "Tea reached Japan from China through Buddhist monks; the monk Eisai’s treatise Kissa Yōjōki (1211) helped establish tea drinking. Uji became the centre of high-grade shaded tea and of the powdered tea used in chanoyu, the tea ceremony.",
+    "practices": "Uji specialises in shaded cultivation: plants are covered for roughly three weeks before harvest to raise sweetness and deepen colour. Japanese green teas are steamed rather than pan-fired; tencha leaf is stone-ground into matcha, while gyokuro and sencha are rolled and dried.",
+    "sources": [
+      "Eisai, Kissa Yōjōki (1211)",
+      "Global Japanese Tea Association"
+    ],
+    "tier": "large",
+    "teaword": "cha (ocha)",
+    "wordfamily": "cha",
+    "language": "Japanese cha / ocha (oh-chah), from the early cha branch brought by monks from China well before the maritime 'te' split.",
+    "place": "Shaded gardens on gentle, misty hills south of Kyoto; leaves covered for weeks before the spring harvest.",
+    "flavor": "Deep umami and marine sweetness, creamy and smooth, with a lingering green finish.",
+    "social": "Ceremony, guest hospitality and Zen practice.",
+    "vessel": "A chawan bowl, whisked with a bamboo chasen and measured with a chashaku scoop.",
+    "ritual": "In chanoyu, powdered tea is whisked with attention to gesture, season and guest.",
+    "movement": "Brought from Song-dynasty China by the monk Eisai.",
+    "types": [
+      "green"
+    ]
+  },
+  {
+    "id": "shizuoka",
+    "name": "Shizuoka",
+    "country": "Japan",
+    "coords": [
+      34.97,
+      138.38
+    ],
+    "leaf": "sinensis",
+    "varietal": "Camellia sinensis var. sinensis",
+    "teas": [
+      "Sencha",
+      "Fukamushi (deep-steamed) sencha"
+    ],
+    "history": "Shizuoka developed into Japan’s leading tea prefecture from the Edo and Meiji periods onward, aided by its slopes, climate and proximity to Mount Fuji. It remains the country’s largest producing region by volume.",
+    "practices": "The prefecture is defined by everyday sencha, including fukamushi styles that are steamed longer for a fuller, less astringent cup. Harvest and much of the processing are highly mechanised, with the prized first flush picked in spring.",
+    "sources": [
+      "Global Japanese Tea Association",
+      "International Tea Committee, Annual Bulletin of Statistics"
+    ],
+    "tier": "large",
+    "teaword": "cha (ocha)",
+    "wordfamily": "cha",
+    "language": "Japanese cha (chah); Shizuoka's gardens grew as the port of Shimizu opened to trade.",
+    "place": "Sunny slopes below Mount Fuji; first flush picked in spring, some gardens deep-steamed.",
+    "flavor": "Grassy and brisk with a clean, refreshing sweetness; fuller and rounder when deep-steamed.",
+    "social": "Everyday refreshment and hospitality.",
+    "vessel": "A small kyusu side-handled teapot and low cups.",
+    "ritual": "Sencha steeped briefly at a moderate temperature, poured in rounds to share evenly.",
+    "movement": "Shipped from Shimizu as Japan's tea trade opened in the Meiji era.",
+    "types": [
+      "green"
+    ]
+  },
+  {
+    "id": "darjeeling",
+    "name": "Darjeeling",
+    "country": "India",
+    "coords": [
+      27.04,
+      88.26
+    ],
+    "leaf": "sinensis",
+    "varietal": "Camellia sinensis var. sinensis",
+    "teas": [
+      "First-flush black",
+      "Second-flush (muscatel) black"
+    ],
+    "history": "Tea was planted in the Himalayan foothills of Darjeeling from the 1840s using Chinese sinensis seed. The cool, misty, high elevation produced a light, aromatic style that earned the region its reputation as the “Champagne of teas.”",
+    "practices": "Around eighty-seven gardens work the steep slopes. The delicate, floral first flush is picked in early spring and the celebrated muscatel second flush in summer. Darjeeling was the first product in India to receive a Geographical Indication.",
+    "sources": [
+      "Tea Board of India — Darjeeling Geographical Indication"
+    ],
+    "tier": "major",
+    "teaword": "chāy",
+    "wordfamily": "cha",
+    "language": "Hindi chāy (chah-ee), of the overland cha branch that reached India through Persian.",
+    "place": "Steep, cool, misty Himalayan foothills at 600–2000 m; first flush in spring, muscatel second flush in summer.",
+    "flavor": "Floral and brisk with a distinctive muscatel note; light in the first flush, rounder in the second.",
+    "social": "Estate trade and daily refreshment.",
+    "vessel": "A porcelain pot and cup, a legacy of the estate era.",
+    "ritual": "First flush is brewed light and taken without milk to keep its delicacy.",
+    "movement": "Planted with Chinese seed carried into the hills from the 1840s.",
+    "types": [
+      "black"
+    ]
+  },
+  {
+    "id": "assam",
+    "name": "Assam",
+    "country": "India",
+    "coords": [
+      26.7,
+      92.8
+    ],
+    "leaf": "assamica",
+    "varietal": "Camellia sinensis var. assamica (native)",
+    "teas": [
+      "Malty black (CTC and orthodox)"
+    ],
+    "history": "The broad-leaf assamica plant was found growing wild in Assam in the 1820s, giving India a native tea of its own. Commercial cultivation began soon after in the Brahmaputra valley and made Assam the foundation of the Indian tea industry.",
+    "practices": "Grown at low elevation in a hot, humid valley, Assam yields a strong, malty cup. Most of the crop is made by the CTC (crush–tear–curl) method for robust breakfast blends, alongside a smaller orthodox production.",
+    "sources": [
+      "Tea Board of India"
+    ],
+    "tier": "major",
+    "teaword": "cha / chāy",
+    "wordfamily": "cha",
+    "language": "Assamese and Hindi cha (chah), of the cha branch — though the plant itself is native to this valley.",
+    "place": "Hot, humid lowland along the Brahmaputra with heavy monsoon; plucked through the warm months.",
+    "flavor": "Malty, brisk and full-bodied, robust enough to carry milk and sugar.",
+    "social": "Daily life, labour and hospitality.",
+    "vessel": "A kettle and a glass or clay kulhad for strong, milky, sweet tea.",
+    "ritual": "CTC leaf is boiled with milk, sugar and often spices into everyday chai.",
+    "movement": "Grown from the native assamica recorded in the 1820s; the first Indian industry.",
+    "types": [
+      "black"
+    ]
+  },
+  {
+    "id": "nilgiri",
+    "name": "Nilgiri",
+    "country": "India",
+    "coords": [
+      11.4,
+      76.7
+    ],
+    "leaf": "assamica",
+    "varietal": "Camellia sinensis, mixed cultivars",
+    "teas": [
+      "High-grown black",
+      "Winter frost tea"
+    ],
+    "history": "Cultivation began in the Nilgiri Hills — the “Blue Mountains” of the Western Ghats — in the mid-nineteenth century. The high, undulating terrain of southern India gave rise to a brisk, fragrant style distinct from the northern gardens.",
+    "practices": "Nilgiri is harvested year-round thanks to its climate, producing clean, aromatic black teas. Cold winter months yield sought-after “frost” teas, and specialty orthodox production has grown alongside the region’s traditional output.",
+    "sources": [
+      "Tea Board of India",
+      "United Planters’ Association of Southern India (UPASI)"
+    ],
+    "tier": "major",
+    "teaword": "tēyilai / cha",
+    "wordfamily": "cha",
+    "language": "Tamil tēyilai and cha (chah); southern India, of the cha branch.",
+    "place": "High, rolling 'Blue Mountains' of the Western Ghats; harvested year-round, with prized winter frost teas.",
+    "flavor": "Bright, brisk and fragrant, clean and gently floral.",
+    "social": "Daily refreshment and export blending.",
+    "vessel": "A pot and cup; also taken as strong milky chai.",
+    "ritual": "Brewed briskly; frost-season teas are savoured on their own.",
+    "movement": "Planted across the Western Ghats from the mid-1800s.",
+    "types": [
+      "black"
+    ]
+  },
+  {
+    "id": "ceylon",
+    "name": "Ceylon (Central Highlands)",
+    "country": "Sri Lanka",
+    "coords": [
+      6.95,
+      80.78
+    ],
+    "leaf": "assamica",
+    "varietal": "Camellia sinensis var. assamica",
+    "teas": [
+      "High-grown black",
+      "Uva and Dimbula styles"
+    ],
+    "history": "When a leaf blight destroyed Sri Lanka’s coffee crop in the 1860s, planters turned to tea; James Taylor established the first commercial garden at Loolecondera in 1867. Thomas Lipton later carried Ceylon tea to a global market.",
+    "practices": "Teas are classified by elevation as low-, medium- or high-grown, each with a distinct character from districts such as Nuwara Eliya, Uva and Dimbula. The Lion mark certifies tea packed in Sri Lanka as pure Ceylon.",
+    "sources": [
+      "Sri Lanka Tea Board"
+    ],
+    "tier": "major",
+    "teaword": "thē / tēyilai",
+    "wordfamily": "te",
+    "language": "Sinhala thē (thay) and Tamil tēyilai, of the maritime te branch carried by European traders.",
+    "place": "Central highlands and hill districts (Nuwara Eliya, Uva, Dimbula), graded by elevation; harvested year-round.",
+    "flavor": "Bright and lively with citrus notes; brisker and fuller from lower elevations.",
+    "social": "Estate labour, daily life and export.",
+    "vessel": "A teapot and cup, commonly taken strong with milk and sugar.",
+    "ritual": "Brewed by elevation grade; high-grown teas kept lighter.",
+    "movement": "Replaced a ruined coffee crop from 1867; spread worldwide by Lipton.",
+    "types": [
+      "black"
+    ]
+  },
+  {
+    "id": "taiwan",
+    "name": "Taiwan (High Mountain)",
+    "country": "Taiwan",
+    "coords": [
+      23.5,
+      120.85
+    ],
+    "leaf": "sinensis",
+    "varietal": "Camellia sinensis var. sinensis, local cultivars",
+    "teas": [
+      "Gaoshan (high-mountain) oolong",
+      "Dong Ding",
+      "Oriental Beauty"
+    ],
+    "history": "Tea culture arrived with settlers from Fujian in the eighteenth and nineteenth centuries, and “Formosa oolong” became a celebrated export by the late nineteenth century. Taiwan’s mountains proved ideal for refined, lightly oxidised oolongs.",
+    "practices": "High-mountain gardens above one thousand metres produce tightly rolled, fragrant oolongs. The island’s research station has developed distinctive cultivars such as Jin Xuan, and the bug-bitten Oriental Beauty is prized for its honeyed notes.",
+    "sources": [
+      "Taiwan Tea Research and Extension Station"
+    ],
+    "tier": "medium",
+    "teaword": "tê / chá",
+    "wordfamily": "te",
+    "language": "In Taiwanese Hokkien, tea is tê (teh) — te branch — while Mandarin uses chá; brought by settlers from Fujian.",
+    "place": "High mountains above 1000 m at Alishan and Lishan; cool, misty; several careful hand-harvests a year.",
+    "flavor": "Floral, buttery and creamy with a sweet, lingering aftertaste.",
+    "social": "Tea art (cha yi), gift-giving and hospitality.",
+    "vessel": "A gongfu set with a tall 'fragrance cup' (wenxiangbei) for smelling the aroma.",
+    "ritual": "Rolled oolong opens over many infusions; the aroma cup is savoured before the tea.",
+    "movement": "Carried across the strait from Fujian in the 18th–19th centuries.",
+    "types": [
+      "oolong"
+    ]
+  },
+  {
+    "id": "kenya",
+    "name": "Kericho",
+    "country": "Kenya",
+    "coords": [
+      -0.37,
+      35.28
+    ],
+    "leaf": "assamica",
+    "varietal": "Camellia sinensis var. assamica",
+    "teas": [
+      "CTC black",
+      "Purple tea"
+    ],
+    "history": "Tea was introduced to Kenya in the early twentieth century and grew into a major industry in the highlands of the Rift Valley near the equator. Kenya is now among the largest exporters of black tea in the world.",
+    "practices": "The equatorial climate allows year-round plucking. Most tea is smallholder-grown and processed as CTC black for global blends; the industry has also pioneered a naturally purple, antioxidant-rich cultivar.",
+    "sources": [
+      "Tea Board of Kenya",
+      "Kenya Tea Development Agency (KTDA)"
+    ],
+    "tier": "major",
+    "teaword": "chai",
+    "wordfamily": "cha",
+    "language": "Swahili chai (chah-ee), of the cha branch that reached the coast through Arab and Indian trade.",
+    "place": "High equatorial Rift Valley plateaus around Kericho; plucked all year.",
+    "flavor": "Strong, brisk and brightly astringent — built to carry milk.",
+    "social": "Everyday hospitality and work-break refreshment.",
+    "vessel": "A mug, or a sufuria pot for boiling.",
+    "ritual": "Chai is simmered with milk and sugar, sometimes ginger, and shared through the day.",
+    "movement": "Introduced in the early 1900s; now a mainstay of the Mombasa auction.",
+    "types": [
+      "black"
+    ]
+  },
+  {
+    "id": "nepal",
+    "name": "Ilam",
+    "country": "Nepal",
+    "coords": [
+      26.91,
+      87.93
+    ],
+    "leaf": "sinensis",
+    "varietal": "Camellia sinensis var. sinensis",
+    "teas": [
+      "High-grown orthodox black",
+      "Green"
+    ],
+    "history": "Tea was first planted in the eastern hill district of Ilam in the 1860s. Sharing the same Himalayan ridge as Darjeeling across the border, Ilam produces teas of comparable delicacy, and a specialty sector has grown strongly since the 1990s.",
+    "practices": "Cool, misty high-elevation gardens yield refined orthodox teas, while the warmer Terai lowlands around Jhapa produce higher-volume CTC. Much of the specialty crop comes from smallholder cooperatives.",
+    "sources": [
+      "National Tea and Coffee Development Board (Nepal)",
+      "International Tea Committee, Annual Bulletin of Statistics"
+    ],
+    "tier": "medium",
+    "teaword": "chiyā",
+    "wordfamily": "cha",
+    "language": "Nepali chiyā (chee-yah), of the cha branch.",
+    "place": "Steep, cool hill gardens at Ilam on the Himalayan ridge; warm Terai lowlands for CTC.",
+    "flavor": "Floral and brisk with a muscatel lift, close in character to Darjeeling.",
+    "social": "Daily hospitality and smallholder livelihood.",
+    "vessel": "A pot and cup for orthodox tea; a kettle for milky, spiced everyday chiyā.",
+    "ritual": "Fine orthodox tea is brewed light; roadside chiyā is boiled with milk and spice.",
+    "movement": "Shares the Himalayan ridge and lineage with Darjeeling across the border.",
+    "types": [
+      "black",
+      "green"
+    ]
+  },
+  {
+    "id": "vietnam",
+    "name": "Northern Highlands",
+    "country": "Vietnam",
+    "coords": [
+      22.8,
+      104.98
+    ],
+    "leaf": "assamica",
+    "varietal": "Camellia sinensis var. assamica, ancient trees",
+    "teas": [
+      "Snôw-shan (shan tuyết)",
+      "Green",
+      "Black"
+    ],
+    "history": "Ancient wild tea trees have grown for centuries in Vietnam’s northern mountains, harvested from tall old-growth “snow-shan” trees. Plantation cultivation expanded under French administration and Vietnam is now a large global producer.",
+    "practices": "The country produces substantial volumes of green and black tea for export, alongside a growing artisanal category made from leaf hand-picked from centuries-old mountain trees.",
+    "sources": [
+      "Vietnam Tea Association (VITAS)",
+      "International Tea Committee, Annual Bulletin of Statistics"
+    ],
+    "tier": "major",
+    "teaword": "trà / chè",
+    "wordfamily": "cha",
+    "language": "Vietnamese trà (chah, Sino-Vietnamese, cha branch), alongside the older native word chè.",
+    "place": "Ancient tea trees in the northern highlands (Hà Giang) and gardens at Thái Nguyên; harvested through the warm season.",
+    "flavor": "Grassy and brisk with a clean, sweet finish; lotus- or jasmine-scented teas add floral perfume.",
+    "social": "Hospitality, ancestral offering and daily iced 'trà đá'.",
+    "vessel": "A small clay pot and tiny cups; a glass of iced trà đá on the street.",
+    "ritual": "Green tea steeped for guests; lotus tea, scented overnight in the flower, reserved for honour.",
+    "movement": "Harvested from centuries-old mountain trees; expanded under French planters.",
+    "types": [
+      "green",
+      "black"
+    ]
+  },
+  {
+    "id": "turkey",
+    "name": "Rize",
+    "country": "Türkiye",
+    "coords": [
+      41.02,
+      40.52
+    ],
+    "leaf": "sinensis",
+    "varietal": "Camellia sinensis var. sinensis",
+    "teas": [
+      "Black tea (çay)"
+    ],
+    "history": "Cultivation was established on the Black Sea coast around Rize in the 1930s and 40s as a national programme to reduce imports, following the example of neighbouring Georgia. Tea quickly became central to daily life.",
+    "practices": "Almost the entire crop is consumed domestically. Black tea is brewed strong in a stacked double teapot, the çaydanlık, and served in small tulip-shaped glasses throughout the day.",
+    "sources": [
+      "ÇAYKUR (General Directorate of Tea Enterprises, Türkiye)",
+      "International Tea Committee, Annual Bulletin of Statistics"
+    ],
+    "tier": "major",
+    "teaword": "çay",
+    "wordfamily": "cha",
+    "language": "Turkish çay (chai), of the overland cha branch that came through Persian.",
+    "place": "Steep, rainy Black Sea coast around Rize; picked through the summer.",
+    "flavor": "Brisk and full, coppery-red, brisk enough to take sugar.",
+    "social": "Constant hospitality, conversation and daily life.",
+    "vessel": "The stacked çaydanlık teapot and a small tulip-shaped glass.",
+    "ritual": "Strong tea from the upper pot is diluted from the lower, poured to each guest's taste and served all day.",
+    "movement": "Established on the Black Sea coast in the 1930s, following Georgia's example.",
+    "types": [
+      "black"
+    ]
+  },
+  {
+    "id": "georgia",
+    "name": "Guria & Adjara",
+    "country": "Georgia",
+    "coords": [
+      42,
+      42
+    ],
+    "leaf": "sinensis",
+    "varietal": "Camellia sinensis var. sinensis",
+    "teas": [
+      "Black",
+      "Green"
+    ],
+    "history": "Georgia was among the first places outside East Asia to grow tea commercially, with plantations established on its humid Black Sea coast in the 1890s. It became a principal supplier to the wider region during the Soviet era.",
+    "practices": "After a period of decline, heritage and organic gardens are being revived by small producers, reintroducing hand-picked black and green teas grown in the subtropical western provinces.",
+    "sources": [
+      "International Tea Committee, Annual Bulletin of Statistics"
+    ],
+    "tier": "small",
+    "teaword": "chai",
+    "wordfamily": "cha",
+    "language": "Georgian chai (chah-ee), of the cha branch; among the first tea grown outside East Asia.",
+    "place": "Humid, subtropical Black Sea provinces (Guria, Adjara); harvested spring to autumn.",
+    "flavor": "Soft, malty and mild in black tea; grassy and delicate in green.",
+    "social": "Hospitality and heritage revival.",
+    "vessel": "A pot and cup or glass.",
+    "ritual": "Once mass-produced for the Soviet Union, now hand-picked again by small heritage gardens.",
+    "movement": "Planted from the 1890s with Chinese expertise; supplied much of the USSR.",
+    "types": [
+      "black",
+      "green"
+    ]
+  },
+  {
+    "id": "malawi",
+    "name": "Shire Highlands",
+    "country": "Malawi",
+    "coords": [
+      -16.05,
+      35.13
+    ],
+    "leaf": "assamica",
+    "varietal": "Camellia sinensis var. assamica",
+    "teas": [
+      "CTC black",
+      "Specialty orthodox"
+    ],
+    "history": "Malawi was the first country in Africa to grow tea commercially, beginning in the 1880s around Mulanje and Thyolo. It established the pattern of estate tea production that later spread across the continent.",
+    "practices": "Estates produce mainly CTC black tea for international blends, with a rising specialty and orthodox segment. Much of the crop is certified under fair-trade and sustainability schemes.",
+    "sources": [
+      "Tea Association of Malawi (TAML)",
+      "International Tea Committee, Annual Bulletin of Statistics"
+    ],
+    "tier": "large",
+    "teaword": "tiyi / tea",
+    "wordfamily": "te",
+    "language": "English tea and Chichewa tiyi, of the te branch; the first African country to grow tea.",
+    "place": "Warm, wet foothills of Mulanje and Thyolo; harvested much of the year.",
+    "flavor": "Brisk, coloury and straightforward — a blender's black tea.",
+    "social": "Estate labour and export.",
+    "movement": "First African tea, from the 1880s, a model for the continent.",
+    "types": [
+      "black"
+    ]
+  },
+  {
+    "id": "argentina",
+    "name": "Misiones",
+    "country": "Argentina",
+    "coords": [
+      -27.4,
+      -55.9
+    ],
+    "leaf": "assamica",
+    "varietal": "Camellia sinensis var. assamica",
+    "teas": [
+      "CTC black"
+    ],
+    "history": "Tea seed reached the subtropical province of Misiones in the early twentieth century, and cultivation expanded through the mid-century. Argentina became the largest tea producer in South America.",
+    "practices": "Production is highly mechanised and geared to volume, supplying inexpensive black tea largely for iced and ready-to-drink blends in export markets, particularly North America.",
+    "sources": [
+      "International Tea Committee, Annual Bulletin of Statistics"
+    ],
+    "tier": "large",
+    "teaword": "té",
+    "wordfamily": "te",
+    "language": "Spanish té (teh), of the maritime te branch — distinct from Argentina's own yerba mate, a different plant.",
+    "place": "Humid subtropical Misiones in the northeast; mechanically harvested.",
+    "flavor": "Mild, dark and even — made for iced tea and blends.",
+    "social": "Export commodity, largely for iced tea abroad.",
+    "movement": "Seed arrived in the 1920s; grew into South America's largest tea crop.",
+    "types": [
+      "black"
+    ]
+  },
+  {
+    "id": "korea",
+    "name": "Boseong & Hadong",
+    "country": "South Korea",
+    "coords": [
+      34.77,
+      127.08
+    ],
+    "leaf": "sinensis",
+    "varietal": "Camellia sinensis var. sinensis",
+    "teas": [
+      "Nokcha (green)"
+    ],
+    "history": "Tea arrived in Korea more than a thousand years ago through contact with China and Buddhist practice, with Hadong claiming some of the oldest cultivation near the temple of Ssanggye-sa. Boseong is the country’s best-known modern growing area, with its terraced green fields.",
+    "practices": "Korean tea is almost entirely green, graded by harvest time such as the early ujeon and sejak pickings. Temple-centred preparation, known as darye, preserves a quiet, contemplative style of service.",
+    "sources": [
+      "Samguk Sagi (History of the Three Kingdoms), 1145",
+      "Rural Development Administration, Republic of Korea"
+    ],
+    "tier": "small",
+    "teaword": "cha",
+    "wordfamily": "cha",
+    "language": "Korean cha (chah), of the cha branch, arriving with Buddhism from Tang China around the ninth century.",
+    "place": "Terraced green fields at Boseong and temple slopes at Hadong; early spring pickings.",
+    "flavor": "Nutty and vegetal, gentle and lightly sweet.",
+    "social": "Contemplative practice, Buddhist ritual and hospitality.",
+    "vessel": "A dawan bowl and small cups of a darye set.",
+    "ritual": "In darye, water is cooled and poured with unhurried, deliberate etiquette.",
+    "movement": "Carried from China by monks; tradition records seeds planted under King Heungdeok.",
+    "types": [
+      "green"
+    ]
+  },
+  {
+    "id": "indonesia",
+    "name": "Java & Sumatra",
+    "country": "Indonesia",
+    "coords": [
+      -7.1,
+      107.6
+    ],
+    "leaf": "assamica",
+    "varietal": "Camellia sinensis var. assamica",
+    "teas": [
+      "Black (orthodox and CTC)",
+      "Green"
+    ],
+    "history": "Dutch colonial administrators introduced tea to Java in the eighteenth century, and large highland plantations were established across Java and Sumatra in the nineteenth. Indonesia remains a significant producer.",
+    "practices": "Estates on volcanic highland soils, especially in West Java, produce both black and green tea. Much of the black tea supplies international blends, while green tea serves a large domestic market.",
+    "sources": [
+      "International Tea Committee, Annual Bulletin of Statistics"
+    ],
+    "tier": "major",
+    "teaword": "teh",
+    "wordfamily": "te",
+    "language": "Indonesian and Malay teh (teh), of the maritime te branch.",
+    "place": "Volcanic highland estates of West Java and Sumatra; harvested year-round.",
+    "flavor": "Brisk and malty black tea; bright jasmine-scented green for the home market.",
+    "social": "Daily refreshment and hospitality.",
+    "vessel": "A glass of sweet teh manis.",
+    "ritual": "Everyday tea is served sweet; jasmine green tea perfumes the home cup.",
+    "movement": "Introduced by Dutch planters in the colonial era.",
+    "types": [
+      "black",
+      "green"
+    ]
+  },
+  {
+    "id": "bangladesh",
+    "name": "Srimangal (Sylhet)",
+    "country": "Bangladesh",
+    "coords": [
+      24.31,
+      91.73
+    ],
+    "leaf": "assamica",
+    "tier": "large",
+    "varietal": "Camellia sinensis var. assamica",
+    "teas": [
+      "CTC black"
+    ],
+    "history": "Commercial tea began under British planters in the 1850s, with Malnicherra Estate near Sylhet among the first gardens on the subcontinent. Sylhet’s Srimangal district became the country’s tea capital and remains its heart.",
+    "practices": "Around one hundred and sixty gardens work the low, humid plains of Sylhet and Chittagong. Production is mostly CTC black tea, the greater part consumed within the country.",
+    "sources": [
+      "Bangladesh Tea Board",
+      "Food and Agriculture Organization (FAO)"
+    ],
+    "teaword": "cha",
+    "wordfamily": "cha",
+    "language": "Bengali cha (chah), of the cha branch.",
+    "place": "Humid lowland gardens of Sylhet and Chittagong.",
+    "flavor": "Brisk, malty and coloury black tea.",
+    "social": "Daily life, largely domestic.",
+    "vessel": "A cup of milky, sweet 'doodh cha'.",
+    "ritual": "CTC boiled with milk and sugar as everyday cha.",
+    "movement": "Planted under the British from the 1850s at Malnicherra.",
+    "types": [
+      "black"
+    ]
+  },
+  {
+    "id": "uganda",
+    "name": "Fort Portal (Toro)",
+    "country": "Uganda",
+    "coords": [
+      0.66,
+      30.27
+    ],
+    "leaf": "assamica",
+    "tier": "large",
+    "varietal": "Camellia sinensis var. assamica",
+    "teas": [
+      "CTC black"
+    ],
+    "history": "Tea was introduced in the early twentieth century, first at the Entebbe Botanical Gardens, and grew into an estate industry in the western kingdoms from the 1920s. It is now one of Uganda’s leading agricultural exports.",
+    "practices": "Estates and smallholders in the western highlands and central regions grow broad-leaf assamica, processed almost entirely as CTC black tea for the Mombasa auction.",
+    "sources": [
+      "Uganda Tea Association",
+      "Food and Agriculture Organization (FAO)"
+    ],
+    "teaword": "chai / tea",
+    "wordfamily": "cha",
+    "language": "Swahili chai and English tea; the cha and te branches meet in East Africa.",
+    "place": "Western equatorial highlands; plucked year-round.",
+    "flavor": "Brisk, brightly coloured CTC for blending.",
+    "social": "Export and everyday chai.",
+    "movement": "Introduced in the early 1900s; a leading export today.",
+    "types": [
+      "black"
+    ]
+  },
+  {
+    "id": "rwanda",
+    "name": "Gisovu (Nyungwe)",
+    "country": "Rwanda",
+    "coords": [
+      -2.3,
+      29.28
+    ],
+    "leaf": "assamica",
+    "tier": "large",
+    "varietal": "Camellia sinensis var. assamica",
+    "teas": [
+      "High-grown CTC black"
+    ],
+    "history": "Tea was established under Belgian administration from the 1950s on the high ridges bordering the Nyungwe forest. High altitude and volcanic soils gave Rwanda a reputation for some of Africa’s finest CTC.",
+    "practices": "Cool, elevated gardens such as Gisovu and Pfunda produce bright, brisk teas prized at auction. Tea is among the country’s principal export earners, grown largely by smallholder cooperatives.",
+    "sources": [
+      "National Agricultural Export Development Board (NAEB), Rwanda",
+      "Food and Agriculture Organization (FAO)"
+    ],
+    "teaword": "icyayi / chai",
+    "wordfamily": "cha",
+    "language": "Kinyarwanda icyayi and Swahili chai, of the cha branch.",
+    "place": "High volcanic ridges beside the Nyungwe forest; year-round picking.",
+    "flavor": "Bright, brisk and clean high-grown CTC.",
+    "social": "Export earner and everyday chai.",
+    "movement": "Planted from the 1950s; prized African high-grown tea.",
+    "types": [
+      "black"
+    ]
+  },
+  {
+    "id": "tanzania",
+    "name": "Mufindi (Southern Highlands)",
+    "country": "Tanzania",
+    "coords": [
+      -8.6,
+      35.3
+    ],
+    "leaf": "assamica",
+    "tier": "large",
+    "varietal": "Camellia sinensis var. assamica",
+    "teas": [
+      "CTC black"
+    ],
+    "history": "Tea arrived under German colonial rule in the early twentieth century and expanded under the British in the Southern Highlands and the Usambara Mountains. It became a significant smallholder and estate crop.",
+    "practices": "The Southern Highlands around Mufindi and Njombe, together with Tanga in the northeast, produce mainly CTC black tea for blending and export.",
+    "sources": [
+      "Tea Board of Tanzania",
+      "Food and Agriculture Organization (FAO)"
+    ],
+    "teaword": "chai",
+    "wordfamily": "cha",
+    "language": "Swahili chai (chah-ee), of the cha branch.",
+    "place": "Southern Highlands (Mufindi, Njombe) and the Usambara Mountains.",
+    "flavor": "Brisk, coloury CTC black.",
+    "social": "Smallholder livelihood and export.",
+    "movement": "Begun under German then British rule in the early 1900s.",
+    "types": [
+      "black"
+    ]
+  },
+  {
+    "id": "myanmar",
+    "name": "Shan State",
+    "country": "Myanmar",
+    "coords": [
+      22,
+      97.2
+    ],
+    "leaf": "assamica",
+    "tier": "large",
+    "varietal": "Camellia sinensis var. assamica",
+    "teas": [
+      "Green",
+      "Black",
+      "Laphet (fermented tea)"
+    ],
+    "history": "Tea has been grown in the hills of Shan State for centuries, both as a drink and, distinctively, as a food. Myanmar is one of the few places where fermented tea leaves are eaten.",
+    "practices": "Highland gardens produce green and black tea, but the signature product is laphet — pickled tea leaves served as a salad and offered in hospitality. Much of the crop is smallholder-grown.",
+    "sources": [
+      "Food and Agriculture Organization (FAO)"
+    ],
+    "teaword": "lahpet",
+    "wordfamily": "native",
+    "language": "Burmese lahpet (la-pʰeʔ) stands apart from the cha–te split, naming tea eaten as food as much as drunk.",
+    "place": "Cool hills of Shan State; harvested through the warm season.",
+    "flavor": "Green and black teas, and pickled leaf that is savoury, sour and umami.",
+    "social": "Hospitality, ceremony and daily food.",
+    "vessel": "A lacquer offering tray for laphet thoke, the tea-leaf salad.",
+    "ritual": "Fermented leaves are dressed with beans, seeds and garlic and shared as a salad.",
+    "movement": "An ancient upland tradition of Shan communities.",
+    "types": [
+      "green",
+      "black",
+      "dark"
+    ]
+  },
+  {
+    "id": "iran",
+    "name": "Lahijan (Gilan)",
+    "country": "Iran",
+    "coords": [
+      37.21,
+      50
+    ],
+    "leaf": "sinensis",
+    "tier": "large",
+    "varietal": "Camellia sinensis var. sinensis",
+    "teas": [
+      "Black tea"
+    ],
+    "history": "Tea cultivation was established around 1900 by Mohammad Mirza (Kashef al-Saltaneh), Iran’s first envoy to India, who brought plants and know-how to the Caspian province of Gilan. Lahijan became the centre of Persian tea.",
+    "practices": "The humid Caspian provinces of Gilan and Mazandaran produce mainly black tea. Demand is strong and domestic, with tea a fixture of daily life served alongside rock sugar.",
+    "sources": [
+      "Iran Tea Organization",
+      "Food and Agriculture Organization (FAO)"
+    ],
+    "teaword": "chāy",
+    "wordfamily": "cha",
+    "language": "Persian chāy (chah-ee) — Persian carried the cha word along the overland routes to Turkey, the Caucasus and beyond.",
+    "place": "Humid Caspian foothills of Gilan and Mazandaran; picked in the warm months.",
+    "flavor": "Brisk and aromatic amber tea, sometimes touched with cardamom or rose.",
+    "social": "Constant hospitality and daily gathering.",
+    "vessel": "A samovar with a small estekan glass, served with rock sugar (nabat).",
+    "ritual": "Strong tea is diluted from the samovar; sugar is held between the teeth as the tea is sipped.",
+    "movement": "Brought from India around 1900 by Kashef al-Saltaneh, Iran's first envoy there.",
+    "types": [
+      "black"
+    ]
+  },
+  {
+    "id": "zimbabwe",
+    "name": "Chipinge (Eastern Highlands)",
+    "country": "Zimbabwe",
+    "coords": [
+      -20.2,
+      32.62
+    ],
+    "leaf": "assamica",
+    "tier": "medium",
+    "varietal": "Camellia sinensis var. assamica",
+    "teas": [
+      "CTC black"
+    ],
+    "history": "Tea was planted in the Eastern Highlands around Chipinge and the Honde Valley from the 1920s, where higher rainfall and irrigation supported estate production.",
+    "practices": "Large estates grow irrigated assamica for CTC black tea, supplying domestic brands and regional blends.",
+    "sources": [
+      "Food and Agriculture Organization (FAO)"
+    ],
+    "teaword": "tii / tea",
+    "wordfamily": "te",
+    "language": "English tea and Shona tii, of the te branch.",
+    "place": "Irrigated estates of the Eastern Highlands (Chipinge, Honde).",
+    "flavor": "Brisk, coloury CTC black.",
+    "social": "Domestic brands and regional blends.",
+    "movement": "Planted in the Eastern Highlands from the 1920s.",
+    "types": [
+      "black"
+    ]
+  },
+  {
+    "id": "burundi",
+    "name": "Teza",
+    "country": "Burundi",
+    "coords": [
+      -2.98,
+      29.6
+    ],
+    "leaf": "assamica",
+    "tier": "medium",
+    "varietal": "Camellia sinensis var. assamica",
+    "teas": [
+      "High-grown CTC black"
+    ],
+    "history": "Tea was introduced in the early 1960s and grown on high ridges through a national tea office. It became one of Burundi’s main export commodities.",
+    "practices": "High-altitude gardens such as Teza and Rwegura produce brisk CTC black tea, largely from smallholders and organised through the Office du Thé du Burundi.",
+    "sources": [
+      "Office du Thé du Burundi (OTB)",
+      "Food and Agriculture Organization (FAO)"
+    ],
+    "teaword": "icayi / chai",
+    "wordfamily": "cha",
+    "language": "Kirundi icayi and Swahili chai, of the cha branch.",
+    "place": "High ridges at Teza and Rwegura; year-round.",
+    "flavor": "Bright, brisk high-grown CTC.",
+    "social": "Smallholder export earner.",
+    "movement": "Introduced in the early 1960s.",
+    "types": [
+      "black"
+    ]
+  },
+  {
+    "id": "mozambique",
+    "name": "Gurué (Zambézia)",
+    "country": "Mozambique",
+    "coords": [
+      -15.46,
+      36.98
+    ],
+    "leaf": "assamica",
+    "tier": "medium",
+    "varietal": "Camellia sinensis var. assamica",
+    "teas": [
+      "CTC black"
+    ],
+    "history": "Portuguese colonial planters established tea around Gurué in Zambézia from the 1920s, and Mozambique became a notable producer before civil war disrupted the estates. Production has since been recovering.",
+    "practices": "Estates on the slopes below Mount Namuli grow assamica for CTC black tea, rebuilt from gardens abandoned during the conflict.",
+    "sources": [
+      "Food and Agriculture Organization (FAO)"
+    ],
+    "teaword": "chá",
+    "wordfamily": "cha",
+    "language": "Portuguese chá (shah), the maritime-but-cha exception, here in southern Africa.",
+    "place": "Rainy slopes below Mount Namuli at Gurué, Zambézia.",
+    "flavor": "Brisk, coloury CTC black.",
+    "social": "Estate labour; a recovering industry.",
+    "movement": "Begun by Portuguese planters in the 1920s; rebuilt after the civil war.",
+    "types": [
+      "black"
+    ]
+  },
+  {
+    "id": "thailand",
+    "name": "Doi Mae Salong (Chiang Rai)",
+    "country": "Thailand",
+    "coords": [
+      20.17,
+      99.63
+    ],
+    "leaf": "sinensis",
+    "tier": "medium",
+    "varietal": "Camellia sinensis, mixed varieties",
+    "teas": [
+      "Oolong",
+      "Green",
+      "Miang (fermented)"
+    ],
+    "history": "Northern Thailand has an old tradition of miang, fermented tea chewed as a stimulant, made from wild assamica. In the twentieth century, former Chinese Nationalist soldiers who settled at Doi Mae Salong introduced Taiwanese-style oolong.",
+    "practices": "The northern highlands of Chiang Rai and Chiang Mai now produce rolled oolong and green tea, alongside the traditional miang of the forests.",
+    "sources": [
+      "Food and Agriculture Organization (FAO)"
+    ],
+    "teaword": "chaa",
+    "wordfamily": "cha",
+    "language": "Thai chaa (chah), of the cha branch.",
+    "place": "Cool northern highlands of Chiang Rai and Chiang Mai, and wild forest tea.",
+    "flavor": "Floral, creamy oolong and grassy green; sour-savoury fermented miang.",
+    "social": "Hospitality; miang chewed in daily life.",
+    "vessel": "A gongfu set for oolong; a folded parcel for miang.",
+    "ritual": "Oolong steeped in rounds; miang leaves fermented and chewed.",
+    "movement": "An old miang tradition, joined by oolong from Chinese settlers at Doi Mae Salong.",
+    "types": [
+      "oolong",
+      "green",
+      "dark"
+    ]
+  },
+  {
+    "id": "laos",
+    "name": "Phongsaly",
+    "country": "Laos",
+    "coords": [
+      21.68,
+      102.1
+    ],
+    "leaf": "assamica",
+    "tier": "small",
+    "varietal": "Camellia sinensis var. assamica, ancient trees",
+    "teas": [
+      "Green",
+      "Ancient-tree tea"
+    ],
+    "history": "Northern Laos holds groves of centuries-old wild tea trees, particularly around Phongsaly, long harvested by upland communities. The Bolaven Plateau in the south is a newer growing area.",
+    "practices": "Leaf is hand-picked from tall old-growth assamica trees for green and specialty teas, with growing interest from the wider specialty market.",
+    "sources": [
+      "Food and Agriculture Organization (FAO)"
+    ],
+    "teaword": "saa / cha",
+    "wordfamily": "cha",
+    "language": "Lao saa / cha (chah), of the cha branch.",
+    "place": "Groves of centuries-old wild trees at Phongsaly and the Bolaven Plateau.",
+    "flavor": "Deep, sweet and woody from old-tree leaf.",
+    "social": "Upland livelihood and specialty trade.",
+    "movement": "An ancient wild-tree tradition of northern communities.",
+    "types": [
+      "green",
+      "dark"
+    ]
+  },
+  {
+    "id": "ethiopia",
+    "name": "Wushwush (Keffa)",
+    "country": "Ethiopia",
+    "coords": [
+      7.3,
+      36.1
+    ],
+    "leaf": "assamica",
+    "tier": "small",
+    "varietal": "Camellia sinensis var. assamica",
+    "teas": [
+      "CTC black"
+    ],
+    "history": "Tea estates were established in the mid-twentieth century in the southwest, at Wushwush and Gumaro, in a country far better known for coffee. Production is directed mainly at the home market.",
+    "practices": "The two large southwestern estates grow assamica for CTC black tea, most of it consumed domestically.",
+    "sources": [
+      "Food and Agriculture Organization (FAO)"
+    ],
+    "teaword": "shai",
+    "wordfamily": "cha",
+    "language": "Amharic shai (shy), from the cha branch via Arabic shāy — in a land better known for coffee.",
+    "place": "Southwestern estates at Wushwush and Gumaro.",
+    "flavor": "Brisk, coloury CTC black.",
+    "social": "Everyday shai, taken sweet.",
+    "vessel": "A cup of sweet, sometimes spiced, shai.",
+    "ritual": "Boiled sweet and spiced, a companion to the coffee ceremony.",
+    "movement": "Estates established in the mid-20th century.",
+    "types": [
+      "black"
+    ]
+  },
+  {
+    "id": "malaysia",
+    "name": "Cameron Highlands",
+    "country": "Malaysia",
+    "coords": [
+      4.47,
+      101.38
+    ],
+    "leaf": "assamica",
+    "tier": "small",
+    "varietal": "Camellia sinensis var. assamica",
+    "teas": [
+      "Black tea"
+    ],
+    "history": "Tea was planted in the cool Cameron Highlands from 1929, when the BOH estate was founded during British rule. The hill-station gardens remain a national landmark.",
+    "practices": "Highland estates grow assamica for black tea aimed largely at the domestic market, and the terraced gardens are a major tourist draw.",
+    "sources": [
+      "Food and Agriculture Organization (FAO)"
+    ],
+    "teaword": "teh",
+    "wordfamily": "te",
+    "language": "Malay teh (teh), of the te branch — as in teh tarik, 'pulled tea'.",
+    "place": "Cool Cameron Highlands hill stations.",
+    "flavor": "Brisk, malty black; frothy and sweet when pulled with condensed milk.",
+    "social": "Daily life at the kopitiam and mamak stall.",
+    "vessel": "Two vessels, poured between to 'pull' teh tarik.",
+    "ritual": "Teh tarik is pulled from height between cups to froth and cool it.",
+    "movement": "Planted at the Cameron Highlands from 1929.",
+    "types": [
+      "black"
+    ]
+  },
+  {
+    "id": "cameroon",
+    "name": "Ndu & Tole",
+    "country": "Cameroon",
+    "coords": [
+      6.4,
+      10.75
+    ],
+    "leaf": "assamica",
+    "tier": "small",
+    "varietal": "Camellia sinensis var. assamica",
+    "teas": [
+      "CTC black"
+    ],
+    "history": "Tea estates were established under colonial administration at Tole in the southwest and Ndu in the northwest highlands. They passed to national plantation companies after independence.",
+    "practices": "The two highland estates grow assamica for CTC black tea, supplying domestic and regional markets.",
+    "sources": [
+      "Food and Agriculture Organization (FAO)"
+    ],
+    "teaword": "thé / tea",
+    "wordfamily": "te",
+    "language": "French thé and English tea, of the te branch.",
+    "place": "Highland estates at Tole and Ndu.",
+    "flavor": "Brisk, coloury CTC black.",
+    "social": "Domestic and regional markets.",
+    "movement": "Colonial estates, later national plantations.",
+    "types": [
+      "black"
+    ]
+  },
+  {
+    "id": "png",
+    "name": "Wahgi Valley",
+    "country": "Papua New Guinea",
+    "coords": [
+      -5.85,
+      144.3
+    ],
+    "leaf": "assamica",
+    "tier": "small",
+    "varietal": "Camellia sinensis var. assamica",
+    "teas": [
+      "CTC black"
+    ],
+    "history": "Tea was established in the Western Highlands’ Wahgi Valley in the 1960s, grown on estates at altitude near the equator.",
+    "practices": "Estate assamica is processed as CTC black tea, produced year-round in the highland climate, though the industry is small.",
+    "sources": [
+      "Food and Agriculture Organization (FAO)"
+    ],
+    "teaword": "ti / tea",
+    "wordfamily": "te",
+    "language": "Tok Pisin ti and English tea, of the te branch.",
+    "place": "Highland Wahgi Valley near the equator.",
+    "flavor": "Brisk, even CTC black.",
+    "social": "An estate crop.",
+    "movement": "Planted in the Western Highlands in the 1960s.",
+    "types": [
+      "black"
+    ]
+  },
+  {
+    "id": "drc",
+    "name": "Kivu",
+    "country": "DR Congo",
+    "coords": [
+      -1.6,
+      29
+    ],
+    "leaf": "assamica",
+    "tier": "small",
+    "varietal": "Camellia sinensis var. assamica",
+    "teas": [
+      "CTC black"
+    ],
+    "history": "Tea was planted in the eastern Kivu highlands during Belgian rule. Decades of conflict disrupted the estates, and producers have worked to revive them.",
+    "practices": "Highland gardens in North and South Kivu grow assamica for black tea, with renewed export efforts including teas grown near the Virunga landscape.",
+    "sources": [
+      "Food and Agriculture Organization (FAO)"
+    ],
+    "teaword": "thé / chai",
+    "wordfamily": "cha",
+    "language": "French thé and Swahili chai meet in the eastern Congo.",
+    "place": "Highland gardens of North and South Kivu.",
+    "flavor": "Brisk high-grown black.",
+    "social": "A recovering, sometimes specialty, crop.",
+    "movement": "Belgian-era estates, revived after conflict.",
+    "types": [
+      "black"
+    ]
+  },
+  {
+    "id": "azerbaijan",
+    "name": "Lankaran (Lənkəran)",
+    "country": "Azerbaijan",
+    "coords": [
+      38.75,
+      48.85
+    ],
+    "leaf": "sinensis",
+    "tier": "small",
+    "varietal": "Camellia sinensis var. sinensis",
+    "teas": [
+      "Black tea"
+    ],
+    "history": "Tea was first grown in the humid subtropical district of Lankaran on the Caspian coast from the late nineteenth century, and the region became a supplier within the Soviet Union. Output fell after 1991 and is now being revived.",
+    "practices": "The Lankaran–Astara lowlands produce black tea, central to a strong local tea-drinking culture served from the pear-shaped armudu glass.",
+    "sources": [
+      "Food and Agriculture Organization (FAO)"
+    ],
+    "teaword": "çay",
+    "wordfamily": "cha",
+    "language": "Azerbaijani çay (chai), of the cha branch.",
+    "place": "Humid subtropical Lankaran on the Caspian.",
+    "flavor": "Brisk amber black tea, sometimes with thyme or rose.",
+    "social": "Constant hospitality.",
+    "vessel": "The pear-shaped armudu glass, with jam or sugar.",
+    "ritual": "Tea is offered to every guest, sipped with sugar or fruit preserve.",
+    "movement": "Grown at Lankaran from the late 1800s; a Soviet supplier, now reviving.",
+    "types": [
+      "black"
+    ]
+  },
+  {
+    "id": "brazil",
+    "name": "Registro (São Paulo)",
+    "country": "Brazil",
+    "coords": [
+      -24.49,
+      -47.84
+    ],
+    "leaf": "assamica",
+    "tier": "small",
+    "varietal": "Camellia sinensis var. assamica",
+    "teas": [
+      "Black tea",
+      "Green tea"
+    ],
+    "history": "Japanese immigrants established tea in the Ribeira Valley around Registro, São Paulo, from the 1920s and 30s. Brazil became a black-tea exporter and, more recently, a notable supplier of green tea for processing.",
+    "practices": "Mechanised estates in São Paulo state grow assamica for black tea, much of it exported, including leaf destined for blends and powdered green tea.",
+    "sources": [
+      "Food and Agriculture Organization (FAO)"
+    ],
+    "teaword": "chá",
+    "wordfamily": "cha",
+    "language": "Portuguese chá (shah), the maritime-but-cha exception, brought here by Japanese immigrants.",
+    "place": "Ribeira Valley of São Paulo; mechanised estates.",
+    "flavor": "Mild, dark, even black; grassy green for processing.",
+    "social": "An export commodity.",
+    "movement": "Established by Japanese immigrants from the 1920s.",
+    "types": [
+      "black",
+      "green"
+    ]
+  },
+  {
+    "id": "peru",
+    "name": "Chanchamayo (Junín)",
+    "country": "Peru",
+    "coords": [
+      -11.05,
+      -75.32
+    ],
+    "leaf": "assamica",
+    "tier": "small",
+    "varietal": "Camellia sinensis var. assamica",
+    "teas": [
+      "Black tea"
+    ],
+    "history": "Tea was planted in Peru’s central montane jungle, around Chanchamayo and Huánuco, in the mid-twentieth century to supply the domestic market.",
+    "practices": "Small estates in the eastern Andean foothills grow assamica for black tea, consumed largely within the country.",
+    "sources": [
+      "Food and Agriculture Organization (FAO)"
+    ],
+    "teaword": "té",
+    "wordfamily": "te",
+    "language": "Spanish té (teh), of the te branch.",
+    "place": "Montane jungle of Chanchamayo and Huánuco.",
+    "flavor": "Mild, dark everyday black.",
+    "social": "A domestic market.",
+    "movement": "Planted in the central selva in the mid-20th century.",
+    "types": [
+      "black"
+    ]
+  },
+  {
+    "id": "mauritius",
+    "name": "Bois Chéri",
+    "country": "Mauritius",
+    "coords": [
+      -20.42,
+      57.53
+    ],
+    "leaf": "assamica",
+    "tier": "small",
+    "varietal": "Camellia sinensis var. assamica",
+    "teas": [
+      "Black tea",
+      "Vanilla-scented black"
+    ],
+    "history": "Tea was introduced to Mauritius in the eighteenth century and grown commercially from the late nineteenth, with Bois Chéri becoming the island’s principal estate and brand.",
+    "practices": "Upland gardens in the island’s centre produce black tea, often scented with vanilla, for local consumption and tourism.",
+    "sources": [
+      "Food and Agriculture Organization (FAO)"
+    ],
+    "teaword": "dité / thé",
+    "wordfamily": "te",
+    "language": "Mauritian Creole dité and French thé, of the te branch.",
+    "place": "Central uplands of the island.",
+    "flavor": "Brisk black, often scented with vanilla.",
+    "social": "Daily life and tourism.",
+    "vessel": "A cup of vanilla-scented tea.",
+    "ritual": "Local black tea is perfumed with island vanilla.",
+    "movement": "Grown commercially from the late 1800s.",
+    "types": [
+      "black"
+    ]
+  },
+  {
+    "id": "zambia",
+    "name": "Kawambwa (Luapula)",
+    "country": "Zambia",
+    "coords": [
+      -9.79,
+      29.08
+    ],
+    "leaf": "assamica",
+    "tier": "niche",
+    "varietal": "Camellia sinensis var. assamica",
+    "teas": [
+      "Black tea"
+    ],
+    "history": "Tea was established at Kawambwa in the high-rainfall Luapula region as a state venture in the second half of the twentieth century.",
+    "practices": "The Kawambwa estate grows assamica for black tea, produced mainly for the domestic market.",
+    "sources": [
+      "Food and Agriculture Organization (FAO)"
+    ],
+    "teaword": "tea / chai",
+    "wordfamily": "te",
+    "language": "English tea, with Swahili chai nearby, of the te branch.",
+    "place": "High-rainfall Luapula at Kawambwa.",
+    "flavor": "Brisk, coloury black.",
+    "social": "A domestic market.",
+    "movement": "A state estate venture of the later 20th century.",
+    "types": [
+      "black"
+    ]
+  },
+  {
+    "id": "madagascar",
+    "name": "Sahambavy",
+    "country": "Madagascar",
+    "coords": [
+      -21.47,
+      47.24
+    ],
+    "leaf": "assamica",
+    "tier": "niche",
+    "varietal": "Camellia sinensis var. assamica",
+    "teas": [
+      "Black tea"
+    ],
+    "history": "Madagascar’s tea is grown at Sahambavy near Fianarantsoa, on the island’s only tea estate, established in the 1970s.",
+    "practices": "The single highland estate produces black tea for domestic sale and modest export, and hosts visitors beside its lakeside gardens.",
+    "sources": [
+      "Food and Agriculture Organization (FAO)"
+    ],
+    "teaword": "dite / thé",
+    "wordfamily": "te",
+    "language": "Malagasy dite and French thé, of the te branch.",
+    "place": "Highland estate at Sahambavy near Fianarantsoa.",
+    "flavor": "Brisk, coloury black.",
+    "social": "Domestic sale and tourism.",
+    "movement": "The island's single estate, from the 1970s.",
+    "types": [
+      "black"
+    ]
+  },
+  {
+    "id": "colombia",
+    "name": "Bitaco (Valle del Cauca)",
+    "country": "Colombia",
+    "coords": [
+      3.55,
+      -76.63
+    ],
+    "leaf": "assamica",
+    "tier": "niche",
+    "varietal": "Camellia sinensis var. assamica",
+    "teas": [
+      "Black tea"
+    ],
+    "history": "Tea was planted at Bitaco in the Valle del Cauca from the mid-twentieth century, becoming Colombia’s main producer under the Agrícola Himalaya estate.",
+    "practices": "The Andean estate grows assamica for black tea sold largely within Colombia, with a growing line of specialty and sustainable teas.",
+    "sources": [
+      "Food and Agriculture Organization (FAO)"
+    ],
+    "teaword": "té",
+    "wordfamily": "te",
+    "language": "Spanish té (teh), of the te branch.",
+    "place": "Andean slopes at Bitaco, Valle del Cauca.",
+    "flavor": "Brisk, even black; a growing specialty line.",
+    "social": "A domestic market.",
+    "movement": "Planted from the mid-20th century.",
+    "types": [
+      "black"
+    ]
+  },
+  {
+    "id": "southafrica",
+    "name": "Ntingwe (KwaZulu-Natal)",
+    "country": "South Africa",
+    "coords": [
+      -28.6,
+      31
+    ],
+    "leaf": "assamica",
+    "tier": "niche",
+    "varietal": "Camellia sinensis var. assamica",
+    "teas": [
+      "Black tea"
+    ],
+    "history": "South Africa is famous for rooibos, which is a different plant and not true tea. Genuine Camellia sinensis has been grown only on a limited scale, historically at Magoebaskloof and at the Ntingwe estate in KwaZulu-Natal.",
+    "practices": "Documented Camellia sinensis production is small; Ntingwe has grown black tea in KwaZulu-Natal, quite separate from the country’s much larger rooibos industry.",
+    "sources": [
+      "Food and Agriculture Organization (FAO)"
+    ],
+    "teaword": "tea / tee",
+    "wordfamily": "te",
+    "language": "English tea and Afrikaans tee, of the te branch — distinct from rooibos, which is a different plant.",
+    "place": "Limited Camellia sinensis at Ntingwe (KwaZulu-Natal) and, historically, Magoebaskloof.",
+    "flavor": "Brisk black, where grown.",
+    "social": "A small true-tea crop beside a large rooibos culture.",
+    "movement": "Camellia sinensis has only ever been a minor crop here.",
+    "types": [
+      "black"
+    ]
+  },
+  {
+    "id": "bolivia",
+    "name": "Chima (Yungas)",
+    "country": "Bolivia",
+    "coords": [
+      -16.19,
+      -67.73
+    ],
+    "leaf": "assamica",
+    "tier": "niche",
+    "varietal": "Camellia sinensis var. assamica",
+    "teas": [
+      "Black tea"
+    ],
+    "history": "Tea was planted in the humid Yungas valleys north of La Paz, around Chima, in the mid-twentieth century to supply the domestic market.",
+    "practices": "Small estates in the Yungas grow assamica for black tea, consumed mainly within Bolivia.",
+    "sources": [
+      "Food and Agriculture Organization (FAO)"
+    ],
+    "teaword": "té",
+    "wordfamily": "te",
+    "language": "Spanish té (teh), of the te branch.",
+    "place": "Humid Yungas valleys north of La Paz.",
+    "flavor": "Mild, dark everyday black.",
+    "social": "A domestic market.",
+    "movement": "Planted in the Yungas in the mid-20th century.",
+    "types": [
+      "black"
+    ]
+  },
+  {
+    "id": "russia",
+    "name": "Krasnodar (Sochi)",
+    "country": "Russia",
+    "coords": [
+      43.66,
+      39.68
+    ],
+    "leaf": "sinensis",
+    "tier": "niche",
+    "varietal": "Camellia sinensis var. sinensis",
+    "teas": [
+      "Black tea",
+      "Green tea"
+    ],
+    "history": "After earlier failures in the cold, the grower Iuda Koshman established frost-hardy bushes at Solokh-Aul near Sochi around 1901, with the first successful plantation by 1905. Krasnodar tea is among the northernmost grown in the world.",
+    "practices": "Gardens on the Black Sea slopes near Sochi, sheltered by the Caucasus, produce black and green tea in small quantities, prized as a hand-picked local specialty.",
+    "sources": [
+      "Food and Agriculture Organization (FAO)"
+    ],
+    "teaword": "chai",
+    "wordfamily": "cha",
+    "language": "Russian chai (chah-ee) — carried overland by caravan from China through Kyakhta, a pure cha-branch word.",
+    "place": "Sheltered Black Sea slopes near Sochi, warmed by the Caucasus; the world's northernmost commercial tea.",
+    "flavor": "Brisk and malty, amber, with a soft sweetness in the best hand-picked lots.",
+    "social": "Hospitality, family and long conversation.",
+    "vessel": "A samovar and a glass in a podstakannik holder.",
+    "ritual": "A strong concentrate (zavarka) is brewed, then diluted to taste with hot water from the samovar.",
+    "movement": "Reached Russia overland via the Kyakhta tea road; grown at Sochi from 1901.",
+    "types": [
+      "black",
+      "green"
+    ]
+  },
+  {
+    "id": "portugal",
+    "name": "Gorreana (Azores)",
+    "country": "Portugal",
+    "coords": [
+      37.82,
+      -25.4
+    ],
+    "leaf": "sinensis",
+    "tier": "niche",
+    "varietal": "Camellia sinensis var. sinensis",
+    "teas": [
+      "Black tea",
+      "Green tea"
+    ],
+    "history": "When orange blight struck São Miguel in the Azores, planters turned to tea, bringing Chinese specialists from Macau in 1878. Founded in 1883, Gorreana is the oldest tea plantation still operating in Europe.",
+    "practices": "On volcanic Azorean soil, isolated from pests, tea is grown without pesticides and made into black and green teas using nineteenth-century machinery.",
+    "sources": [
+      "Gorreana Tea Estate",
+      "Food and Agriculture Organization (FAO)"
+    ],
+    "teaword": "chá",
+    "wordfamily": "cha",
+    "language": "Portuguese chá (shah) — though carried by sea, Portugal kept the cha word from its Macau trade, the great exception to the maritime 'te'.",
+    "place": "Volcanic, rainy hills of São Miguel in the Azores; pest-free and organic; harvested April to October.",
+    "flavor": "Soft and mild black tea; fresh, grassy green tea, clean from the sea air.",
+    "social": "Daily life, heritage and welcome to visitors.",
+    "vessel": "A European porcelain pot and cup.",
+    "ritual": "Made much as in the 19th century on original machinery, and taken as an everyday cup.",
+    "movement": "Begun with Chinese specialists from Macau in 1878; Europe's oldest surviving plantation.",
+    "types": [
+      "black",
+      "green"
+    ]
+  },
+  {
+    "id": "usa",
+    "name": "Charleston (South Carolina)",
+    "country": "United States",
+    "coords": [
+      32.65,
+      -80.18
+    ],
+    "leaf": "sinensis",
+    "tier": "niche",
+    "varietal": "Camellia sinensis, mixed varieties",
+    "teas": [
+      "Black tea"
+    ],
+    "history": "Tea has been grown in the American South since the nineteenth century, with the Charleston Tea Garden on Wadmalaw Island the country’s best-known plantation. Smaller ventures have since appeared in Hawaii, Mississippi and elsewhere.",
+    "practices": "The Charleston garden grows tea harvested by machine for black tea, and a small but expanding group of growers works across the South and the Pacific states.",
+    "sources": [
+      "Food and Agriculture Organization (FAO)"
+    ],
+    "teaword": "tea",
+    "wordfamily": "te",
+    "language": "English tea, of the maritime te branch.",
+    "place": "Sea-island South Carolina, and small gardens in Hawaii and Mississippi.",
+    "flavor": "Mild, smooth black; light and clean.",
+    "social": "Local specialty and agritourism.",
+    "vessel": "A tall glass of iced sweet tea in the South.",
+    "ritual": "Southern iced tea, sweetened and chilled, is an everyday ritual.",
+    "movement": "Grown since the 1800s; the Charleston garden is the best known.",
+    "types": [
+      "black"
+    ]
+  },
+  {
+    "id": "australia",
+    "name": "Nerada (Queensland)",
+    "country": "Australia",
+    "coords": [
+      -17.35,
+      145.6
+    ],
+    "leaf": "assamica",
+    "tier": "niche",
+    "varietal": "Camellia sinensis, mixed varieties",
+    "teas": [
+      "Black tea"
+    ],
+    "history": "Commercial tea took hold on the Atherton Tablelands of tropical north Queensland, where Nerada grew into the country’s largest producer. Cooler regions, including Tasmania, have since begun small-scale cultivation.",
+    "practices": "North Queensland estates grow assamica for machine-harvested black tea, while newer southern growers experiment with sinensis in cooler climates.",
+    "sources": [
+      "Food and Agriculture Organization (FAO)"
+    ],
+    "teaword": "tea",
+    "wordfamily": "te",
+    "language": "English tea, of the te branch.",
+    "place": "Tropical Atherton Tablelands of Queensland, and cooler Tasmania.",
+    "flavor": "Brisk, clean black.",
+    "social": "An everyday cup and a small home industry.",
+    "movement": "Commercial tea took hold in north Queensland in the 20th century.",
+    "types": [
+      "black"
+    ]
+  },
+  {
+    "id": "newzealand",
+    "name": "Zealong (Waikato)",
+    "country": "New Zealand",
+    "coords": [
+      -37.66,
+      175.28
+    ],
+    "leaf": "sinensis",
+    "tier": "niche",
+    "varietal": "Camellia sinensis var. sinensis",
+    "teas": [
+      "Oolong"
+    ],
+    "history": "New Zealand’s only commercial tea estate, Zealong, was established near Hamilton in the Waikato from cuttings brought in the 1990s. It specialises in oolong.",
+    "practices": "The estate grows sinensis for hand-crafted oolong, green and black teas under strict quality control, marketed as a premium product.",
+    "sources": [
+      "Food and Agriculture Organization (FAO)"
+    ],
+    "teaword": "tea",
+    "wordfamily": "te",
+    "language": "English tea, of the te branch.",
+    "place": "Waikato pastureland near Hamilton.",
+    "flavor": "Floral, smooth oolong, hand-crafted.",
+    "social": "A premium specialty product.",
+    "vessel": "A gongfu set for estate oolong.",
+    "ritual": "Hand-picked leaf crafted into oolong under strict control.",
+    "movement": "New Zealand's only estate, from cuttings brought in the 1990s.",
+    "types": [
+      "oolong"
+    ]
+  },
+  {
+    "id": "uk",
+    "name": "Tregothnan (Cornwall)",
+    "country": "United Kingdom",
+    "coords": [
+      50.24,
+      -4.98
+    ],
+    "leaf": "sinensis",
+    "tier": "niche",
+    "varietal": "Camellia sinensis var. sinensis",
+    "teas": [
+      "Black tea"
+    ],
+    "history": "The Tregothnan estate in Cornwall, long home to ornamental camellias, planted tea in 1999 and sold the first English-grown tea in 2005.",
+    "practices": "Sheltered, mild Cornish gardens grow sinensis for small quantities of specialty black tea, sold as a luxury domestic product.",
+    "sources": [
+      "Tregothnan Estate",
+      "Food and Agriculture Organization (FAO)"
+    ],
+    "teaword": "tea",
+    "wordfamily": "te",
+    "language": "English tea — the maritime te word Britain spread across its empire — now grown at home.",
+    "place": "Sheltered, mild gardens in Cornwall.",
+    "flavor": "Soft, smooth specialty black.",
+    "social": "A luxury domestic novelty.",
+    "vessel": "A porcelain pot and cup, in the British manner.",
+    "ritual": "Afternoon tea, here from English-grown leaf.",
+    "movement": "First English tea planted at Tregothnan in 1999, sold from 2005.",
+    "types": [
+      "black"
+    ]
+  }
+]
