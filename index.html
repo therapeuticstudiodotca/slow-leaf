@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Slow Leaf · Therapeutic Studio</title>
+<meta name="description" content="Slow Leaf — a living atlas of tea, and three more ways to know, practice, and dwell with it." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --paper:#ffffff;--ink:#5d5a5b;--ink-strong:#454344;--stone:#a29f9f;
+    --hair:#e6e4e2;--hair-soft:#efedeb;--panel:#faf9f8;
+    --maxw:1080px;--ease:cubic-bezier(.22,.61,.36,1);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{font-family:"Asap",system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);
+    background:var(--paper);-webkit-font-smoothing:antialiased;line-height:1.6;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
+  .topbar{display:flex;align-items:baseline;justify-content:space-between;gap:16px 28px;flex-wrap:wrap;
+    padding:26px 0 18px;border-bottom:1px solid var(--hair);}
+  .mark{font-weight:600;font-size:15px;letter-spacing:.02em;color:var(--ink-strong);text-decoration:none;}
+  .navlinks{display:flex;flex-wrap:wrap;gap:20px;}
+  .navlinks a{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);
+    font-weight:600;text-decoration:none;transition:color .2s var(--ease);}
+  .navlinks a:hover{color:var(--ink);}
+  .navlinks a[aria-current="page"]{color:var(--ink-strong);}
+  .hero{padding:56px 0 34px;max-width:720px;}
+  .eyebrow{font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--stone);font-weight:600;margin:0 0 18px;}
+  h1{font-weight:500;font-size:clamp(34px,5vw,58px);line-height:1.06;letter-spacing:-.015em;color:var(--ink-strong);margin:0 0 20px;}
+  h1 em{font-style:italic;font-weight:400;color:var(--ink);}
+  .lede{font-size:17.5px;max-width:600px;margin:0;color:var(--ink);}
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--hair);
+    border:1px solid var(--hair);border-radius:4px;overflow:hidden;margin:16px 0 56px;}
+  .cardlink{background:var(--paper);padding:30px 30px 34px;text-decoration:none;color:inherit;
+    display:flex;flex-direction:column;gap:14px;min-height:210px;transition:background .25s var(--ease);}
+  .cardlink:hover{background:var(--panel);}
+  .cardlink .icon{height:40px;color:var(--stone);}
+  .cardlink .icon svg{height:40px;width:auto;overflow:visible;}
+  .cardlink .icon svg *{vector-effect:non-scaling-stroke;}
+  .card-eyebrow{display:flex;align-items:center;gap:10px;font-size:10.5px;letter-spacing:.16em;
+    text-transform:uppercase;font-weight:600;color:var(--stone);}
+  .status{border:1px solid var(--hair);border-radius:100px;padding:2px 9px;color:var(--stone);letter-spacing:.1em;}
+  .status.ready{color:var(--ink-strong);border-color:var(--stone);}
+  .cardlink h2{font-size:23px;font-weight:500;letter-spacing:-.01em;color:var(--ink-strong);margin:2px 0 0;}
+  .cardlink p{margin:0;font-size:14.5px;color:var(--ink);}
+  .cardlink .go{margin-top:auto;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--stone);}
+  .cardlink:hover .go{color:var(--ink);}
+  footer{border-top:1px solid var(--hair);padding:22px 0 46px;font-size:11.5px;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--stone);font-weight:600;}
+  @media (max-width:680px){.wrap{padding:0 20px;}.grid{grid-template-columns:1fr;}}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;}}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="topbar" aria-label="Slow Leaf">
+      <a class="mark" href="index.html">Slow&nbsp;Leaf</a>
+      <div class="navlinks">
+        <a href="index.html" aria-current="page">Home</a>
+        <a href="living-atlas.html">Living Atlas</a>
+        <a href="knowing-tea.html">Knowing Tea</a>
+        <a href="practicing-tea.html">Practicing Tea</a>
+        <a href="tea-room.html">Tea Room</a>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <p class="eyebrow">Therapeutic Studio</p>
+      <h1>Slow Leaf — tea, <em>slowly</em></h1>
+      <p class="lede">Four ways into the world of tea: a map of where it grows, a map of why it matters, guides for how to make it, and a room to dwell in it season by season.</p>
+    </header>
+
+    <div class="grid">
+      <a class="cardlink" href="living-atlas.html">
+        <div class="icon" aria-hidden="true">
+          <svg viewBox="0 0 40 40"><path d="M20 36C20 22 12 16 5 15 14 13 20 7 20 2 20 7 26 13 35 15 28 16 20 22 20 36Z" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/><path d="M20 33V6" fill="none" stroke="currentColor" stroke-width="1"/></svg>
+        </div>
+        <div class="card-eyebrow"><span>Living Atlas</span><span class="status ready">Explore</span></div>
+        <h2>The world, one leaf at a time</h2>
+        <p>An interactive world map of tea — its regions, languages, vessels, and rituals, place by place.</p>
+        <span class="go">Open the map →</span>
+      </a>
+
+      <a class="cardlink" href="knowing-tea.html">
+        <div class="icon" aria-hidden="true">
+          <svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="3" fill="none" stroke="currentColor" stroke-width="1.2"/><circle cx="7" cy="12" r="2" fill="none" stroke="currentColor" stroke-width="1.2"/><circle cx="33" cy="10" r="2" fill="none" stroke="currentColor" stroke-width="1.2"/><circle cx="31" cy="30" r="2" fill="none" stroke="currentColor" stroke-width="1.2"/><circle cx="9" cy="31" r="2" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M9 13 17 19M31 11 23 18M29 29 23 22M11 30 17 23" stroke="currentColor" stroke-width="1"/></svg>
+        </div>
+        <div class="card-eyebrow"><span>Knowing Tea</span><span class="status">In development</span></div>
+        <h2>A map of meaning</h2>
+        <p>Why tea matters — its history, plant science, language, culture, myths, and the questions they raise.</p>
+        <span class="go">Coming next →</span>
+      </a>
+
+      <a class="cardlink" href="practicing-tea.html">
+        <div class="icon" aria-hidden="true">
+          <svg viewBox="0 0 40 40"><path d="M10 17H30L28 27C27.5 30 26 31 23 31H17C14 31 12.5 30 12 27Z" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/><path d="M30 19C34 19 34 25 30 25" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M16 13C16 11 18 11 18 9M22 13C22 11 24 11 24 9" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg>
+        </div>
+        <div class="card-eyebrow"><span>Practicing Tea</span><span class="status">In development</span></div>
+        <h2>How to make it, slowly</h2>
+        <p>Step-by-step guides to preparing and tasting each kind of tea, with room to pause and notice.</p>
+        <span class="go">Coming next →</span>
+      </a>
+
+      <a class="cardlink" href="tea-room.html">
+        <div class="icon" aria-hidden="true">
+          <svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="13" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M20 20 20 11M20 20 26 24" stroke="currentColor" stroke-width="1" stroke-linecap="round"/><circle cx="20" cy="20" r="1.4" fill="currentColor"/></svg>
+        </div>
+        <div class="card-eyebrow"><span>Tea Room</span><span class="status">In development</span></div>
+        <h2>A year in tea</h2>
+        <p>A seasonal experience — a special tea each month, paired with whole foods and quiet reflection.</p>
+        <span class="go">Coming next →</span>
+      </a>
+    </div>
+
+    <footer>Therapeutic Studio · Slow Leaf</footer>
+  </div>
+</body>
+</html>

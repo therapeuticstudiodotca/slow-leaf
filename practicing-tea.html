@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Practicing Tea · Slow Leaf</title>
+<meta name="description" content="Preparation, enjoyment, and mindful reflection made approachable and practical — a gallery of guides sorted by the kind of tea in your cup." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+<style>
+  :root{--paper:#ffffff;--ink:#5d5a5b;--ink-strong:#454344;--stone:#a29f9f;
+    --hair:#e6e4e2;--hair-soft:#efedeb;--panel:#faf9f8;--maxw:1080px;--ease:cubic-bezier(.22,.61,.36,1);}
+  *{box-sizing:border-box;} html,body{margin:0;padding:0;}
+  body{font-family:"Asap",system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);
+    background:var(--paper);-webkit-font-smoothing:antialiased;line-height:1.6;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
+  .topbar{display:flex;align-items:baseline;justify-content:space-between;gap:16px 28px;flex-wrap:wrap;
+    padding:26px 0 18px;border-bottom:1px solid var(--hair);}
+  .mark{font-weight:600;font-size:15px;letter-spacing:.02em;color:var(--ink-strong);text-decoration:none;}
+  .navlinks{display:flex;flex-wrap:wrap;gap:20px;}
+  .navlinks a{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);
+    font-weight:600;text-decoration:none;transition:color .2s var(--ease);}
+  .navlinks a:hover{color:var(--ink);}
+  .navlinks a[aria-current="page"]{color:var(--ink-strong);}
+  .hero{padding:52px 0 30px;max-width:720px;}
+  .eyebrow{display:flex;align-items:center;gap:12px;font-size:11.5px;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--stone);font-weight:600;margin:0 0 18px;}
+  .status{border:1px solid var(--hair);border-radius:100px;padding:2px 9px;letter-spacing:.1em;}
+  h1{font-weight:500;font-size:clamp(32px,4.8vw,52px);line-height:1.07;letter-spacing:-.015em;
+    color:var(--ink-strong);margin:0 0 20px;}
+  h1 em{font-style:italic;font-weight:400;color:var(--ink);}
+  .lede{font-size:17.5px;max-width:620px;margin:0;color:var(--ink);}
+  .section{padding:14px 0 8px;max-width:760px;}
+  .section h2{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--stone);
+    font-weight:600;margin:34px 0 4px;}
+  .items{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--hair);
+    border:1px solid var(--hair);border-radius:4px;overflow:hidden;margin:18px 0 8px;}
+  .item{background:var(--paper);padding:20px 22px;}
+  .item h3{font-size:15px;font-weight:500;color:var(--ink-strong);margin:0 0 5px;}
+  .item p{margin:0;font-size:13.5px;color:var(--ink);}
+  .note{margin:40px 0 10px;padding:20px 22px;background:var(--panel);border:1px solid var(--hair-soft);
+    border-radius:4px;font-size:14.5px;color:var(--ink);max-width:760px;}
+  .note strong{color:var(--ink-strong);font-weight:600;}
+  footer{border-top:1px solid var(--hair);padding:22px 0 46px;margin-top:40px;font-size:11.5px;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--stone);font-weight:600;}
+  @media (max-width:680px){.wrap{padding:0 20px;}.items{grid-template-columns:1fr;}}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;}}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="topbar" aria-label="Slow Leaf">
+      <a class="mark" href="index.html">Slow&nbsp;Leaf</a>
+      <div class="navlinks">
+        <a href="index.html">Home</a>
+        <a href="living-atlas.html">Living Atlas</a>
+        <a href="knowing-tea.html">Knowing Tea</a>
+        <a href="practicing-tea.html" aria-current="page">Practicing Tea</a>
+        <a href="tea-room.html">Tea Room</a>
+      </div>
+    </nav>
+    <header class="hero">
+      <p class="eyebrow"><span>Practicing Tea</span><span class="status">In development</span></p>
+      <h1>How to make it, <em>slowly</em></h1>
+      <p class="lede">Preparation, enjoyment, and mindful reflection made approachable and practical — a gallery of guides sorted by the kind of tea in your cup.</p>
+    </header>
+    <div class="section">
+      <h2>What it will hold</h2>
+      <div class="items">
+        <div class="item"><h3>Gallery by tea type</h3><p>Step-by-step guides for black, green, white, matcha, oolong, and more.</p></div>
+        <div class="item"><h3>Sensory exploration</h3><p>Tuning into taste, aroma, sound, temperature, texture, and presence.</p></div>
+        <div class="item"><h3>Guided practices</h3><p>Steeping methods, tasting approaches, and ceremonial forms.</p></div>
+        <div class="item"><h3>Time &amp; attention</h3><p>Using tea as a way to slow down, pause, and observe.</p></div>
+        <div class="item"><h3>Tea journaling</h3><p>Prompts for memory, mood, embodiment, and cultural reflection.</p></div>
+        <div class="item"><h3>Actionable activities</h3><p>Every practice kept simple and easy to follow.</p></div>
+      </div>
+      <div class="note"><strong>Planned form.</strong> An interactive gallery sorted by type of tea, where each entry's icon takes the shape of the vessel or instrument that defines it — a gaiwan, a whisk and bowl, a samovar — opening onto a simple, step-by-step guide.</div>
+    </div>
+    <footer>Therapeutic Studio · Slow Leaf</footer>
+  </div>
+</body>
+</html>
