@@ -70,9 +70,6 @@ npm install        # first time only
 node build.mjs     # regenerates living-atlas.html
 ```
 
-## Publishing
-
-Enable **GitHub Pages** on the repository (Settings → Pages → deploy from the default branch). `index.html` is served at the root, with the four experiences linked from it.
 
 ## Sources
 
