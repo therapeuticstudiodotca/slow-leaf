@@ -10,21 +10,6 @@ Slow Leaf is a small project about tea, built as four connected experiences. It 
 | **Practicing Tea** | `practicing-tea.html` | Ready — guides to preparing each kind of tea |
 | **Tea Room** | `tea-room.html` | Scaffolded — a year-long seasonal experience |
 
-## Living Atlas
-
-An interactive world map of the places where tea (*Camellia sinensis*) is grown. It carries 50 markers spanning the major producing nations and the smaller, niche, and emerging growers across Asia, Africa, South America, Europe, and Oceania. The size of each leaf reflects the scale of that country's tea output, from the largest producers down to single-estate operations.
-
-Selecting a leaf opens a card that unfolds in three layers:
-
-- **Quick view** — the characteristic vessel, a one-line flavour summary, and the teas made there.
-- **Context** — the *cha / te / native* language-and-migration lineage, terroir, ritual, and social purpose.
-- **Deep dive** — trade and migration movement, a short history, current practices, and sources.
-
-The map is a Natural Earth projection, drawn from public-domain [Natural Earth](https://www.naturalearthdata.com/) data via the `world-atlas` package. All geometry is baked into `living-atlas.html`, so it needs no live map service.
-
-Each leaf is shaded along a cool-green ramp by its **principal tea style** — fresh green for green tea, through muted teal for oolong, to a deep pine for black and post-fermented dark tea — which lifts the markers off the grey land and lets the map be read at a glance. The card's leaf drawing is coloured to match. Because a region can make several styles, the colour reflects its signature style, while the filter still matches any style it produces.
-
-A **type filter** above the map lets you select one or more tea styles (Green, White, Oolong, Black, Dark), each shown with its colour so the row doubles as a key. Selecting a style emphasises the regions that produce it and quietly fades the rest; selecting several unions them, and **All** clears the filter. The chips are generated from the `types` field in the data, so they stay in step with whatever the regions describe.
 
 ### Data and build
 
