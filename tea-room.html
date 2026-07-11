@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Tea Room · Slow Leaf</title>
+<meta name="description" content="A year in tea — twelve months, twelve teas. A seasonal calendar pairing each month's tea with what is in season in the Pacific Northwest, met with unhurried attention." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --paper:#ffffff;--panel:#faf9f8;--ink:#5d5a5b;--ink-strong:#454344;--stone:#a29f9f;
+    --hair:#e6e4e2;--hair-soft:#efedeb;--seg:#fbfbfa;--seg-dim:#f4f3f2;
+    --focus:#5d5a5b;--maxw:1180px;--ease:cubic-bezier(.22,.61,.36,1);
+  }
+  *{box-sizing:border-box;} html,body{margin:0;padding:0;}
+  body{font-family:"Asap",system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);
+    background:var(--paper);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;line-height:1.6;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
+
+  /* header */
+  .topbar{display:flex;align-items:baseline;justify-content:space-between;gap:16px 28px;flex-wrap:wrap;
+    padding:26px 0 18px;border-bottom:1px solid var(--hair);}
+  .mark{font-weight:600;font-size:15px;letter-spacing:.02em;color:var(--ink-strong);text-decoration:none;}
+  .navlinks{display:flex;flex-wrap:wrap;gap:20px;}
+  .navlinks a{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);
+    font-weight:600;text-decoration:none;transition:color .2s var(--ease);}
+  .navlinks a:hover{color:var(--ink);}
+  .navlinks a[aria-current="page"]{color:var(--ink-strong);}
+
+  .hero{padding:46px 0 12px;max-width:720px;}
+  .eyebrow{display:flex;align-items:center;gap:12px;font-size:11.5px;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--stone);font-weight:600;margin:0 0 18px;}
+  .status{border:1px solid var(--hair);border-radius:100px;padding:2px 9px;letter-spacing:.1em;}
+  h1{font-weight:500;font-size:clamp(30px,4.6vw,52px);line-height:1.07;letter-spacing:-.015em;
+    color:var(--ink-strong);margin:0 0 18px;}
+  h1 em{font-style:italic;font-weight:400;color:var(--ink);}
+  .lede{font-size:17px;max-width:620px;margin:0;color:var(--ink);}
+
+  /* stage: wheel + panel */
+  .stage{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:34px 44px;
+    align-items:start;padding:26px 0 8px;}
+  @media (max-width:860px){.stage{grid-template-columns:1fr;gap:26px;}}
+
+  .wheelcol{position:sticky;top:16px;}
+  @media (max-width:860px){.wheelcol{position:static;}}
+
+  .filters{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px;}
+  .chip{font-family:inherit;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;
+    color:var(--stone);background:var(--paper);border:1px solid var(--hair);border-radius:100px;
+    padding:6px 13px;cursor:pointer;transition:all .2s var(--ease);display:inline-flex;align-items:center;gap:7px;}
+  .chip:hover{border-color:var(--stone);color:var(--ink);}
+  .chip[aria-pressed="true"]{color:var(--ink-strong);border-color:var(--ink-strong);background:var(--panel);}
+  .chip .dot{width:8px;height:8px;border-radius:50%;background:var(--stone);opacity:.55;}
+
+  svg.wheel{display:block;width:100%;height:auto;overflow:visible;-webkit-user-select:none;user-select:none;}
+  .seg{cursor:pointer;transition:fill .22s var(--ease),opacity .22s var(--ease);}
+  .seg-fill{fill:var(--seg);stroke:var(--hair);stroke-width:1;transition:fill .22s var(--ease),stroke .22s var(--ease);}
+  .seg:hover .seg-fill{fill:var(--panel);stroke:var(--stone);}
+  .seg.is-selected .seg-fill{fill:#f0efed;stroke:var(--ink-strong);stroke-width:1.4;}
+  .seg.dim{opacity:.32;}
+  .seg-mon{font-size:12.5px;font-weight:600;letter-spacing:.04em;fill:var(--ink-strong);text-anchor:middle;dominant-baseline:middle;pointer-events:none;}
+  .seg-tea{font-size:9px;font-weight:500;letter-spacing:.01em;fill:var(--ink);text-anchor:middle;dominant-baseline:middle;pointer-events:none;}
+  .seg.dim .seg-mon,.seg.dim .seg-tea{fill:var(--stone);}
+  .season-arc{fill:none;stroke:var(--hair-soft);stroke-width:20;opacity:.85;}
+  .season-lbl{font-size:9.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;fill:var(--stone);text-anchor:middle;dominant-baseline:middle;}
+  .today-dot{fill:var(--ink-strong);}
+  .hub-season{font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;fill:var(--stone);text-anchor:middle;dominant-baseline:middle;}
+  .hub-mon{font-size:19px;font-weight:500;fill:var(--ink-strong);text-anchor:middle;dominant-baseline:middle;letter-spacing:-.01em;}
+  .hub-tea{font-size:10.5px;font-weight:500;fill:var(--ink);text-anchor:middle;dominant-baseline:middle;}
+  .seg:focus{outline:none;}
+  .seg:focus-visible .seg-fill{stroke:var(--focus);stroke-width:2;}
+  .wheelhint{margin:14px 0 0;font-size:12px;color:var(--stone);letter-spacing:.01em;}
+  .wheelhint b{color:var(--ink);font-weight:600;}
+
+  /* detail panel */
+  .panel{min-height:200px;}
+  .panel-empty{color:var(--stone);font-size:14.5px;padding:8px 0;max-width:420px;}
+  .p-eyebrow{display:flex;align-items:center;gap:10px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--stone);font-weight:600;margin:0 0 8px;flex-wrap:wrap;}
+  .p-season{border:1px solid var(--hair);border-radius:100px;padding:2px 9px;}
+  .p-tea{font-size:26px;font-weight:500;color:var(--ink-strong);letter-spacing:-.01em;margin:0 0 4px;line-height:1.15;}
+  .p-type{font-size:12.5px;letter-spacing:.02em;color:var(--stone);font-weight:600;margin:0 0 18px;}
+  .p-body p{margin:0 0 14px;font-size:14.5px;color:var(--ink);}
+  .p-sect{margin:22px 0 0;}
+  .p-sect h3{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--stone);font-weight:600;margin:0 0 8px;}
+  .pairing{background:var(--panel);border:1px solid var(--hair-soft);border-radius:4px;padding:15px 17px;}
+  .pairing .foods{font-size:13px;font-weight:600;color:var(--ink-strong);margin:0 0 6px;letter-spacing:.01em;}
+  .pairing p{margin:0;font-size:13.5px;color:var(--ink);}
+  .prompts{margin:8px 0 0;padding:0;list-style:none;}
+  .prompts li{position:relative;padding:0 0 0 18px;margin:0 0 7px;font-size:13.5px;color:var(--ink);}
+  .prompts li::before{content:"";position:absolute;left:0;top:9px;width:6px;height:6px;border:1px solid var(--stone);border-radius:50%;}
+  .sources{margin:8px 0 0;padding:0;list-style:none;}
+  .sources li{font-size:11.5px;color:var(--stone);margin:0 0 4px;line-height:1.5;}
+  .sources a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--hair);}
+  .sources a:hover{border-color:var(--stone);}
+  .stepnav{display:flex;gap:8px;margin:24px 0 0;}
+  .stepbtn{font-family:inherit;font-size:12px;font-weight:600;letter-spacing:.02em;color:var(--ink);
+    background:var(--paper);border:1px solid var(--hair);border-radius:100px;padding:7px 15px;cursor:pointer;
+    transition:all .2s var(--ease);}
+  .stepbtn:hover{border-color:var(--stone);color:var(--ink-strong);}
+  .stepbtn:focus-visible{outline:2px solid var(--focus);outline-offset:2px;}
+
+  /* long-form notes */
+  .notes{max-width:760px;padding:8px 0 0;}
+  .notes h2{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--stone);font-weight:600;margin:40px 0 4px;}
+  .note{margin:14px 0 0;padding:18px 20px;background:var(--panel);border:1px solid var(--hair-soft);border-radius:4px;
+    font-size:14px;color:var(--ink);}
+  .note strong{color:var(--ink-strong);font-weight:600;}
+  .note a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--hair);}
+  .note a:hover{border-color:var(--stone);}
+
+  /* glossary */
+  .glossary{max-width:960px;padding:2px 0 0;}
+  .gloss-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--hair);
+    border:1px solid var(--hair);border-radius:4px;overflow:hidden;margin:14px 0 0;}
+  @media (max-width:680px){.gloss-grid{grid-template-columns:1fr;}}
+  .gterm{background:var(--paper);padding:14px 18px;}
+  .gterm .word{font-size:14px;font-weight:600;color:var(--ink-strong);margin:0;}
+  .gterm .say{font-size:12px;color:var(--stone);font-style:italic;margin:1px 0 5px;}
+  .gterm p{margin:0;font-size:12.5px;color:var(--ink);line-height:1.5;}
+
+  /* references */
+  .refs{max-width:820px;padding:2px 0 0;}
+  .refs ol{margin:12px 0 0;padding:0 0 0 20px;}
+  .refs li{font-size:12.5px;color:var(--ink);margin:0 0 8px;line-height:1.55;}
+  .refs a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--hair);}
+  .refs a:hover{border-color:var(--stone);}
+
+  footer{border-top:1px solid var(--hair);padding:22px 0 46px;margin-top:44px;font-size:11.5px;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--stone);font-weight:600;}
+
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0;}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;}}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="topbar" aria-label="Slow Leaf">
+      <a class="mark" href="index.html">Slow&nbsp;Leaf</a>
+      <div class="navlinks">
+        <a href="living-atlas.html">Living Atlas</a>
+        <a href="knowing-tea.html">Knowing Tea</a>
+        <a href="practicing-tea.html">Practicing Tea</a>
+        <a href="tea-room.html" aria-current="page">Tea Room</a>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <p class="eyebrow"><span>Tea Room</span><span class="status">A year in tea</span></p>
+      <h1>Twelve months, <em>twelve teas</em></h1>
+      <p class="lede">A seasonal calendar that moves from familiar teas toward more involved ones, pairing each month's tea with what is in season in the Pacific Northwest. No striving — only observation, through the body as it arrives.</p>
+    </header>
+
+    <section class="stage" aria-label="The year in tea">
+      <div class="wheelcol">
+        <div class="filters" role="group" aria-label="Filter the year by season">
+          <button class="chip" data-season="all" aria-pressed="true">All year</button>
+          <button class="chip" data-season="spring" aria-pressed="false"><span class="dot"></span>Spring</button>
+          <button class="chip" data-season="summer" aria-pressed="false"><span class="dot"></span>Summer</button>
+          <button class="chip" data-season="autumn" aria-pressed="false"><span class="dot"></span>Autumn</button>
+          <button class="chip" data-season="winter" aria-pressed="false"><span class="dot"></span>Winter</button>
+        </div>
+        <svg class="wheel" id="wheel" viewBox="0 0 520 520" role="listbox" aria-label="Months of the year — choose a month to see its tea"></svg>
+        <p class="wheelhint">Choose a <b>month</b> to open its tea, pairing and practice. The dotted mark is <b>this month</b>. Arrow keys step through the year.</p>
+      </div>
+
+      <div class="panel" id="panel" aria-live="polite">
+        <p class="panel-empty" id="panel-empty">Select a month on the wheel. Each opens the month's tea, a seasonal Pacific&nbsp;Northwest pairing, a gentle learning focus, reflection prompts, and its sources.</p>
+        <div id="panel-content" hidden></div>
+      </div>
+    </section>
+
+    <div class="notes">
+      <h2>How the year is held</h2>
+      <div class="note"><strong>Each sitting is its own.</strong> The same tea, the same room, and the same people never quite meet again — the atmosphere shifts with the moment, the participant, and the season. Nothing is kept, judged, or performed; the tea is drunk and it is gone. This mirrors Therapeutic Studio's practice of learning by doing and attending to what arrives. See <a href="https://www.therapeuticstudio.ca/other-bodies" target="_blank" rel="noopener">Other Bodies</a> and <a href="https://www.therapeuticstudio.ca/other-bodies-emotion-stories" target="_blank" rel="noopener">Emotion Stories</a>.</div>
+      <div class="note"><strong>What is ours to design, and what is cited.</strong> The choice of which tea meets which month — the progression from familiar to more involved — is the Tea Room's own curation. The facts inside each card are not: how a tea is made and where it comes from, and what is in season locally, are drawn from the sources listed on every month and gathered in the references below. Where a winter pairing leans on stored, dried or preserved food, that reflects the Pacific Northwest's real cold-season table rather than a shortcoming.</div>
+      <div class="note"><strong>A note on care and respect.</strong> Several of these teas belong to living traditions — Japanese chanoyu, Chinese gongfu preparation, South Asian chai among them. The Tea Room borrows their ethic of presence and hospitality while naming their origins and staying a learner rather than claiming mastery. Brewing figures are gentle starting points, not rules.</div>
+    </div>
+
+    <div class="glossary">
+      <h2 style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--stone);font-weight:600;margin:40px 0 4px;">Beginner's glossary</h2>
+      <p style="font-size:13px;color:var(--stone);margin:6px 0 0;max-width:640px;">Approximate pronunciations for the terms used above. Tones and regional variation are simplified; these are a friendly starting point, not a strict guide.</p>
+      <div class="gloss-grid" id="glossary"></div>
+    </div>
+
+    <div class="refs">
+      <h2 style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--stone);font-weight:600;margin:40px 0 4px;">References</h2>
+      <p style="font-size:13px;color:var(--stone);margin:6px 0 0;">Independently verifiable sources behind the facts on each card.</p>
+      <ol>
+        <li>International Organization for Standardization, <a href="https://www.iso.org/standard/68738.html" target="_blank" rel="noopener">ISO 20715:2023 — Tea: Classification of tea types</a>. Defines the six categories (black, green, white, oolong, dark, yellow), their processing principles, and reprocessed forms such as scented and compressed tea; explicitly excludes herbal and fruit infusions from &ldquo;tea.&rdquo;</li>
+        <li>Tea Board of India, <a href="https://www.teaboard.gov.in/" target="_blank" rel="noopener">Darjeeling Geographical Indication</a> — Darjeeling's spring first flush and summer muscatel second flush; the first Indian product to receive a GI.</li>
+        <li><a href="https://www.gjtea.org/" target="_blank" rel="noopener">Global Japanese Tea Association</a> — Japanese green teas are steamed rather than pan-fired; first flush (ichibancha) is picked in spring; matcha is stone-ground from shaded tencha leaf.</li>
+        <li>Eisai, <em>Kissa Yōjōki</em> (1211) — the treatise that helped establish tea and powdered-tea drinking in Japan, associated with Uji and chanoyu.</li>
+        <li>Government of British Columbia, Buy BC, <a href="https://buybc.gov.bc.ca/app/uploads/sites/386/2020/10/Seasonal-Chart.pdf" target="_blank" rel="noopener">Guide to B.C.'s local, seasonal foods (Seasonal Chart)</a> — month-by-month availability of B.C. fruits, vegetables, herbs and nuts.</li>
+        <li>BC Farms &amp; Food, <a href="https://bcfarmsandfood.com/whats-in-season/" target="_blank" rel="noopener">What's in Season (south coast British Columbia)</a> — winter &ldquo;shoulder season&rdquo; foods: stored apples, root vegetables, hardy greens, hazelnuts and walnuts, preserves and honey.</li>
+        <li>BC Farmers' Market, <a href="https://bcfarmersmarket.org/why-bc-farmers-markets/whats-in-season/" target="_blank" rel="noopener">What's in Season</a> — regional seasonal availability, including cold-storage extension.</li>
+        <li>Wuyi rock oolong (yancha): produced in the Wuyi Mountains of Fujian; medium-to-heavy oxidation and charcoal roasting give its mineral character (&ldquo;yan yun&rdquo;). Corroborated across independent tea references. See ISO 20716 (oolong) referenced within ISO 20715:2023.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="wrap"><footer>Therapeutic Studio · Slow Leaf</footer></div>
+
+<script>
+/* ---------------------------------------------------------------------------
+   Tea Room — a year in tea.
+   Month-to-tea assignment and reflection prompts are the Tea Room's curation.
+   Every factual claim (tea processing/origin, harvest season, local seasonality)
+   carries sources, listed per month and gathered in the References section.
+--------------------------------------------------------------------------- */
+const MONTHS = [
+  { m:"January", abbr:"Jan", season:"winter", tea:"Everyday black tea", short:"Black tea",
+    type:"Black · fully oxidised",
+    body:[
+      "Black tea is fully oxidised before drying, giving a dark liquor and a fuller, stronger cup — the most widely consumed tea type, and a common base for blends. It is where many people already feel at home, so the year begins here.",
+      "Character: brisk, malty, full-bodied. It takes milk well, and stands up to just-boiled water."
+    ],
+    foods:"Stored apples · honey · preserves",
+    pairing:"Deep winter is the Pacific Northwest's shoulder season — little grows fresh, so the table leans on what was stored and preserved from the year before. Stored apples, local honey and homemade preserves sit easily beside a warming black cup.",
+    focus:"Begin with the familiar. Notice body and astringency; brew with water just off the boil. Try the cup plain, then with a little milk, and notice exactly what changes.",
+    prompts:["What does \u201cstrong\u201d mean to your body here — where do you feel it?","Where does astringency land on the tongue, and how long does it stay?"],
+    sources:[["ISO 20715:2023 — tea classification &amp; processing","https://www.iso.org/standard/68738.html"],["Buy BC — Seasonal Chart","https://buybc.gov.bc.ca/app/uploads/sites/386/2020/10/Seasonal-Chart.pdf"],["BC Farms &amp; Food — What's in Season","https://bcfarmsandfood.com/whats-in-season/"]] },
+
+  { m:"February", abbr:"Feb", season:"winter", tea:"Peppermint infusion", short:"Peppermint",
+    type:"Herbal infusion · not true tea",
+    body:[
+      "A tisane is an infusion of a plant other than Camellia sinensis. International tea standards explicitly set herbal and fruit infusions apart from \u201ctea\u201d — a useful distinction to meet early. Peppermint is naturally caffeine-free.",
+      "Character: cooling, clean, aromatic — the aroma arrives before the taste."
+    ],
+    foods:"Dried fruit · hazelnuts &amp; walnuts · honey",
+    pairing:"Late winter still draws on the stored and dried table. B.C. hazelnuts and walnuts, dried fruit and honey suit a bright, caffeine-free cup that can be taken later in the day.",
+    focus:"Let aroma lead. Warm the cup, breathe first, then taste. Notice how much of \u201cflavour\u201d is really smell.",
+    prompts:["What memory, if any, does the aroma open?","How does a caffeine-free cup change the pace of the sitting?"],
+    sources:[["ISO 20715:2023 — excludes herbal infusions from \u201ctea\u201d","https://www.iso.org/standard/68738.html"],["Buy BC — Seasonal Chart","https://buybc.gov.bc.ca/app/uploads/sites/386/2020/10/Seasonal-Chart.pdf"],["BC Farms &amp; Food — winter foods","https://bcfarmsandfood.com/whats-in-season/"]] },
+
+  { m:"March", abbr:"Mar", season:"spring", tea:"Sencha", short:"Sencha (green)",
+    type:"Green · unoxidised, steamed",
+    body:[
+      "Green tea is made by quickly heating the leaf to halt oxidation. Japanese greens such as sencha are steamed rather than pan-fired, and the prized first flush (ichibancha) is picked in spring — so a fresh green suits the turn of the year.",
+      "Character: grassy, brisk, with a clean sweetness."
+    ],
+    foods:"Forced rhubarb · first spring greens",
+    pairing:"Early spring brings the first local rhubarb — the tart-bright edge of the season pairs with a fresh, vegetal green.",
+    focus:"Cooler water, well below boiling, keeps green tea sweet rather than bitter. Keep the steep short and notice the vegetal brightness.",
+    prompts:["Bitterness and sweetness — where does each one land?","What does \u201cfresh\u201d taste like to you, in specific words?"],
+    sources:[["Global Japanese Tea Association — steamed greens, spring first flush","https://www.gjtea.org/"],["ISO 20715:2023 — green tea processing","https://www.iso.org/standard/68738.html"],["Buy BC — Seasonal Chart (rhubarb)","https://buybc.gov.bc.ca/app/uploads/sites/386/2020/10/Seasonal-Chart.pdf"]] },
+
+  { m:"April", abbr:"Apr", season:"spring", tea:"Longjing (Dragon Well)", short:"Longjing (green)",
+    type:"Green · unoxidised, pan-fired",
+    body:[
+      "Longjing, from the hills around West Lake in Hangzhou, is pan-fired by hand — the heat fixes the leaf and presses it into its smooth, flat blade. A classical Chinese green, made under protected-origin standards.",
+      "Character: chestnut-sweet, smooth and gentle."
+    ],
+    foods:"Rhubarb · early greens",
+    pairing:"Spring greens and rhubarb carry through April, alongside a rounder, pan-fired green that leans sweet rather than grassy.",
+    focus:"Set March's steamed green beside April's pan-fired one: the same plant, two ways of fixing the leaf, two different cups.",
+    prompts:["What changed between the two greens?","Which did your body prefer — and can you say why?"],
+    sources:[["Living Atlas / Slow Leaf — West Lake Longjing, pan-fired","living-atlas.html"],["ISO 20715:2023 — green tea processing","https://www.iso.org/standard/68738.html"],["Buy BC — Seasonal Chart","https://buybc.gov.bc.ca/app/uploads/sites/386/2020/10/Seasonal-Chart.pdf"]] },
+
+  { m:"May", abbr:"May", season:"spring", tea:"Silver Needle (Bai Hao Yinzhen)", short:"White tea",
+    type:"White · minimally processed",
+    body:[
+      "White tea is the least processed of the true teas — young buds simply withered and dried, with very limited oxidation. The result is a delicate, sweeter cup, low in caffeine.",
+      "Character: soft, downy, subtle, hay-sweet — a cup that asks you to slow down to meet it."
+    ],
+    foods:"First strawberries · late rhubarb",
+    pairing:"Late spring turns up the first local berries; early strawberries and the last of the rhubarb suit a gentle, delicate white.",
+    focus:"Subtlety asks patience. A longer, cooler steep; sit with a quiet cup and let it unfold rather than chasing intensity.",
+    prompts:["What do you notice when the flavour is faint?","Does quiet ask for more attention, or less?"],
+    sources:[["ISO 20715:2023 — white tea (least processed)","https://www.iso.org/standard/68738.html"],["Buy BC — Seasonal Chart (strawberries, rhubarb)","https://buybc.gov.bc.ca/app/uploads/sites/386/2020/10/Seasonal-Chart.pdf"],["BC Farmers' Market — What's in Season","https://bcfarmersmarket.org/why-bc-farmers-markets/whats-in-season/"]] },
+
+  { m:"June", abbr:"Jun", season:"summer", tea:"Tieguanyin (light oolong)", short:"Light oolong",
+    type:"Oolong · partially oxidised, lighter end",
+    body:[
+      "Oolong sits between green and black, partially oxidised across a wide range. Lighter oolongs such as a greener Tieguanyin keep fresh, floral, orchid-like notes, and are enjoyed over several short infusions.",
+      "Character: floral, creamy, fragrant."
+    ],
+    foods:"Peak local strawberries",
+    pairing:"June is the height of the local strawberry season — ripe, fragrant berries beside a floral, lightly oxidised oolong.",
+    focus:"Oxidation is a spectrum, not a switch. Brew several short steeps from the same leaves and watch how the cup changes across infusions.",
+    prompts:["How does the tea shift between the first and third steep?","Which do you prefer — the opening or the later cups?"],
+    sources:[["ISO 20715:2023 — oolong, partial oxidation","https://www.iso.org/standard/68738.html"],["Living Atlas / Slow Leaf — Fujian oolong, repeated short steeps","living-atlas.html"],["Buy BC — Seasonal Chart (strawberries)","https://buybc.gov.bc.ca/app/uploads/sites/386/2020/10/Seasonal-Chart.pdf"]] },
+
+  { m:"July", abbr:"Jul", season:"summer", tea:"Darjeeling second flush", short:"Darjeeling (black)",
+    type:"Black · single-origin, summer flush",
+    body:[
+      "Darjeeling's celebrated muscatel second flush is picked in summer in the cool, misty Himalayan foothills. Darjeeling was the first product in India to receive a Geographical Indication.",
+      "Character: a distinctive muscatel note, brisk and aromatic — lighter and more perfumed than an everyday black."
+    ],
+    foods:"Cherries · raspberries",
+    pairing:"B.C. cherries and raspberries reach their peak in July — summer fruit beside a bright, muscatel summer-flush black.",
+    focus:"Terroir and season. This is the same category as January's black, yet a different world: notice how place and flush reshape a single type of tea.",
+    prompts:["What separates this black from January's?","Can you find the \u201cmuscatel\u201d note the tea is known for?"],
+    sources:[["Tea Board of India — Darjeeling GI, summer second flush","https://www.teaboard.gov.in/"],["ISO 20715:2023 — black tea","https://www.iso.org/standard/68738.html"],["Buy BC — Seasonal Chart (cherries, raspberries)","https://buybc.gov.bc.ca/app/uploads/sites/386/2020/10/Seasonal-Chart.pdf"]] },
+
+  { m:"August", abbr:"Aug", season:"summer", tea:"Jasmine tea", short:"Jasmine (scented)",
+    type:"Scented tea · green tea with jasmine",
+    body:[
+      "Scented teas are a reprocessed form recognised under the tea standard. Jasmine tea is typically a green tea layered with jasmine blossoms so the leaf slowly takes on their fragrance.",
+      "Character: floral, fragrant, softly sweet — and lovely cold-brewed in the summer heat."
+    ],
+    foods:"Blueberries · blackberries",
+    pairing:"High summer is berry season on the coast; local blueberries and blackberries suit a fragrant, floral cup, hot or cold.",
+    focus:"Aroma versus taste. Cold-brew a batch through the day and notice how scent still carries even when the cup is cool.",
+    prompts:["Can you separate what you smell from what you taste?","Does temperature change which one leads?"],
+    sources:[["ISO 20715:2023 — scented tea as a reprocessed form","https://www.iso.org/standard/68738.html"],["Buy BC — Seasonal Chart (blueberries, blackberries)","https://buybc.gov.bc.ca/app/uploads/sites/386/2020/10/Seasonal-Chart.pdf"],["BC Farms &amp; Food — summer fruit","https://bcfarmsandfood.com/whats-in-season/"]] },
+
+  { m:"September", abbr:"Sep", season:"autumn", tea:"Wuyi rock oolong (yancha)", short:"Rock oolong",
+    type:"Oolong · more oxidised &amp; charcoal-roasted",
+    body:[
+      "Wuyi \u201crock\u201d oolongs (yancha) grow among the cliffs of Fujian's Wuyi Mountains. Medium-to-heavy oxidation and charcoal roasting give them a mineral character drinkers call yan yun, \u201crock rhyme\u201d — the deeper end of the oolong spectrum.",
+      "Character: roasted, mineral, dark-fruited, with a long returning sweetness."
+    ],
+    foods:"Pears · apples · plums",
+    pairing:"Early autumn brings the orchard fruit — pears, the first apples, and plums — beside a roasted, warming oolong as the light turns.",
+    focus:"Roast and depth. Meet the far end of oolong and notice how fire, not just oxidation, shapes the leaf. Rinse the leaves, then steep short and often.",
+    prompts:["Where do you feel \u201cwarmth\u201d — in flavour, in memory, in the body?","Does the bitterness turn to sweetness, and how quickly?"],
+    sources:[["ISO 20715:2023 — oolong classification","https://www.iso.org/standard/68738.html"],["Living Atlas / Slow Leaf — Fujian oolong, mineral character","living-atlas.html"],["Buy BC — Seasonal Chart (pears, apples, plums)","https://buybc.gov.bc.ca/app/uploads/sites/386/2020/10/Seasonal-Chart.pdf"]] },
+
+  { m:"October", abbr:"Oct", season:"autumn", tea:"Masala chai", short:"Masala chai",
+    type:"Spiced black tea · blend, with milk",
+    body:[
+      "Masala chai is black tea simmered with milk and spices. Recipes vary widely from household to household and region to region across South Asia — there is no single \u201ccorrect\u201d blend, which is part of its warmth.",
+      "Character: warming, spiced, comforting; body and sweetness carried by the milk."
+    ],
+    foods:"Roasted squash &amp; pumpkin · hazelnuts",
+    pairing:"Mid-autumn is squash and pumpkin season, with the hazelnut harvest in; roasted, spiced flavours meet a spiced, milky cup.",
+    focus:"Blending and hospitality. Notice how milk and spice change body and mouthfeel, and hold in mind the households the drink comes from.",
+    prompts:["What does \u201ccomfort\u201d taste like, precisely?","How does milk change where you feel the tea?"],
+    sources:[["ISO 20715:2023 — black tea base","https://www.iso.org/standard/68738.html"],["Buy BC — Seasonal Chart (squash, pumpkin, nuts)","https://buybc.gov.bc.ca/app/uploads/sites/386/2020/10/Seasonal-Chart.pdf"],["BC Farms &amp; Food — autumn foods","https://bcfarmsandfood.com/whats-in-season/"]] },
+
+  { m:"November", abbr:"Nov", season:"autumn", tea:"Matcha", short:"Matcha (whisked)",
+    type:"Green · shade-grown, stone-ground, whisked",
+    body:[
+      "Matcha is powdered green tea, made from shaded leaf (tencha) that is stone-ground and then whisked in a bowl rather than steeped. It sits at the centre of Japanese chanoyu, the tea ceremony, whose spirit turns on presence and hospitality.",
+      "Character: vivid, creamy, savoury-sweet umami, with a lingering finish."
+    ],
+    foods:"Cranberries · hazelnuts · stored apples",
+    pairing:"Late autumn is cranberry season on the coast; tart cranberries, hazelnuts and stored apples meet a bowl of whisked green as the year turns inward.",
+    focus:"A different preparation entirely — whisk, don't steep. Let the ceremony's small, exact gestures stand in for a longer pause.",
+    prompts:["What does undivided attention feel like in the body?","Does the making change how the tea tastes?"],
+    sources:[["Eisai, Kissa Yōjōki (1211); Global Japanese Tea Association — matcha &amp; chanoyu","https://www.gjtea.org/"],["Living Atlas / Slow Leaf — Uji, shaded &amp; stone-ground","living-atlas.html"],["Buy BC — Seasonal Chart (cranberries, apples)","https://buybc.gov.bc.ca/app/uploads/sites/386/2020/10/Seasonal-Chart.pdf"]] },
+
+  { m:"December", abbr:"Dec", season:"winter", tea:"Aged pu-erh", short:"Pu-erh (dark)",
+    type:"Dark · post-fermented, aged",
+    body:[
+      "Pu-erh is a post-fermented dark tea. Raw (sheng) pu-erh ages slowly through microbial activity, while ripe (shou) pu-erh is wet-piled to mimic that ageing in months. Both yield earthy, mellow, aged profiles quite unlike a fresh tea — a fitting close to the year, and the most transformed tea in it.",
+      "Character: earthy, deep, smooth and warming."
+    ],
+    foods:"Dried fruit · dark preserves · winter citrus",
+    pairing:"Back in deep winter, the table is preserved and bright at once: dried fruit and dark preserves for depth, winter citrus for lift, beside an aged, earthy cup.",
+    focus:"Time in the cup. Rinse the leaves first, then take many short steeps. Let the year's most changed tea close the circle.",
+    prompts:["What has changed in you across a year of these sittings?","What would you carry into the next turn of the wheel?"],
+    sources:[["ISO 20715:2023 — dark (post-fermented) tea","https://www.iso.org/standard/68738.html"],["Buy BC — Seasonal Chart (stored &amp; preserved foods)","https://buybc.gov.bc.ca/app/uploads/sites/386/2020/10/Seasonal-Chart.pdf"],["BC Farms &amp; Food — winter foods","https://bcfarmsandfood.com/whats-in-season/"]] }
+];
+
+const SEASON_LABEL = {spring:"Spring",summer:"Summer",autumn:"Autumn",winter:"Winter"};
+
+const GLOSSARY = [
+  ["Sencha","SEN-cha","A steamed Japanese green tea; the everyday leaf of Japan."],
+  ["L\u00f3ngj\u01d0ng (Dragon Well)","LONG-jing","A pan-fired Chinese green from around West Lake, Hangzhou."],
+  ["B\u00e1i H\u00e1o Y\u00ednzh\u0113n (Silver Needle)","buy-how yin-jen","A white tea of downy buds, minimally processed."],
+  ["Ti\u011bgu\u0101ny\u012bn","tyeh-gwan-yin","A famous oolong; lighter styles are floral, darker styles roasted."],
+  ["Muscatel","mus-kuh-TEL","The grape-like note prized in Darjeeling's summer second flush."],
+  ["Yancha / W\u01d4y\u00ed","YAHN-cha / WOO-ee","\u201cRock tea\u201d — roasted oolong from the Wuyi Mountains, Fujian."],
+  ["Y\u00e1n y\u00f9n","yen yoon","\u201cRock rhyme\u201d — the mineral quality drinkers find in Wuyi oolong."],
+  ["Masala chai","muh-SAH-lah CHY","Black tea simmered with milk and spices; recipes vary by home."],
+  ["Matcha","MAH-cha","Powdered green tea, whisked rather than steeped."],
+  ["Chanoyu","cha-no-yoo","The Japanese tea ceremony; literally \u201chot water for tea.\u201d"],
+  ["Pu-erh (sheng / shou)","POO-air (shung / show)","Post-fermented dark tea; raw-aged, or wet-piled to age faster."],
+  ["Tisane","tih-ZAN","An infusion of a plant other than the tea plant; e.g. peppermint."]
+];
+
+/* ---- geometry helpers ---- */
+const CX=260, CY=260, R_OUT=228, R_IN=132, GAP=1.4;
+const SVGNS="http://www.w3.org/2000/svg";
+function pol(cx,cy,r,deg){const a=(deg-90)*Math.PI/180;return[cx+r*Math.cos(a),cy+r*Math.sin(a)];}
+function segPath(i){
+  const a0=i*30+GAP, a1=(i+1)*30-GAP;
+  const [x0o,y0o]=pol(CX,CY,R_OUT,a0),[x1o,y1o]=pol(CX,CY,R_OUT,a1);
+  const [x1i,y1i]=pol(CX,CY,R_IN,a1),[x0i,y0i]=pol(CX,CY,R_IN,a0);
+  return `M ${x0o} ${y0o} A ${R_OUT} ${R_OUT} 0 0 1 ${x1o} ${y1o} L ${x1i} ${y1i} A ${R_IN} ${R_IN} 0 0 0 ${x0i} ${y0i} Z`;
+}
+function mk(tag,attrs){const e=document.createElementNS(SVGNS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);return e;}
+
+/* ---- build wheel ---- */
+const wheel=document.getElementById("wheel");
+const todayMonth=new Date().getMonth(); // 0..11
+let selected=todayMonth;
+let activeSeason="all";
+const segEls=[];
+
+// season background arcs (each season spans its three months)
+const seasonSpan={winter:[11,0,1],spring:[2,3,4],summer:[5,6,7],autumn:[8,9,10]};
+Object.keys(seasonSpan).forEach(s=>{
+  const months=seasonSpan[s];
+  // arc from start of first month to end of last (handle winter wrap Dec->Feb)
+  let startM=months[0], endM=months[2];
+  let a0=startM*30, a1=(endM+1)*30;
+  if(s==="winter"){a0=11*30; a1=(1+1)*30+360;} // 330deg -> 420deg (wrap)
+  const rArc=(R_OUT+R_IN)/2;
+  const [xs,ys]=pol(CX,CY,rArc,a0+3),[xe,ye]=pol(CX,CY,rArc,a1-3);
+  const large=(a1-a0-6)>180?1:0;
+  const arc=mk("path",{d:`M ${xs} ${ys} A ${rArc} ${rArc} 0 ${large} 1 ${xe} ${ye}`,class:"season-arc","data-season-arc":s});
+  wheel.appendChild(arc);
+});
+
+MONTHS.forEach((mo,i)=>{
+  const g=mk("g",{class:"seg","data-i":i,role:"option",tabindex:"-1","aria-label":mo.m+" — "+mo.tea,"aria-selected":"false"});
+  const p=mk("path",{d:segPath(i),class:"seg-fill"});
+  g.appendChild(p);
+  const midA=i*30+15;
+  const [tx,ty]=pol(CX,CY,(R_OUT+R_IN)/2+18,midA);
+  const [sx,sy]=pol(CX,CY,(R_OUT+R_IN)/2-12,midA);
+  const tMon=mk("text",{x:tx,y:ty,class:"seg-mon"}); tMon.textContent=mo.abbr;
+  const tTea=mk("text",{x:sx,y:sy,class:"seg-tea"}); tTea.textContent=mo.short;
+  g.appendChild(tMon); g.appendChild(tTea);
+  // today marker (dotted-style small ring) near outer edge
+  if(i===todayMonth){
+    const [dx,dy]=pol(CX,CY,R_OUT-13,midA);
+    const dot=mk("circle",{cx:dx,cy:dy,r:"3.4",class:"today-dot"});
+    g.appendChild(dot);
+    const ring=mk("circle",{cx:dx,cy:dy,r:"6.6",fill:"none",stroke:"var(--ink-strong)","stroke-width":"1","stroke-dasharray":"2 2"});
+    g.appendChild(ring);
+  }
+  g.addEventListener("click",()=>select(i));
+  g.addEventListener("keydown",onKey);
+  wheel.appendChild(g);
+  segEls.push(g);
+});
+
+// hub (center)
+const hubSeason=mk("text",{x:CX,y:CY-16,class:"hub-season"});
+const hubMon=mk("text",{x:CX,y:CY+6,class:"hub-mon"});
+const hubTea=mk("text",{x:CX,y:CY+26,class:"hub-tea"});
+wheel.appendChild(hubSeason);wheel.appendChild(hubMon);wheel.appendChild(hubTea);
+
+function onKey(e){
+  const i=+e.currentTarget.getAttribute("data-i");
+  if(e.key==="Enter"||e.key===" "){e.preventDefault();select(i);}
+  else if(e.key==="ArrowRight"||e.key==="ArrowDown"){e.preventDefault();select((i+1)%12);segEls[selected].focus();}
+  else if(e.key==="ArrowLeft"||e.key==="ArrowUp"){e.preventDefault();select((i+11)%12);segEls[selected].focus();}
+}
+
+/* ---- filters ---- */
+document.querySelectorAll(".chip").forEach(chip=>{
+  chip.addEventListener("click",()=>{
+    activeSeason=chip.getAttribute("data-season");
+    document.querySelectorAll(".chip").forEach(c=>c.setAttribute("aria-pressed",c===chip?"true":"false"));
+    applyFilter();
+  });
+});
+function applyFilter(){
+  segEls.forEach((g,i)=>{
+    const dim=activeSeason!=="all" && MONTHS[i].season!==activeSeason;
+    g.classList.toggle("dim",dim);
+  });
+  document.querySelectorAll("[data-season-arc]").forEach(a=>{
+    const s=a.getAttribute("data-season-arc");
+    a.style.opacity=(activeSeason==="all"||activeSeason===s)?"0.85":"0.28";
+  });
+}
+
+/* ---- selection + panel ---- */
+const panelEmpty=document.getElementById("panel-empty");
+const panelContent=document.getElementById("panel-content");
+
+function select(i){
+  selected=i;
+  const mo=MONTHS[i];
+  segEls.forEach((g,j)=>{
+    g.classList.toggle("is-selected",j===i);
+    g.setAttribute("aria-selected",j===i?"true":"false");
+    g.setAttribute("tabindex",j===i?"0":"-1");
+  });
+  hubSeason.textContent=SEASON_LABEL[mo.season];
+  hubMon.textContent=mo.m;
+  hubTea.textContent=mo.short;
+
+  const bodyHtml=mo.body.map(p=>`<p>${p}</p>`).join("");
+  const promptsHtml=mo.prompts.map(p=>`<li>${p}</li>`).join("");
+  const srcHtml=mo.sources.map(s=>`<li><a href="${s[1]}" target="_blank" rel="noopener">${s[0]}</a></li>`).join("");
+
+  panelContent.innerHTML=`
+    <p class="p-eyebrow"><span>${mo.m}</span><span class="p-season">${SEASON_LABEL[mo.season]}</span></p>
+    <h2 class="p-tea">${mo.tea}</h2>
+    <p class="p-type">${mo.type}</p>
+    <div class="p-body">${bodyHtml}</div>
+
+    <div class="p-sect">
+      <h3>Seasonal pairing · Pacific Northwest</h3>
+      <div class="pairing">
+        <p class="foods">${mo.foods}</p>
+        <p>${mo.pairing}</p>
+      </div>
+    </div>
+
+    <div class="p-sect">
+      <h3>Learning focus</h3>
+      <p style="margin:0;font-size:14px;color:var(--ink);">${mo.focus}</p>
+    </div>
+
+    <div class="p-sect">
+      <h3>Reflection prompts</h3>
+      <ul class="prompts">${promptsHtml}</ul>
+    </div>
+
+    <div class="p-sect">
+      <h3>Sources</h3>
+      <ul class="sources">${srcHtml}</ul>
+    </div>
+
+    <div class="stepnav">
+      <button class="stepbtn" id="prevM">\u2190 ${MONTHS[(i+11)%12].m}</button>
+      <button class="stepbtn" id="nextM">${MONTHS[(i+1)%12].m} \u2192</button>
+    </div>
+  `;
+  panelEmpty.hidden=true;
+  panelContent.hidden=false;
+  document.getElementById("prevM").addEventListener("click",()=>{select((i+11)%12);});
+  document.getElementById("nextM").addEventListener("click",()=>{select((i+1)%12);});
+}
+
+/* ---- glossary ---- */
+const gEl=document.getElementById("glossary");
+GLOSSARY.forEach(([word,say,desc])=>{
+  const d=document.createElement("div");
+  d.className="gterm";
+  d.innerHTML=`<p class="word">${word}</p><p class="say">${say}</p><p>${desc}</p>`;
+  gEl.appendChild(d);
+});
+
+/* ---- init: open today's month ---- */
+applyFilter();
+select(todayMonth);
+segEls[todayMonth].setAttribute("tabindex","0");
+</script>
+</body>
+</html>
