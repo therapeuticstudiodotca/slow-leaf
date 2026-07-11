@@ -1,6 +1,6 @@
 # Slow Leaf — Therapeutic Studio
 
-Slow Leaf is a small, self-contained website about tea, built as four connected experiences. It has no build server and no external services at runtime: every page is plain HTML that runs by opening it or by serving the folder with GitHub Pages.
+Slow Leaf is a small project about tea, built as four connected experiences. It has no build server and no external services at runtime: every page is plain HTML that runs by opening it or by serving the folder with GitHub Pages.
 
 | Experience | File | Status |
 | --- | --- | --- |
@@ -9,8 +9,6 @@ Slow Leaf is a small, self-contained website about tea, built as four connected 
 | **Knowing Tea** | `knowing-tea.html` | Scaffolded — a conceptual map of why tea matters |
 | **Practicing Tea** | `practicing-tea.html` | Scaffolded — guides to preparing each kind of tea |
 | **Tea Room** | `tea-room.html` | Scaffolded — a year-long seasonal experience |
-
-The three scaffolded pages are branded, navigable placeholders that describe what each will hold; they are built out one at a time.
 
 ## Living Atlas
 
@@ -72,10 +70,3 @@ npm install        # first time only
 node build.mjs     # regenerates living-atlas.html
 ```
 
-## Publishing
-
-Enable **GitHub Pages** on the repository (Settings → Pages → deploy from the default branch). `index.html` is served at the root, with the four experiences linked from it.
-
-## Sources
-
-Atlas content is attributed to independent, recognised authorities — including the Tea Boards of India, Kenya, Sri Lanka, and Tanzania; the National Tea and Coffee Development Board of Nepal; ÇAYKUR; the Taiwan Tea Research and Extension Station; the Global Japanese Tea Association; the Food and Agriculture Organization (FAO); and classical texts including *The Classic of Tea* (Lu Yu), *Kissa Yōjōki* (Eisai), and the *Samguk Sagi*. Sources are listed on each region's card.
