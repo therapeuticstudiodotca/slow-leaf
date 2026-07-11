@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Knowing Tea · Slow Leaf</title>
+<meta name="description" content="An interactive conceptual map of why tea matters — connecting history, plant science, language, ritual, and ethics, with a source for every claim." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+<style>
+  :root{--paper:#ffffff;--ink:#5d5a5b;--ink-strong:#454344;--stone:#a29f9f;
+    --hair:#e6e4e2;--hair-soft:#efedeb;--panel:#faf9f8;--maxw:1080px;--ease:cubic-bezier(.22,.61,.36,1);
+    /* muted theme tints, kept low-chroma to sit beside the ink/stone greys */
+    --c-meaning:#7d7469;--c-ritual:#a2917a;--c-story:#8f8798;--c-relational:#7f938c;
+    --c-ethics:#a5867c;--c-wellbeing:#8496a0;--c-approach:#9a9187;}
+  *{box-sizing:border-box;} html,body{margin:0;padding:0;}
+  body{font-family:"Asap",system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);
+    background:var(--paper);-webkit-font-smoothing:antialiased;line-height:1.6;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
+  .topbar{display:flex;align-items:baseline;justify-content:space-between;gap:16px 28px;flex-wrap:wrap;
+    padding:26px 0 18px;border-bottom:1px solid var(--hair);}
+  .mark{font-weight:600;font-size:15px;letter-spacing:.02em;color:var(--ink-strong);text-decoration:none;}
+  .navlinks{display:flex;flex-wrap:wrap;gap:20px;}
+  .navlinks a{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);
+    font-weight:600;text-decoration:none;transition:color .2s var(--ease);}
+  .navlinks a:hover{color:var(--ink);}
+  .navlinks a[aria-current="page"]{color:var(--ink-strong);}
+  .hero{padding:52px 0 26px;max-width:720px;}
+  .eyebrow{display:flex;align-items:center;gap:12px;font-size:11.5px;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--stone);font-weight:600;margin:0 0 18px;}
+  .status{border:1px solid var(--hair);border-radius:100px;padding:2px 9px;letter-spacing:.1em;}
+  h1{font-weight:500;font-size:clamp(32px,4.8vw,52px);line-height:1.07;letter-spacing:-.015em;
+    color:var(--ink-strong);margin:0 0 20px;}
+  h1 em{font-style:italic;font-weight:400;color:var(--ink);}
+  .lede{font-size:17.5px;max-width:640px;margin:0;color:var(--ink);}
+
+  /* ── MAP STAGE ── */
+  .controls{display:flex;flex-wrap:wrap;align-items:center;gap:10px 8px;margin:14px 0 12px;}
+  .tf{display:flex;flex-wrap:wrap;gap:6px;}
+  .fbtn{font-family:inherit;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;
+    color:var(--stone);background:var(--paper);border:1px solid var(--hair);border-radius:100px;
+    padding:5px 12px;cursor:pointer;transition:all .2s var(--ease);white-space:nowrap;}
+  .fbtn:hover{color:var(--ink);border-color:var(--stone);}
+  .fbtn[aria-pressed="true"]{color:var(--ink-strong);border-color:var(--ink-strong);}
+  .fbtn .dot{display:inline-block;width:7px;height:7px;border-radius:100px;margin-right:6px;vertical-align:middle;
+    background:var(--sw,var(--stone));transform:translateY(-1px);}
+  .spacer{flex:1 1 auto;}
+  .vtoggle{display:flex;gap:4px;border:1px solid var(--hair);border-radius:100px;padding:3px;}
+  .vbtn{font-family:inherit;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;
+    color:var(--stone);background:transparent;border:none;border-radius:100px;padding:4px 12px;cursor:pointer;
+    transition:all .2s var(--ease);}
+  .vbtn[aria-pressed="true"]{color:var(--ink-strong);background:var(--panel);}
+  .linkbtn{font-family:inherit;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;
+    color:var(--stone);background:none;border:none;cursor:pointer;padding:5px 4px;transition:color .2s var(--ease);}
+  .linkbtn:hover{color:var(--ink);}
+
+  .stage{position:relative;display:grid;grid-template-columns:1fr 300px;gap:1px;background:var(--hair);
+    border:1px solid var(--hair);border-radius:6px;overflow:hidden;}
+  .canvas-wrap{position:relative;background:var(--paper);min-height:520px;height:62vh;max-height:640px;touch-action:none;}
+  canvas{display:block;width:100%;height:100%;cursor:grab;}
+  canvas.grabbing{cursor:grabbing;}
+  canvas.pointing{cursor:pointer;}
+
+  /* tooltip */
+  .tt{position:absolute;pointer-events:none;z-index:5;background:var(--ink-strong);color:#fff;
+    border-radius:4px;padding:6px 9px;max-width:190px;opacity:0;transform:translateY(2px);
+    transition:opacity .14s var(--ease);}
+  .tt.show{opacity:1;}
+  .tt .k{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:2px;}
+  .tt .n{font-size:12.5px;line-height:1.35;}
+
+  /* detail panel */
+  .panel{background:var(--panel);padding:22px 20px 26px;overflow-y:auto;
+    height:62vh;max-height:640px;min-height:520px;}
+  .panel .empty{color:var(--stone);font-size:13.5px;}
+  .panel .empty strong{display:block;color:var(--ink-strong);font-weight:600;font-size:12.5px;
+    letter-spacing:.02em;margin-bottom:6px;text-transform:none;}
+  .p-tag{font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;margin:0 0 8px;}
+  .p-title{font-size:19px;font-weight:500;color:var(--ink-strong);line-height:1.2;margin:0 0 4px;letter-spacing:-.01em;}
+  .p-sub{font-size:12.5px;color:var(--stone);margin:0 0 14px;}
+  .p-body{font-size:13.5px;color:var(--ink);margin:0 0 4px;}
+  .p-note{font-size:12px;color:var(--stone);font-style:italic;margin:10px 0 0;}
+  .p-label{font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--stone);font-weight:600;
+    margin:18px 0 8px;padding-top:14px;border-top:1px solid var(--hair);}
+  .p-src{list-style:none;margin:0;padding:0;}
+  .p-src li{font-size:12px;line-height:1.5;margin-bottom:8px;color:var(--ink);}
+  .p-src a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--hair);
+    text-underline-offset:2px;transition:text-decoration-color .2s var(--ease);}
+  .p-src a:hover{text-decoration-color:var(--stone);}
+  .p-conns{display:flex;flex-wrap:wrap;gap:6px;}
+  .chip{font-family:inherit;font-size:10.5px;letter-spacing:.02em;color:var(--ink);background:var(--paper);
+    border:1px solid var(--hair);border-radius:100px;padding:4px 10px;cursor:pointer;transition:all .2s var(--ease);}
+  .chip:hover{border-color:var(--stone);color:var(--ink-strong);}
+  .chip .cd{display:inline-block;width:6px;height:6px;border-radius:100px;margin-right:5px;vertical-align:middle;
+    background:var(--sw,var(--stone));transform:translateY(-1px);}
+
+  /* legend */
+  .legend{display:flex;flex-wrap:wrap;gap:6px 26px;margin:14px 0 4px;padding:14px 2px 0;
+    border-top:1px solid var(--hair-soft);}
+  .legend .grp{display:flex;flex-direction:column;gap:7px;}
+  .legend .lt{font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--stone);font-weight:600;}
+  .legend .row{display:flex;flex-wrap:wrap;gap:5px 16px;}
+  .legend .li{display:flex;align-items:center;gap:7px;font-size:11.5px;color:var(--ink);}
+  .legend .sz{border-radius:100px;background:var(--stone);flex-shrink:0;}
+  .legend .sw{width:9px;height:9px;border-radius:100px;flex-shrink:0;}
+
+  /* list fallback + references */
+  .section{padding:8px 0;max-width:820px;}
+  .section h2{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--stone);
+    font-weight:600;margin:40px 0 10px;}
+  details.aslist{margin:6px 0 0;border:1px solid var(--hair);border-radius:4px;background:var(--panel);}
+  details.aslist>summary{cursor:pointer;list-style:none;padding:15px 20px;font-size:13.5px;color:var(--ink-strong);
+    font-weight:500;display:flex;align-items:center;justify-content:space-between;}
+  details.aslist>summary::-webkit-details-marker{display:none;}
+  details.aslist>summary::after{content:"+";color:var(--stone);font-size:16px;}
+  details.aslist[open]>summary::after{content:"–";}
+  .listbody{padding:2px 20px 20px;}
+  .listgrp{margin:16px 0 0;}
+  .listgrp>h3{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;margin:0 0 8px;}
+  .listgrp .entry{padding:12px 0;border-top:1px solid var(--hair-soft);}
+  .listgrp .entry h4{font-size:14px;font-weight:500;color:var(--ink-strong);margin:0 0 3px;}
+  .listgrp .entry p{font-size:13px;margin:0 0 6px;color:var(--ink);}
+  .listgrp .entry .cites{font-size:11.5px;color:var(--stone);}
+  .listgrp .entry .cites a{color:var(--stone);text-decoration:underline;text-decoration-color:var(--hair);text-underline-offset:2px;}
+  .listgrp .entry .cites a:hover{color:var(--ink);}
+
+  .bib{list-style:none;margin:14px 0 0;padding:0;counter-reset:b;}
+  .bib li{position:relative;font-size:13px;line-height:1.6;color:var(--ink);padding:11px 0 11px 34px;
+    border-top:1px solid var(--hair-soft);}
+  .bib li:first-child{border-top:none;}
+  .bib li::before{counter-increment:b;content:counter(b);position:absolute;left:0;top:12px;
+    font-size:10px;font-weight:600;color:var(--stone);letter-spacing:.04em;}
+  .bib a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--hair);text-underline-offset:2px;}
+  .bib a:hover{text-decoration-color:var(--stone);}
+  .bib .cat{display:inline-block;font-size:9px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;
+    color:var(--stone);margin-right:8px;}
+
+  .note{margin:22px 0 10px;padding:18px 20px;background:var(--panel);border:1px solid var(--hair-soft);
+    border-radius:4px;font-size:14px;color:var(--ink);max-width:820px;}
+  .note strong{color:var(--ink-strong);font-weight:600;}
+
+  footer{border-top:1px solid var(--hair);padding:22px 0 46px;margin-top:44px;font-size:11.5px;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--stone);font-weight:600;}
+
+  @media (max-width:840px){
+    .stage{grid-template-columns:1fr;}
+    .canvas-wrap{height:56vh;min-height:420px;}
+    .panel{border-top:1px solid var(--hair);height:auto;max-height:none;min-height:0;}
+  }
+  @media (max-width:680px){.wrap{padding:0 20px;}}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;}}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="topbar" aria-label="Slow Leaf">
+      <a class="mark" href="index.html">Slow&nbsp;Leaf</a>
+      <div class="navlinks">
+        <a href="index.html">Home</a>
+        <a href="living-atlas.html">Living Atlas</a>
+        <a href="knowing-tea.html" aria-current="page">Knowing Tea</a>
+        <a href="practicing-tea.html">Practicing Tea</a>
+        <a href="tea-room.html">Tea Room</a>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <p class="eyebrow"><span>Knowing Tea</span><span class="status">Interactive</span></p>
+      <h1>A map of <em>meaning</em></h1>
+      <p class="lede">Why does tea matter? Not the leaf alone, but what people do around it. This is a conceptual map connecting tea's plant science, history, language, ritual, and ethics — a web you explore by node, where each idea carries its own sources.</p>
+    </header>
+
+    <div class="controls" role="region" aria-label="Map controls">
+      <div class="tf" id="filters" role="group" aria-label="Filter by theme"></div>
+      <span class="spacer"></span>
+      <button class="linkbtn" id="reset" type="button">Reset view</button>
+      <div class="vtoggle" role="group" aria-label="Map view">
+        <button class="vbtn" id="v2d" type="button" aria-pressed="true">2D</button>
+        <button class="vbtn" id="v3d" type="button" aria-pressed="false">3D</button>
+      </div>
+    </div>
+
+    <div class="stage">
+      <div class="canvas-wrap" id="cwrap">
+        <canvas id="map" aria-label="Conceptual map of tea. Interactive; a readable list of every node follows below."></canvas>
+        <div class="tt" id="tt"><div class="k" id="tt-k"></div><div class="n" id="tt-n"></div></div>
+      </div>
+      <aside class="panel" id="panel" aria-live="polite">
+        <div class="empty" id="empty"><strong>Select a node</strong>Tap any circle to read the idea and its sources. Larger circles hold more depth; colour marks the theme. Drag to move, scroll to zoom.</div>
+      </aside>
+    </div>
+
+    <div class="legend" aria-hidden="true">
+      <div class="grp">
+        <span class="lt">Node size · depth of attention</span>
+        <div class="row">
+          <span class="li"><span class="sz" style="width:16px;height:16px"></span>Core</span>
+          <span class="li"><span class="sz" style="width:12px;height:12px"></span>Substantial</span>
+          <span class="li"><span class="sz" style="width:9px;height:9px"></span>Developing</span>
+          <span class="li"><span class="sz" style="width:6px;height:6px"></span>Opening</span>
+        </div>
+      </div>
+      <div class="grp">
+        <span class="lt">Colour · theme</span>
+        <div class="row" id="legend-cats"></div>
+      </div>
+    </div>
+
+    <div class="note"><strong>How to read this.</strong> The map is one way in; the same content is written out in full below, and every claim is tied to a numbered source you can check yourself. Legends of tea's discovery are named as legends, not history. Health effects are stated as the evidence states them — modestly. And where tea's story runs through empire and coerced labour, the map keeps the people who lived it at the centre.</div>
+
+    <div class="section">
+      <h2>Read it as a list</h2>
+      <details class="aslist" id="aslist">
+        <summary>Every node, in full, with its sources</summary>
+        <div class="listbody" id="listbody"></div>
+      </details>
+    </div>
+
+    <div class="section">
+      <h2>References &amp; resources</h2>
+      <p style="font-size:13.5px;color:var(--ink);margin:0 0 4px;max-width:720px;">Sources are listed once here and cited by number on each node. Peer-reviewed and institutional sources link directly; books and reports are cited in full so they can be found in any library catalogue.</p>
+      <ol class="bib" id="bib"></ol>
+    </div>
+
+    <footer>Therapeutic Studio · Slow Leaf</footer>
+  </div>
+
+<script>
+/* ============================================================
+   KNOWING TEA — data
+   Every body is written in Slow Leaf's own words. Every node
+   lists source keys resolved against SOURCES below.
+   ============================================================ */
+const CATS = {
+  meaning:    {label:"Map of Meaning",        color:"#7d7469"},
+  ritual:     {label:"Rituals & Ceremony",    color:"#a2917a"},
+  story:      {label:"Stories & Myths",       color:"#8f8798"},
+  relational: {label:"Relational Rituals",    color:"#7f938c"},
+  ethics:     {label:"Critical Questions",    color:"#a5867c"},
+  wellbeing:  {label:"Wellbeing & Belonging", color:"#8496a0"},
+  approach:   {label:"Therapeutic Studio",    color:"#9a9187"},
+};
+const CAT_ORDER = ["meaning","ritual","story","relational","ethics","wellbeing","approach"];
+
+const SOURCES = {
+  botany_plos:{cat:"Plant science", t:"Meegahakumbura et al., \u201cIndications for Three Independent Domestication Events for the Tea Plant (Camellia sinensis)\u2026\u201d, PLOS ONE 11(5) (2016)", u:"https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0155369"},
+  botany_front:{cat:"Plant science", t:"Meegahakumbura et al., \u201cDomestication Origin and Breeding History of the Tea Plant\u2026\u201d, Frontiers in Plant Science 8:2270 (2017)", u:"https://www.frontiersin.org/journals/plant-science/articles/10.3389/fpls.2017.02270/full"},
+  luyu_gut:{cat:"History", t:"Lu Yu, The Classic of Tea (Cha Jing, c. 760 CE), public-domain edition via Project Gutenberg", u:"https://www.gutenberg.org/ebooks/23949"},
+  mair_hoh:{cat:"History", t:"Victor H. Mair & Erling Hoh, The True History of Tea (Thames & Hudson, 2009)"},
+  vandriem:{cat:"History", t:"George van Driem, The Tale of Tea: A Comprehensive History of Tea from Prehistoric Times to the Present Day (Brill, 2019)"},
+  empire_of_tea:{cat:"History", t:"Markman Ellis, Richard Coulton & Matthew Mauger, Empire of Tea: The Asian Leaf that Conquered the World (Reaktion Books, 2015)"},
+  sen_soshitsu:{cat:"Ritual", t:"Sen S\u014dshitsu XV, The Japanese Way of Tea: From Its Origins in China to Sen Riky\u016b, trans. V. Dixon Morris (University of Hawai\u2018i Press, 1998)"},
+  saberi:{cat:"Ritual", t:"Helen Saberi, Tea: A Global History (Reaktion Books, 2010)"},
+  britmus:{cat:"Ritual", t:"Tasha Marks, \u201cThe tea-rific history of Victorian afternoon tea\u201d, The British Museum blog", u:"https://www.britishmuseum.org/blog/tea-rific-history-victorian-afternoon-tea"},
+  okakura:{cat:"Ritual", t:"Kakuz\u014d Okakura, The Book of Tea (1906) \u2014 public domain"},
+  benn:{cat:"History", t:"James A. Benn, Tea in China: A Religious and Cultural History (University of Hawai\u2018i Press, 2015)"},
+  rose:{cat:"Empire & labour", t:"Sarah Rose, For All the Tea in China: How England Stole the World\u2019s Favorite Drink and Changed History (Viking, 2010)"},
+  smithsonian:{cat:"Empire & labour", t:"\u201cThe Great British Tea Heist\u201d, Smithsonian Magazine (2013)", u:"https://www.smithsonianmag.com/history/the-great-british-tea-heist-9866709/"},
+  sharma:{cat:"Empire & labour", t:"Jayeeta Sharma, Empire\u2019s Garden: Assam and the Making of India (Duke University Press, 2011)"},
+  behal:{cat:"Empire & labour", t:"Rana P. Behal & Prabhu P. Mohapatra, \u201cTea and Money versus Human Life: The Rise and Fall of the Indenture System in the Assam Tea Plantations, 1840\u20131908\u201d, Journal of Peasant Studies 19 (1992)"},
+  besky:{cat:"Empire & labour", t:"Sarah Besky, The Darjeeling Distinction: Labor and Justice on Fair-Trade Tea Plantations in India (University of California Press, 2014)"},
+  nutrev:{cat:"Science of wellbeing", t:"\u201cEffects of Tea (Camellia sinensis) or its Bioactive Compounds l-Theanine / l-Theanine plus Caffeine on Cognition, Sleep, and Mood: A Systematic Review and Meta-Analysis of RCTs\u201d, Nutrition Reviews 83(10) (2025)", u:"https://academic.oup.com/nutritionreviews/article/83/10/1873/8123998"},
+  camfield:{cat:"Science of wellbeing", t:"Camfield et al., \u201cAcute effects of tea constituents l-theanine, caffeine, and epigallocatechin gallate on cognitive function and mood: a systematic review and meta-analysis\u201d, Nutrition Reviews 72(8) (2014)", u:"https://pubmed.ncbi.nlm.nih.gov/24946991/"},
+  fancourt:{cat:"Creative health", t:"Daisy Fancourt & Saoirse Finn, What is the evidence on the role of the arts in improving health and well-being? WHO Regional Office for Europe, Health Evidence Network synthesis report 67 (2019)"},
+};
+
+const NODES = [
+  /* ── MAP OF MEANING ── */
+  {id:"m1",cat:"meaning",depth:5,name:"Why tea matters",sub:"The question this map holds open",
+   body:"After water, tea is the most widely consumed prepared drink in the world \u2014 yet its meaning is carried less by the leaf than by what people do around it: grow it, prepare it, offer it, share it. This map sets tea's plant science, history, language, ritual, and ethics beside one another so each can be read against the rest, rather than as a list of facts.",
+   src:["mair_hoh","empire_of_tea"],connects:["m2","m3","m4","m5","r1","e1","w1","a1"]},
+  {id:"m2",cat:"meaning",depth:4,name:"One plant, many teas",sub:"Green, white, oolong, black, dark \u2014 all one species",
+   body:"Every \u201ctrue\u201d tea comes from a single species, Camellia sinensis; the differences between green, white, oolong, black and dark teas come from how the leaf is handled after picking, not from different plants. Botanists recognise two main varieties \u2014 var. sinensis (the small-leaved \u201cChina\u201d type) and var. assamica (the broad-leaved \u201cAssam\u201d type).",
+   src:["botany_plos","botany_front","vandriem"],connects:["m1","m3","e2"]},
+  {id:"m3",cat:"meaning",depth:4,name:"Where tea began",sub:"The borderlands of southwest China, Myanmar and Assam",
+   body:"The tea plant is native to the uplands where southwest China, northern Myanmar and northeast India meet. Genetic studies suggest tea was domesticated more than once \u2014 the China type in southern China, and Assam-type teas independently in Yunnan and in Assam. The earliest written accounts of tea-drinking come from China.",
+   src:["botany_plos","vandriem"],connects:["m1","m2","s1","e2"]},
+  {id:"m4",cat:"meaning",depth:3,name:"The word for tea",sub:"Two roots that map two trade routes",
+   body:"Almost every word for tea on earth descends from one of two Chinese roots. \u201cCha\u201d travelled overland \u2014 becoming Persian ch\u0101y, Arabic sh\u0101i, Russian chai. \u201cTe\u201d came from the Min Nan t\u00ea of coastal Fujian, carried by sea by Dutch traders to become French th\u00e9 and English tea. The word you use is a fossil of how tea reached you (with exceptions, such as Portuguese ch\u00e1, carried by sea yet keeping the \u201ccha\u201d branch).",
+   src:["mair_hoh","vandriem"],connects:["m1","r4"]},
+  {id:"m5",cat:"meaning",depth:3,name:"The first book of tea",sub:"Lu Yu's Classic of Tea, c. 760 CE",
+   body:"Around 760 CE, in the Tang dynasty, the scholar Lu Yu wrote the Cha Jing, or Classic of Tea \u2014 the first known monograph on tea anywhere. In three scrolls and ten chapters it treats tea's origins, tools, making and drinking, and helped move tea from a medicinal draught toward a cultivated art.",
+   src:["luyu_gut","benn"],connects:["m1","r1","s1","s3"]},
+
+  /* ── RITUALS & CEREMONY ── */
+  {id:"r1",cat:"ritual",depth:4,name:"Chanoyu, the Way of Tea",sub:"Japan's ceremony of restraint",
+   body:"In Japan, the practice of chanoyu (also ch\u0101d\u014d, \u201cthe way of tea\u201d) was shaped in the sixteenth century by the tea master Sen no Riky\u016b, who is remembered for four guiding principles \u2014 wa (harmony), kei (respect), sei (purity) and jaku (tranquillity) \u2014 and for wabi-cha, an aesthetic of deliberate simplicity. Tea had reached Japan centuries earlier through Zen monks returning from China.",
+   src:["sen_soshitsu"],connects:["m5","r2","s2","a1"]},
+  {id:"r2",cat:"ritual",depth:3,name:"Ichi-go ichi-e",sub:"One time, one meeting",
+   body:"Tied to the ceremony is the phrase ichi-go ichi-e \u2014 \u201cone time, one meeting\u201d \u2014 associated with Riky\u016b's teacher Takeno J\u014d\u014d: the idea that this exact gathering, with these people, in this season, will never be repeated, and so deserves full attention. It reframes the ceremony as care for a moment that will not return.",
+   src:["sen_soshitsu"],connects:["r1","rel2","w2","a1"]},
+  {id:"r3",cat:"ritual",depth:3,name:"Everyday cups",sub:"Most tea in the world is ordinary",
+   body:"Beside formal ceremony sits daily tea: Chinese gongfu brewing, the British and Irish \u201ccuppa,\u201d Turkish \u00e7ay in tulip glasses, Tibetan butter tea churned with salt. The great majority of tea is domestic and constant \u2014 the ceremony of the ordinary, repeated without occasion.",
+   src:["saberi"],connects:["r4","rel3","rel1"]},
+  {id:"r4",cat:"ritual",depth:4,name:"Atay and the three glasses",sub:"North African hospitality, kept by the Amazigh",
+   body:"Across the Maghreb, mint tea \u2014 atay \u2014 is gunpowder green tea, spearmint and sugar, poured from a height into small glasses and offered to guests as an near-obligation of welcome. A widely recited proverb likens the three glasses drawn from one pot to life, love and death (its wording varies by telling). The tea arrived through eighteenth- and nineteenth-century trade, but the code of hospitality it carries \u2014 kept above all by Amazigh (Berber) communities \u2014 is older than the drink.",
+   src:["vandriem","saberi"],connects:["m4","r3","rel1","e1"]},
+  {id:"r5",cat:"ritual",depth:2,name:"Afternoon tea",sub:"A court fashion becomes a class ritual",
+   body:"In Britain the late-afternoon light meal is popularly credited to Anna, seventh Duchess of Bedford, around 1840 \u2014 though small afternoon meals predate her, and tea had entered the English court far earlier. As one of Queen Victoria's circle, she helped a private habit become a fashionable, and then a class-marked, ritual.",
+   src:["britmus","empire_of_tea"],connects:["r3","e1"]},
+
+  /* ── STORIES & MYTHS ── */
+  {id:"s1",cat:"story",depth:3,name:"Shennong's leaf",sub:"A founding legend, not a date",
+   body:"By a legend recorded in later texts, the mythic Chinese ruler-herbalist Shennong discovered tea around 2737 BCE when leaves drifted into his boiling water; a variant has tea working as an antidote to a poison he had tasted. Lu Yu himself traced tea's beginnings to Shennong. It is a story a culture tells about itself \u2014 a founding image, not a datable event.",
+   src:["luyu_gut","benn"],connects:["m3","m5","s2"]},
+  {id:"s2",cat:"story",depth:2,name:"Bodhidharma's eyelids",sub:"Tea bound to wakeful attention",
+   body:"A later legend, told in Japan and India, holds that the monk Bodhidharma \u2014 founder of Chan, or Zen \u2014 cut away his eyelids to keep from sleeping in meditation, and tea plants grew where they fell. The tale explains tea's long link with meditation and alertness rather than its botany; it is myth, and reads best as such.",
+   src:["vandriem"],connects:["s1","r1","a3"]},
+  {id:"s3",cat:"story",depth:2,name:"Tea in poetry",sub:"A companion to thought and friendship",
+   body:"Across traditions, tea recurs in verse and prose as a companion to thought, solitude and friendship \u2014 a famous example being the Tang poet Lu Tong's \u201cSong of Tea,\u201d often called the Seven Bowls of Tea. Stories and poems are part of how tea's meaning is carried, not ornament around it.",
+   src:["benn"],connects:["m5","rel2"]},
+
+  /* ── RELATIONAL RITUALS ── */
+  {id:"rel1",cat:"relational",depth:4,name:"Tea and hospitality",sub:"The grammar of welcome",
+   body:"In many cultures, offering tea is the basic grammar of welcome: Maghrebi atay, South and Central Asian chai, the East Asian courtesy of serving the guest first. To pour for someone is to make time and space for them \u2014 a small, repeated act of inclusion.",
+   src:["saberi","vandriem"],connects:["r4","rel2","rel3","w3"]},
+  {id:"rel2",cat:"relational",depth:2,name:"Tea and solitude",sub:"Attention turned inward",
+   body:"Tea is also kept alone \u2014 a single pot as punctuation in a working day, a way of marking a pause. Solitary tea is not a lesser version of the shared kind; it is the same attention, turned inward. Okakura's Book of Tea reads this quietness as tea's aesthetic heart.",
+   src:["okakura"],connects:["r2","rel1","s3","w1"]},
+  {id:"rel3",cat:"relational",depth:3,name:"Chai and the shared cup",sub:"Ubiquity as community",
+   body:"In South Asia, masala chai \u2014 black tea simmered with milk, sugar and spices \u2014 is a household and street-corner constant, and the roadside chai-wallah is a fixture of daily life. Its very ordinariness is a form of community, a shared cup passed through a whole society.",
+   src:["saberi"],connects:["r3","rel1"]},
+
+  /* ── CRITICAL QUESTIONS ── */
+  {id:"e1",cat:"ethics",depth:5,name:"Tea and empire",sub:"The trade that financed a drug",
+   body:"Britain's demand for Chinese tea created a trade deficit it chose to finance by smuggling opium into China \u2014 a policy that helped precipitate the Opium Wars from 1839. Tea's comfort and its role in a violent imperial economy are part of the same history, and this map does not separate them.",
+   src:["rose","empire_of_tea"],connects:["m1","e2","r4","r5"]},
+  {id:"e2",cat:"ethics",depth:4,name:"The stolen recipe",sub:"Robert Fortune, 1848",
+   body:"In 1848 the British East India Company sent the botanist Robert Fortune, in disguise, into China's forbidden tea districts to take plants, seeds and the closely guarded knowledge of tea-making \u2014 along with skilled Chinese tea workers \u2014 to build plantations in India. It is often called one of history's great acts of corporate espionage.",
+   src:["rose","smithsonian"],connects:["m2","m3","e1","e3"]},
+  {id:"e3",cat:"ethics",depth:5,name:"Whose hands pick the leaf",sub:"The workers the plantations were built on",
+   body:"The plantations that transfer made possible ran on coerced labour. From the 1850s the British recruited Adivasi workers from central India \u2014 present-day Jharkhand, Odisha, Chhattisgarh and Bengal \u2014 to Assam under indenture, often through fraud and force; many died on the journey, penal contracts bound workers to the estates, and their descendants, the \u201ctea tribes,\u201d still contend with wage and civic inequities. These lives belong at the centre of tea's story, not its margins.",
+   src:["sharma","behal"],connects:["e2","e4","e5"]},
+  {id:"e4",cat:"ethics",depth:3,name:"Wellness claims and evidence",sub:"Marketing is not evidence",
+   body:"Tea is often sold with sweeping health claims. The measured evidence is narrower and more honest: meta-analyses find, for instance, that tea's compounds l-theanine and caffeine together give small-to-moderate, short-lived gains in attention, while many other claims remain uncertain. Knowing tea well means holding the difference between what is marketed and what is shown.",
+   src:["nutrev","camfield"],connects:["e3","w2","a2"]},
+  {id:"e5",cat:"ethics",depth:3,name:"Access and appropriation",sub:"Who profits, who is credited",
+   body:"Who profits from tea, whose traditions are borrowed without credit, and who can afford \u201cceremony\u201d are live questions. Naming a practice's community of origin, and supporting fair returns to the people who grow and keep it, is part of drinking well \u2014 as studies of Darjeeling's fair-trade estates make plain.",
+   src:["besky","sharma"],connects:["e3","e4","w3","a3"]},
+
+  /* ── WELLBEING & BELONGING ── */
+  {id:"w1",cat:"wellbeing",depth:4,name:"Comfort, connection, presence",sub:"Ordinary goods, plainly named",
+   body:"Tea's felt goods are mostly ordinary and real: warmth in the hands, a shared pause, a moment of attention. These sensory and social comforts are distinct from medical claims, and they do not need to borrow medical language to matter. Naming them plainly is more honest than promising cures.",
+   src:["okakura","camfield"],connects:["m1","rel2","w2","w3","a1"]},
+  {id:"w2",cat:"wellbeing",depth:3,name:"A moment's attention",sub:"The larger effect is behavioural",
+   body:"Where tea supports wellbeing, it often does so by occasioning attention \u2014 the very quality the ceremonies cultivate. Modest, short-term effects of its compounds on alertness and calm are documented; but the larger effect is behavioural: the choice to stop, and to notice.",
+   src:["nutrev"],connects:["r2","e4","w1","a2"]},
+  {id:"w3",cat:"wellbeing",depth:3,name:"Belonging",sub:"To be handed tea is to be included",
+   body:"To be handed a cup is to be included \u2014 expected, welcome, part of the group. Much of tea's meaning is exactly this. Belonging is a real good, and a careful one: the same gesture that includes can also mark who is outside, so it asks to be offered with attention.",
+   src:["saberi"],connects:["rel1","e5","w1"]},
+
+  /* ── THERAPEUTIC STUDIO APPROACH ── */
+  {id:"a1",cat:"approach",depth:4,name:"Tea as experience, not information",sub:"The Studio's stance",
+   body:"Slow Leaf treats tea as something practised and attended to, not merely known about \u2014 an experience of creative health, relational reflection and cultural attention rather than a set of health claims. This describes the Therapeutic Studio's own approach, and it shapes how every part of this map is written.",
+   src:[],note:"This node states the Studio's approach rather than an external finding.",connects:["m1","r1","r2","w1","a2","a3"]},
+  {id:"a2",cat:"approach",depth:3,name:"Creative health",sub:"Experience, not prescription",
+   body:"Creative and cultural engagement is increasingly recognised as a contributor to wellbeing; a 2019 WHO Europe review gathered the evidence on the arts and health. Tea, approached as sensory and relational practice, sits within that frame \u2014 offered as experience, not prescribed as treatment.",
+   src:["fancourt"],connects:["e4","w2","a1","a3"]},
+  {id:"a3",cat:"approach",depth:3,name:"Cultural attention",sub:"Respect as part of the practice",
+   body:"Attending to tea means attending to the people and histories it comes from: naming traditions and their communities, and holding tea's difficult history alongside its pleasure. Respect is not an add-on to the practice \u2014 it is part of it.",
+   src:[],note:"A statement of the Studio's approach; the histories it points to are sourced on the ethics nodes.",connects:["s2","e3","e5","a1","a2"]},
+];
+
+/* ============================================================
+   Build reference-facing UI (list + bibliography + legend + filters)
+   ============================================================ */
+const nodeMap = {};
+NODES.forEach(n => nodeMap[n.id] = n);
+
+// bibliography: only sources actually used, in first-appearance order
+const usedKeys = [];
+NODES.forEach(n => n.src.forEach(k => { if(!usedKeys.includes(k)) usedKeys.push(k); }));
+const srcNum = {};
+usedKeys.forEach((k,i) => srcNum[k] = i+1);
+
+(function buildBib(){
+  const ol = document.getElementById("bib");
+  usedKeys.forEach(k => {
+    const s = SOURCES[k];
+    const li = document.createElement("li");
+    const cat = s.cat ? '<span class="cat">'+s.cat+'</span>' : '';
+    li.innerHTML = cat + (s.u ? '<a href="'+s.u+'" target="_blank" rel="noopener">'+s.t+'</a>' : s.t);
+    ol.appendChild(li);
+  });
+})();
+
+(function buildLegendCats(){
+  const row = document.getElementById("legend-cats");
+  CAT_ORDER.forEach(c => {
+    const span = document.createElement("span");
+    span.className = "li";
+    span.innerHTML = '<span class="sw" style="background:'+CATS[c].color+'"></span>'+CATS[c].label;
+    row.appendChild(span);
+  });
+})();
+
+(function buildFilters(){
+  const box = document.getElementById("filters");
+  const mk = (key,label,color) => {
+    const b = document.createElement("button");
+    b.className = "fbtn"; b.type = "button";
+    b.setAttribute("aria-pressed", key==="all" ? "true":"false");
+    b.dataset.f = key;
+    b.innerHTML = (color? '<span class="dot" style="--sw:'+color+'"></span>':'') + label;
+    b.addEventListener("click", () => setFilter(key));
+    box.appendChild(b);
+  };
+  mk("all","All");
+  CAT_ORDER.forEach(c => mk(c, CATS[c].label, CATS[c].color));
+})();
+
+(function buildList(){
+  const body = document.getElementById("listbody");
+  CAT_ORDER.forEach(c => {
+    const grp = document.createElement("div");
+    grp.className = "listgrp";
+    grp.innerHTML = '<h3 style="color:'+CATS[c].color+'">'+CATS[c].label+'</h3>';
+    NODES.filter(n => n.cat===c).forEach(n => {
+      const cites = n.src.map(k => {
+        const s = SOURCES[k]; const num = srcNum[k];
+        return s.u ? '<a href="'+s.u+'" target="_blank" rel="noopener">['+num+']</a>' : '['+num+']';
+      }).join(" ");
+      const e = document.createElement("div");
+      e.className = "entry";
+      e.innerHTML = '<h4>'+n.name+'</h4><p>'+n.body+'</p>'+
+        (cites ? '<div class="cites">Sources: '+cites+'</div>' :
+         '<div class="cites">'+(n.note||"")+'</div>');
+      grp.appendChild(e);
+    });
+    body.appendChild(grp);
+  });
+})();
+
+/* ============================================================
+   THE MAP — self-contained canvas engine (2D + light 3D)
+   ============================================================ */
+(function(){
+  const wrap = document.getElementById("cwrap");
+  const canvas = document.getElementById("map");
+  const ctx = canvas.getContext("2d");
+  const tt = document.getElementById("tt");
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // layout: fan each category outward from centre; keep one 3D coord set
+  (function layout(){
+    const TWO = Math.PI*2;
+    CAT_ORDER.forEach((c,k) => {
+      const group = NODES.filter(n => n.cat===c);
+      const base = -Math.PI/2 + k*(TWO/CAT_ORDER.length);
+      const n = group.length;
+      group.forEach((node,j) => {
+        const r = 150 + j*74;
+        const a = base + (j-(n-1)/2)*0.20;
+        node.x = Math.cos(a)*r;
+        node.y = Math.sin(a)*r;
+        node.z = (j-(n-1)/2)*30 + Math.sin(k*1.7)*36;
+      });
+    });
+    const c = nodeMap["m1"]; c.x=0; c.y=0; c.z=0;
+  })();
+
+  const depthR = {1:6,2:8,3:11,4:15,5:20};
+  const MAXR = Math.max(...NODES.map(n => Math.hypot(n.x,n.y))) || 1;
+
+  // view state
+  let is3D=false, filter="all", selected=null, hovered=null, inited=false;
+  let fitZoom=1;
+  let zoom=1, targetZoom=1;
+  let panX=0, panY=0, targetPanX=0, targetPanY=0;   // pan: drag + fly-to-selected
+  let rotX=-0.35, rotY=0.5, tRotX=-0.35, tRotY=0.5; // 3D rotation
+  let W=0,H=0,DPR=1;
+
+  function resize(){
+    DPR = Math.min(window.devicePixelRatio||1, 2);
+    W = wrap.clientWidth; H = wrap.clientHeight;
+    canvas.width = W*DPR; canvas.height = H*DPR;
+    ctx.setTransform(DPR,0,0,DPR,0,0);
+    fitZoom = Math.max(0.4, Math.min(1.4, (Math.min(W,H)*0.46)/MAXR));
+    if(!inited){ zoom = targetZoom = fitZoom; inited = true; }
+  }
+  window.addEventListener("resize", resize);
+
+  // project a node to screen space
+  function project(n){
+    let x=n.x, y=n.y, z=n.z, scale=1;
+    if(is3D){
+      // rotate around Y then X
+      const cy=Math.cos(rotY), sy=Math.sin(rotY);
+      let x1 = x*cy - z*sy, z1 = x*sy + z*cy;
+      const cx=Math.cos(rotX), sx=Math.sin(rotX);
+      let y1 = y*cx - z1*sx, z2 = y*sx + z1*cx;
+      const persp = 620/(620+z2);
+      x=x1*persp; y=y1*persp; scale=persp; z=z2;
+    }
+    return {sx: W/2 + (x+panX)*zoom, sy: H/2 + (y+panY)*zoom, scale, z};
+  }
+  function nodeRadius(n, sc){ return depthR[n.depth]*zoom*(is3D?(0.6+sc*0.7):1); }
+
+  // node position before pan is applied — used to fly a node to centre
+  function projRaw(n){
+    let x=n.x, y=n.y, z=n.z;
+    if(is3D){
+      const cy=Math.cos(rotY), sy=Math.sin(rotY);
+      let x1 = x*cy - z*sy, z1 = x*sy + z*cy;
+      const cx=Math.cos(rotX), sx=Math.sin(rotX);
+      let y1 = y*cx - z1*sx, z2 = y*sx + z1*cx;
+      const persp = 620/(620+z2);
+      x=x1*persp; y=y1*persp;
+    }
+    return {x, y};
+  }
+  function focusOn(id){
+    const n = nodeMap[id]; if(!n) return;
+    const r = projRaw(n);
+    targetPanX = -r.x; targetPanY = -r.y;   // centre the node (zoom-independent)
+  }
+
+  function visible(n){ return filter==="all" || n.cat===filter; }
+
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    // draw order: back-to-front in 3D
+    const pts = NODES.filter(visible).map(n => ({n, p:project(n)}));
+    if(is3D) pts.sort((a,b)=> b.p.z - a.p.z);
+    const pMap = {}; pts.forEach(o => pMap[o.n.id]=o.p);
+
+    // edges
+    const seen = new Set();
+    ctx.lineWidth = 1;
+    pts.forEach(({n}) => {
+      n.connects.forEach(cid => {
+        const key = [n.id,cid].sort().join("-");
+        if(seen.has(key)) return; seen.add(key);
+        const t = nodeMap[cid]; if(!t || !visible(t)) return;
+        const a=pMap[n.id], b=pMap[cid]; if(!a||!b) return;
+        const focus = selected||hovered;
+        let op = 0.12;
+        if(focus){
+          const touch = (n.id===focus||cid===focus);
+          op = touch ? 0.55 : 0.08;
+        }
+        ctx.strokeStyle = "rgba(93,90,91,"+op+")";
+        ctx.beginPath(); ctx.moveTo(a.sx,a.sy); ctx.lineTo(b.sx,b.sy); ctx.stroke();
+      });
+    });
+
+    // nodes
+    pts.forEach(({n,p}) => {
+      const r = nodeRadius(n,p.scale);
+      const col = CATS[n.cat].color;
+      const focus = selected||hovered;
+      let alpha = 0.95, ring = 0.9;
+      if(selected){
+        if(n.id===selected){ alpha=1; }
+        else if(nodeMap[selected].connects.includes(n.id)){ alpha=0.95; }
+        else { alpha=0.4; ring=0.4; }
+      } else if(hovered){
+        alpha = (n.id===hovered) ? 1 : 0.5;
+      }
+      // soft halo
+      const g = ctx.createRadialGradient(p.sx,p.sy,0,p.sx,p.sy,r*2.1);
+      g.addColorStop(0, hexA(col, 0.16*alpha));
+      g.addColorStop(1, hexA(col, 0));
+      ctx.fillStyle=g;
+      ctx.beginPath(); ctx.arc(p.sx,p.sy,r*2.1,0,Math.PI*2); ctx.fill();
+      // core
+      ctx.fillStyle = hexA(col, alpha);
+      ctx.beginPath(); ctx.arc(p.sx,p.sy,r,0,Math.PI*2); ctx.fill();
+      // ring
+      ctx.lineWidth = (n.id===selected||n.id===hovered)?1.6:1;
+      ctx.strokeStyle = hexA(shade(col,-22), ring);
+      ctx.beginPath(); ctx.arc(p.sx,p.sy,r,0,Math.PI*2); ctx.stroke();
+      // selected label
+      if(n.id===selected){
+        ctx.fillStyle="rgba(69,67,68,0.92)";
+        ctx.font='600 12px Asap, sans-serif';
+        ctx.textAlign="center";
+        ctx.fillText(n.name, p.sx, p.sy - r - 8);
+      }
+    });
+    // stash for hit-testing
+    lastPts = pts.map(o => ({id:o.n.id, x:o.p.sx, y:o.p.sy, r:nodeRadius(o.n,o.p.scale)}));
+  }
+  let lastPts = [];
+
+  function hitTest(mx,my){
+    let best=null, bd=1e9;
+    for(let i=lastPts.length-1;i>=0;i--){
+      const p=lastPts[i];
+      const d=Math.hypot(mx-p.x,my-p.y);
+      if(d <= p.r+6 && d<bd){ bd=d; best=p.id; }
+    }
+    return best;
+  }
+
+  // colour helpers
+  function hexA(hex,a){ const c=hx(hex); return "rgba("+c[0]+","+c[1]+","+c[2]+","+a.toFixed(3)+")"; }
+  function shade(hex,d){ const c=hx(hex); return "#"+c.map(v=>clamp(v+d).toString(16).padStart(2,"0")).join(""); }
+  function hx(hex){ hex=hex.replace("#",""); return [0,2,4].map(i=>parseInt(hex.substr(i,2),16)); }
+  function clamp(v){ return Math.max(0,Math.min(255,v)); }
+
+  /* ── animation loop (idle-smooth only) ── */
+  function tick(){
+    zoom += (targetZoom-zoom)*0.16;
+    panX += (targetPanX-panX)*0.16;
+    panY += (targetPanY-panY)*0.16;
+    if(is3D){ rotX += (tRotX-rotX)*0.12; rotY += (tRotY-rotY)*0.12; }
+    draw();
+    requestAnimationFrame(tick);
+  }
+
+  /* ── pointer interaction ── */
+  let dragging=false, moved=0, last={x:0,y:0};
+  function localXY(e){
+    const r=canvas.getBoundingClientRect();
+    const cx = (e.touches? e.touches[0].clientX : e.clientX) - r.left;
+    const cy = (e.touches? e.touches[0].clientY : e.clientY) - r.top;
+    return {x:cx, y:cy};
+  }
+  function onDown(e){
+    const p=localXY(e); dragging=true; moved=0; last=p;
+    canvas.classList.add("grabbing");
+  }
+  function onMove(e){
+    const p=localXY(e);
+    if(dragging){
+      const dx=p.x-last.x, dy=p.y-last.y; moved+=Math.abs(dx)+Math.abs(dy); last=p;
+      if(is3D){ tRotY += dx*0.006; tRotX += dy*0.006;
+        tRotX=Math.max(-Math.PI/2,Math.min(Math.PI/2,tRotX)); }
+      else { targetPanX += dx/zoom; targetPanY += dy/zoom; panX=targetPanX; panY=targetPanY; }
+      tt.classList.remove("show");
+      return;
+    }
+    const id=hitTest(p.x,p.y);
+    if(id!==hovered){ hovered=id; }
+    if(id){
+      const n=nodeMap[id];
+      document.getElementById("tt-k").textContent = CATS[n.cat].label;
+      document.getElementById("tt-n").textContent = n.name;
+      tt.style.left=(p.x+14)+"px"; tt.style.top=(p.y-6)+"px";
+      tt.classList.add("show"); canvas.classList.add("pointing");
+    } else { tt.classList.remove("show"); canvas.classList.remove("pointing"); }
+  }
+  function onUp(e){
+    canvas.classList.remove("grabbing");
+    if(dragging && moved<5){
+      const p = e.changedTouches ? {x:e.changedTouches[0].clientX-canvas.getBoundingClientRect().left,
+                                    y:e.changedTouches[0].clientY-canvas.getBoundingClientRect().top}
+                                 : last;
+      const id=hitTest(p.x,p.y);
+      if(id) openPanel(id); else closePanel();
+    }
+    dragging=false;
+  }
+  canvas.addEventListener("mousedown",onDown);
+  window.addEventListener("mousemove",onMove);
+  window.addEventListener("mouseup",onUp);
+  canvas.addEventListener("mouseleave",()=>{hovered=null;tt.classList.remove("show");});
+  canvas.addEventListener("touchstart",e=>{onDown(e);},{passive:true});
+  canvas.addEventListener("touchmove",e=>{e.preventDefault();onMove(e);},{passive:false});
+  canvas.addEventListener("touchend",onUp);
+  canvas.addEventListener("wheel",e=>{
+    e.preventDefault();
+    targetZoom *= e.deltaY>0 ? 0.9 : 1.1;
+    targetZoom = Math.max(0.35, Math.min(3.2, targetZoom));
+  },{passive:false});
+
+  /* ── panel ── */
+  function openPanel(id){
+    selected=id; focusOn(id); const n=nodeMap[id];
+    const col=CATS[n.cat].color;
+    const srcHtml = n.src.length ? n.src.map(k=>{
+      const s=SOURCES[k], num=srcNum[k];
+      const txt="["+num+"] "+s.t;
+      return "<li>"+(s.u? '<a href="'+s.u+'" target="_blank" rel="noopener">'+txt+'</a>' : txt)+"</li>";
+    }).join("") : "";
+    const conns = n.connects.map(cid=>{
+      const cn=nodeMap[cid]; if(!cn) return "";
+      return '<button class="chip" data-go="'+cid+'"><span class="cd" style="--sw:'+CATS[cn.cat].color+'"></span>'+cn.name+'</button>';
+    }).join("");
+    const panel=document.getElementById("panel");
+    panel.innerHTML =
+      '<div class="p-tag" style="color:'+col+'">'+CATS[n.cat].label+'</div>'+
+      '<h3 class="p-title">'+n.name+'</h3>'+
+      '<p class="p-sub">'+n.sub+'</p>'+
+      '<p class="p-body">'+n.body+'</p>'+
+      (n.note? '<p class="p-note">'+n.note+'</p>':'')+
+      (srcHtml? '<div class="p-label">Sources</div><ul class="p-src">'+srcHtml+'</ul>':'')+
+      '<div class="p-label">Connected ideas</div><div class="p-conns">'+conns+'</div>';
+    panel.querySelectorAll(".chip").forEach(b=>b.addEventListener("click",()=>openPanel(b.dataset.go)));
+    panel.scrollTop=0;
+  }
+  function closePanel(){
+    selected=null;
+    document.getElementById("panel").innerHTML =
+      '<div class="empty"><strong>Select a node</strong>Tap any circle to read the idea and its sources. Larger circles hold more depth; colour marks the theme. Drag to move, scroll to zoom.</div>';
+  }
+
+  /* ── filters / view / reset ── */
+  window.setFilter = function(key){
+    filter=key;
+    document.querySelectorAll(".fbtn").forEach(b=>b.setAttribute("aria-pressed", b.dataset.f===key?"true":"false"));
+    if(selected && !visible(nodeMap[selected])) closePanel();
+    resetView(false);
+  };
+  function setView(v3){
+    is3D=v3;
+    document.getElementById("v2d").setAttribute("aria-pressed", (!v3).toString());
+    document.getElementById("v3d").setAttribute("aria-pressed", v3.toString());
+    resetView(false);
+    if(selected) focusOn(selected);
+  }
+  document.getElementById("v2d").addEventListener("click",()=>setView(false));
+  document.getElementById("v3d").addEventListener("click",()=>setView(true));
+  function resetView(clearSel){
+    targetZoom = fitZoom; targetPanX=0; targetPanY=0; tRotX=-0.35; tRotY=0.5;
+    if(!is3D){ rotX=-0.35; rotY=0.5; }
+    if(clearSel!==false){} // keep selection unless told
+  }
+  document.getElementById("reset").addEventListener("click",()=>{ resetView(); closePanel(); });
+
+  // init
+  resize();
+  requestAnimationFrame(tick);
+})();
+</script>
+</body>
+</html>
