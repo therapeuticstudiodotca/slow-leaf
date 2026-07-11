@@ -7,7 +7,7 @@ Slow Leaf is a small project about tea, built as four connected experiences. It 
 | **Home** | `index.html` | Ready — hub linking the four experiences |
 | **Living Atlas** | `living-atlas.html` | Ready — interactive world map of tea |
 | **Knowing Tea** | `knowing-tea.html` | Scaffolded — a conceptual map of why tea matters |
-| **Practicing Tea** | `practicing-tea.html` | Scaffolded — guides to preparing each kind of tea |
+| **Practicing Tea** | `practicing-tea.html` | Ready — guides to preparing each kind of tea |
 | **Tea Room** | `tea-room.html` | Scaffolded — a year-long seasonal experience |
 
 ## Living Atlas
