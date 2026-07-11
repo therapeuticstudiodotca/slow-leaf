@@ -4,17 +4,22 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Practicing Tea · Slow Leaf</title>
-<meta name="description" content="Preparation, enjoyment, and mindful reflection made approachable and practical — a gallery of guides sorted by the kind of tea in your cup." />
+<meta name="description" content="An interactive gallery of tea preparations, sorted by type — each with a step-by-step guide, its traditional vessel, sensory prompts, and reflections for slowing down." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
 <style>
-  :root{--paper:#ffffff;--ink:#5d5a5b;--ink-strong:#454344;--stone:#a29f9f;
-    --hair:#e6e4e2;--hair-soft:#efedeb;--panel:#faf9f8;--maxw:1080px;--ease:cubic-bezier(.22,.61,.36,1);}
+  :root{
+    --paper:#ffffff;--panel:#faf9f8;--ink:#5d5a5b;--ink-strong:#454344;--stone:#a29f9f;
+    --hair:#e6e4e2;--hair-soft:#efedeb;--focus:#5d5a5b;--maxw:1180px;
+    --ease:cubic-bezier(.22,.61,.36,1);
+  }
   *{box-sizing:border-box;} html,body{margin:0;padding:0;}
   body{font-family:"Asap",system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);
-    background:var(--paper);-webkit-font-smoothing:antialiased;line-height:1.6;}
+    background:var(--paper);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;line-height:1.6;}
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
+
+  /* header / nav */
   .topbar{display:flex;align-items:baseline;justify-content:space-between;gap:16px 28px;flex-wrap:wrap;
     padding:26px 0 18px;border-bottom:1px solid var(--hair);}
   .mark{font-weight:600;font-size:15px;letter-spacing:.02em;color:var(--ink-strong);text-decoration:none;}
@@ -23,29 +28,132 @@
     font-weight:600;text-decoration:none;transition:color .2s var(--ease);}
   .navlinks a:hover{color:var(--ink);}
   .navlinks a[aria-current="page"]{color:var(--ink-strong);}
-  .hero{padding:52px 0 30px;max-width:720px;}
-  .eyebrow{display:flex;align-items:center;gap:12px;font-size:11.5px;letter-spacing:.2em;
-    text-transform:uppercase;color:var(--stone);font-weight:600;margin:0 0 18px;}
-  .status{border:1px solid var(--hair);border-radius:100px;padding:2px 9px;letter-spacing:.1em;}
-  h1{font-weight:500;font-size:clamp(32px,4.8vw,52px);line-height:1.07;letter-spacing:-.015em;
-    color:var(--ink-strong);margin:0 0 20px;}
+
+  .hero{padding:52px 0 22px;max-width:720px;}
+  .eyebrow{font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--stone);
+    font-weight:600;margin:0 0 18px;}
+  h1{font-weight:500;font-size:clamp(30px,4.6vw,52px);line-height:1.08;letter-spacing:-.015em;
+    color:var(--ink-strong);margin:0 0 18px;}
   h1 em{font-style:italic;font-weight:400;color:var(--ink);}
-  .lede{font-size:17.5px;max-width:620px;margin:0;color:var(--ink);}
-  .section{padding:14px 0 8px;max-width:760px;}
-  .section h2{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--stone);
-    font-weight:600;margin:34px 0 4px;}
-  .items{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--hair);
-    border:1px solid var(--hair);border-radius:4px;overflow:hidden;margin:18px 0 8px;}
-  .item{background:var(--paper);padding:20px 22px;}
-  .item h3{font-size:15px;font-weight:500;color:var(--ink-strong);margin:0 0 5px;}
-  .item p{margin:0;font-size:13.5px;color:var(--ink);}
-  .note{margin:40px 0 10px;padding:20px 22px;background:var(--panel);border:1px solid var(--hair-soft);
-    border-radius:4px;font-size:14.5px;color:var(--ink);max-width:760px;}
+  .lede{font-size:17px;max-width:600px;margin:0;color:var(--ink);}
+
+  /* filter */
+  .controls{display:flex;flex-wrap:wrap;align-items:center;gap:14px 18px;
+    padding:26px 0 10px;border-bottom:1px solid var(--hair);}
+  .type-filter{display:flex;flex-wrap:wrap;gap:8px;}
+  .chip{font-family:inherit;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;
+    color:var(--stone);background:var(--paper);border:1px solid var(--hair);border-radius:100px;
+    padding:6px 15px;cursor:pointer;transition:color .2s var(--ease),border-color .2s var(--ease),background .2s var(--ease);}
+  .chip:hover{color:var(--ink);border-color:var(--stone);}
+  .chip.is-active{color:var(--paper);background:var(--ink);border-color:var(--ink);}
+  .chip:focus-visible{outline:2px solid var(--focus);outline-offset:2px;}
+  .count{font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);font-weight:600;margin-left:auto;}
+
+  /* gallery grid */
+  .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--hair);
+    border:1px solid var(--hair);border-radius:6px;overflow:hidden;margin:28px 0 8px;}
+  .tea-card{background:var(--paper);border:none;text-align:left;font-family:inherit;cursor:pointer;
+    padding:26px 22px 22px;display:flex;flex-direction:column;gap:0;min-height:220px;
+    transition:background .22s var(--ease);}
+  .tea-card:hover{background:var(--panel);}
+  .tea-card:focus-visible{outline:2px solid var(--focus);outline-offset:-2px;}
+  .tea-card.is-hidden{display:none;}
+  .v-figure{height:80px;display:flex;align-items:flex-end;margin:0 0 18px;}
+  .v-figure svg{height:80px;width:auto;overflow:visible;}
+  .v-line{fill:none;stroke:var(--stone);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;
+    vector-effect:non-scaling-stroke;transition:stroke .24s var(--ease);}
+  .v-soft{fill:none;stroke:var(--stone);stroke-width:1;stroke-linecap:round;stroke-linejoin:round;
+    vector-effect:non-scaling-stroke;opacity:.7;transition:stroke .24s var(--ease);}
+  .tea-card:hover .v-line,.tea-card:focus-visible .v-line{stroke:var(--ink-strong);}
+  .tea-card:hover .v-soft,.tea-card:focus-visible .v-soft{stroke:var(--ink);}
+  .tc-type{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--stone);margin:0 0 5px;}
+  .tc-name{font-size:18px;font-weight:500;letter-spacing:-.01em;color:var(--ink-strong);margin:0 0 6px;line-height:1.2;}
+  .tc-note{font-size:13px;color:var(--ink);margin:0;}
+  .tc-open{margin-top:auto;padding-top:14px;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+    font-weight:600;color:var(--stone);transition:color .2s var(--ease);}
+  .tea-card:hover .tc-open,.tea-card:focus-visible .tc-open{color:var(--ink);}
+
+  .empty{padding:40px 4px;color:var(--stone);font-size:14px;display:none;}
+  .empty.show{display:block;}
+
+  /* invitation note */
+  .note{margin:30px 0 6px;padding:20px 22px;background:var(--panel);border:1px solid var(--hair-soft);
+    border-radius:6px;font-size:14.5px;color:var(--ink);max-width:820px;}
   .note strong{color:var(--ink-strong);font-weight:600;}
-  footer{border-top:1px solid var(--hair);padding:22px 0 46px;margin-top:40px;font-size:11.5px;
+
+  footer{border-top:1px solid var(--hair);padding:22px 0 46px;margin-top:38px;font-size:11.5px;
     letter-spacing:.12em;text-transform:uppercase;color:var(--stone);font-weight:600;}
-  @media (max-width:680px){.wrap{padding:0 20px;}.items{grid-template-columns:1fr;}}
-  @media (prefers-reduced-motion:reduce){*{transition:none!important;}}
+
+  /* modal card */
+  .scrim{position:fixed;inset:0;background:rgba(69,67,68,.30);backdrop-filter:blur(2px);
+    opacity:0;transition:opacity .28s var(--ease);z-index:40;}
+  .scrim.show{opacity:1;}
+  .card{position:fixed;top:0;right:0;height:100%;width:min(460px,100%);background:var(--paper);
+    border-left:1px solid var(--hair);z-index:41;transform:translateX(100%);
+    transition:transform .34s var(--ease);overflow:hidden;}
+  .card.show{transform:translateX(0);}
+  .card-scroll{height:100%;overflow-y:auto;padding:26px 30px 44px;}
+  .card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;}
+  .card-eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--stone);font-weight:600;margin:2px 0 0;}
+  .closebtn{border:1px solid var(--hair);background:var(--paper);border-radius:100px;width:32px;height:32px;
+    display:grid;place-items:center;cursor:pointer;color:var(--ink);flex:none;transition:border-color .2s var(--ease),color .2s var(--ease);}
+  .closebtn:hover{border-color:var(--stone);color:var(--ink-strong);}
+  .closebtn:focus-visible{outline:2px solid var(--focus);outline-offset:2px;}
+  .card h2{font-weight:500;font-size:26px;letter-spacing:-.015em;color:var(--ink-strong);margin:8px 0 4px;line-height:1.12;}
+  .card-sub{font-size:14px;color:var(--ink);margin:0 0 4px;}
+  .card-vessel{display:flex;justify-content:center;align-items:flex-end;height:132px;margin:14px 0 6px;
+    border-bottom:1px solid var(--hair);padding-bottom:18px;}
+  .card-vessel svg{height:118px;width:auto;overflow:visible;}
+  .card-vessel .v-line{stroke:var(--ink-strong);stroke-width:1.4;}
+  .card-vessel .v-soft{stroke:var(--ink);}
+  .vessel-cap{text-align:center;font-size:12px;color:var(--stone);margin:0 0 16px;letter-spacing:.02em;}
+  .vessel-cap em{font-style:italic;color:var(--ink);}
+
+  .tabs{display:flex;gap:2px;background:var(--hair);border:1px solid var(--hair);border-radius:100px;
+    padding:3px;margin:0 0 20px;}
+  .tab{flex:1;font-family:inherit;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;
+    color:var(--stone);background:transparent;border:none;border-radius:100px;padding:7px 4px;cursor:pointer;
+    transition:color .2s var(--ease),background .2s var(--ease);}
+  .tab.is-active{color:var(--ink-strong);background:var(--paper);}
+  .tab:focus-visible{outline:2px solid var(--focus);outline-offset:2px;}
+
+  .layer{animation:fade .34s var(--ease);}
+  @keyframes fade{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:none;}}
+  .fld{margin:0 0 20px;}
+  .fld-label{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--stone);font-weight:600;margin:0 0 7px;}
+  .fld p{margin:0;font-size:14.5px;color:var(--ink);}
+  .fld p+p{margin-top:9px;}
+
+  .params{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--hair);
+    border:1px solid var(--hair);border-radius:5px;overflow:hidden;margin:2px 0 20px;}
+  .param{background:var(--panel);padding:12px 14px;}
+  .param dt{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);font-weight:600;margin:0 0 3px;}
+  .param dd{margin:0;font-size:14.5px;color:var(--ink-strong);font-weight:500;}
+
+  ol.steps{margin:0;padding:0;list-style:none;counter-reset:s;}
+  ol.steps li{position:relative;padding:0 0 15px 34px;counter-increment:s;font-size:14.5px;color:var(--ink);}
+  ol.steps li:last-child{padding-bottom:0;}
+  ol.steps li::before{content:counter(s);position:absolute;left:0;top:-1px;width:22px;height:22px;
+    border:1px solid var(--hair);border-radius:100px;display:grid;place-items:center;
+    font-size:11px;font-weight:600;color:var(--stone);}
+
+  .senses{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--hair);
+    border:1px solid var(--hair);border-radius:5px;overflow:hidden;margin:2px 0 20px;}
+  .sense{background:var(--paper);padding:13px 15px;}
+  .sense dt{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);font-weight:600;margin:0 0 4px;}
+  .sense dd{margin:0;font-size:13.5px;color:var(--ink);line-height:1.5;}
+
+  ul.prompts{margin:2px 0 0;padding:0;list-style:none;}
+  ul.prompts li{position:relative;padding:0 0 12px 20px;font-size:14.5px;color:var(--ink);}
+  ul.prompts li:last-child{padding-bottom:0;}
+  ul.prompts li::before{content:"";position:absolute;left:2px;top:11px;width:5px;height:5px;
+    border:1px solid var(--stone);border-radius:100px;}
+
+  @media (max-width:1000px){.gallery{grid-template-columns:repeat(3,1fr);}}
+  @media (max-width:760px){.wrap{padding:0 20px;}.gallery{grid-template-columns:repeat(2,1fr);}
+    .card{width:100%;border-left:none;}}
+  @media (max-width:440px){.gallery{grid-template-columns:1fr;}.params,.senses{grid-template-columns:1fr;}}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;}}
 </style>
 </head>
 <body>
@@ -60,24 +168,343 @@
         <a href="tea-room.html">Tea Room</a>
       </div>
     </nav>
+
     <header class="hero">
-      <p class="eyebrow"><span>Practicing Tea</span><span class="status">In development</span></p>
+      <p class="eyebrow">Practicing Tea</p>
       <h1>How to make it, <em>slowly</em></h1>
-      <p class="lede">Preparation, enjoyment, and mindful reflection made approachable and practical — a gallery of guides sorted by the kind of tea in your cup.</p>
+      <p class="lede">A gallery of preparations, sorted by the kind of tea in your cup. Each opens onto its traditional vessel, a step-by-step guide, and quiet prompts for tasting, slowing down, and reflecting.</p>
     </header>
-    <div class="section">
-      <h2>What it will hold</h2>
-      <div class="items">
-        <div class="item"><h3>Gallery by tea type</h3><p>Step-by-step guides for black, green, white, matcha, oolong, and more.</p></div>
-        <div class="item"><h3>Sensory exploration</h3><p>Tuning into taste, aroma, sound, temperature, texture, and presence.</p></div>
-        <div class="item"><h3>Guided practices</h3><p>Steeping methods, tasting approaches, and ceremonial forms.</p></div>
-        <div class="item"><h3>Time &amp; attention</h3><p>Using tea as a way to slow down, pause, and observe.</p></div>
-        <div class="item"><h3>Tea journaling</h3><p>Prompts for memory, mood, embodiment, and cultural reflection.</p></div>
-        <div class="item"><h3>Actionable activities</h3><p>Every practice kept simple and easy to follow.</p></div>
-      </div>
-      <div class="note"><strong>Planned form.</strong> An interactive gallery sorted by type of tea, where each entry's icon takes the shape of the vessel or instrument that defines it — a gaiwan, a whisk and bowl, a samovar — opening onto a simple, step-by-step guide.</div>
+
+    <div class="controls">
+      <div class="type-filter" id="type-filter" role="group" aria-label="Filter by type of tea"></div>
+      <span class="count" id="count"></span>
     </div>
+
+    <div class="gallery" id="gallery"></div>
+    <p class="empty" id="empty">No preparations in this type yet.</p>
+
+    <div class="note"><strong>A note on the guides.</strong> Temperatures, ratios, and times are gentle starting points, not rules — every leaf, water, and palate differs, and the practices here belong to the communities who keep them. Adjust to your own cup, and let taste be the guide.</div>
+
     <footer>Therapeutic Studio · Slow Leaf</footer>
   </div>
+
+  <div class="scrim" id="scrim" hidden></div>
+  <aside class="card" id="card" role="dialog" aria-modal="true" aria-labelledby="card-title" aria-hidden="true">
+    <div class="card-scroll">
+      <div class="card-top">
+        <p class="card-eyebrow" id="card-type">&nbsp;</p>
+        <button class="closebtn" id="closebtn" aria-label="Close">
+          <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 2L12 12M12 2L2 12" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <h2 id="card-title">&nbsp;</h2>
+      <p class="card-sub" id="card-sub">&nbsp;</p>
+      <div class="card-vessel"><svg id="card-vessel-svg" viewBox="0 0 120 96" aria-hidden="true"></svg></div>
+      <p class="vessel-cap" id="vessel-cap">&nbsp;</p>
+      <div class="tabs" role="tablist">
+        <button class="tab is-active" data-layer="steep" role="tab">Steep</button>
+        <button class="tab" data-layer="savour" role="tab">Savour</button>
+        <button class="tab" data-layer="reflect" role="tab">Reflect</button>
+      </div>
+      <div class="layer" id="ly-steep" role="tabpanel"></div>
+      <div class="layer" id="ly-savour" role="tabpanel" hidden></div>
+      <div class="layer" id="ly-reflect" role="tabpanel" hidden></div>
+    </div>
+  </aside>
+
+<script id="tea-data" type="application/json">
+[
+{"id":"green","name":"Green Tea","type":["green"],"vessel":"gaiwan","note":"Fresh, vegetal, and forgiving of a light hand.","sub":"Loose leaf · China, Korea, and beyond","tradition":"Green tea is the oldest and most widely made form of Camellia sinensis, woven into daily life across China, Korea, and much of East Asia. To keep the leaf green, it is heated soon after picking — most often pan-fired in China, halting oxidation and preserving a fresh, grassy character. In many homes it is simply steeped in a glass or a lidded gaiwan and topped up with hot water through the day.","params":[["Water","75–80°C · 165–175°F"],["Leaf","3 g per 150 ml"],["Time","1–2 min, first steep"],["Vessel","Gaiwan or glass"]],"steps":["Warm the gaiwan or glass with a little hot water, then discard it.","Let just-boiled water cool a minute or two — boiling water scorches delicate green leaf.","Add the leaves and pour water gently down the side, not directly onto them.","Steep briefly and taste early; strain or sip before it turns bitter.","Re-steep the same leaves several times, adding a little time with each round."],"sensory":{"Taste":"Look for fresh-cut grass, snow pea, chestnut, or a clean sweetness underneath.","Aroma":"Warm the wet leaf in your cupped hands and breathe in before the first sip.","Sound":"The quiet fizz of water meeting leaf; the soft click of the lid.","Temperature":"Notice how flavour opens as the cup cools from hot to just-warm.","Texture":"A brothy, almost silky body — or a drying briskness if steeped long.","Presence":"Watch the leaves sink, rise, and unfurl. There is nowhere else to be."},"practice":"Try the same leaf across three infusions and notice how each pour differs — the first bright, the second fullest, the third softening. This is the simplest way to learn that a tea is not one taste but a sequence.","attention":"Green tea asks for a lighter touch and a shorter wait than most people expect. Let the brief steeping time be a small lesson in not rushing and not over-doing — attention, then release.","journal":["What did the first sip remind you of — a place, a season, a memory?","Which infusion did you like best, and what changed between them?","How did your body feel a few minutes after drinking — settled, alert, warm?"]},
+
+{"id":"matcha","name":"Matcha","type":["green"],"vessel":"chawan","note":"Whisked, not steeped — bright, thick, and vivid.","sub":"Whisked powdered tea · Japan","tradition":"Powdered tea whisked in a bowl travelled from Song-dynasty China to Japan with Buddhist monks, and over centuries became the heart of chanoyu, the Japanese way of tea shaped by teachers such as Sen no Rikyū in the sixteenth century. In chanoyu, preparing tea is a practice of hosting: attention to gesture, season, and guest matters as much as the drink itself. The thin, everyday form is usucha; the thick, ceremonial form is koicha.","params":[["Water","70–80°C · 160–175°F"],["Matcha","1.5–2 g (sifted)"],["Water volume","60–70 ml"],["Vessel","Chawan & chasen"]],"steps":["Sift the matcha into the warmed bowl to break up any clumps.","Add a splash of the cooled water and whisk to a smooth paste.","Pour in the rest of the water.","Whisk briskly in a light 'W' or 'M' motion from the wrist — not a circle.","Whisk until a fine, even foam rises, then lift the whisk gently from the centre.","Drink within a minute or two, turning the bowl slightly before you sip."],"sensory":{"Taste":"A full sweetness and savoury umami, sometimes a clean, brief bitterness.","Aroma":"Fresh, green, and marine — like nori or spring leaves.","Sound":"The soft rush of the bamboo whisk against the bowl.","Temperature":"Warm rather than hot, so nothing is hidden behind heat.","Texture":"Velvety and thick, with a fine microfoam on the surface.","Presence":"The whole drink is made by your own hand, in one continuous gesture."},"practice":"Slow the whisking down and listen to it. In chanoyu the aim is not speed but evenness — a smooth surface with no large bubbles. Making one good bowl with full attention is the practice, complete in itself.","attention":"Matcha is prepared fresh each time and drunk soon after — it cannot be left to wait. That built-in immediacy is an invitation to give the few minutes it takes your whole attention.","journal":["What did it feel like to make the drink entirely by hand?","Where did your attention go while whisking — and did it wander?","Sit for a moment after the last sip. What lingers, in taste and in mood?"]},
+
+{"id":"sencha","name":"Sencha","type":["green"],"vessel":"kyusu","note":"The everyday green of Japan — clean and brisk.","sub":"Steamed green tea · Japan","tradition":"Sencha is the daily tea of Japan, made by steaming the fresh leaf rather than pan-firing it, which gives a clean, green, slightly marine cup. It is brewed in a kyusu, a pot with a hollow handle set at the side, and poured out in rounds so that every cup is filled to the same strength — an ordinary daily courtesy at kitchen tables and offices alike.","params":[["Water","70–80°C · 160–175°F"],["Leaf","4–5 g per 150 ml"],["Time","45–60 sec, first steep"],["Vessel","Kyusu"]],"steps":["Pour hot water into the cups first — this both cools the water and measures it.","Let it stand a minute, then pour it from the cups into the kyusu over the leaves.","Steep for under a minute; deep-steamed (fukamushi) sencha needs even less.","Pour into each cup a little at a time, going back and forth in rounds.","Empty the pot completely to the last drop, so the leaves aren't left stewing.","Re-steep with slightly hotter water and a shorter time."],"sensory":{"Taste":"Bright and grassy with a savoury depth and a clean, sweet finish.","Aroma":"Vegetal and fresh, like steamed greens or a spring meadow.","Sound":"Water poured in rounds; the last drops falling into the cup.","Temperature":"Cooler than most brews — heat would turn it sharp.","Texture":"Light and brisk, sometimes cloudy and fuller when deep-steamed.","Presence":"The back-and-forth pour is a small rhythm worth settling into."},"practice":"Practise pouring in rounds until each cup ends the same colour and strength. It is a quiet exercise in fairness and care — no cup favoured, none left weak.","attention":"The whole ritual takes barely two minutes, yet it resists being hurried. Let the short, exact steps stand in for a longer pause.","journal":["How even were your cups — and did evenness change how the tea felt to share?","What does 'fresh' taste like to you here, in specific words?","Did the second steep surprise you compared with the first?"]},
+
+{"id":"gyokuro","name":"Gyokuro","type":["green"],"vessel":"houhin","note":"Shaded, sweet, and savoured in tiny sips.","sub":"Shade-grown green tea · Japan","tradition":"Gyokuro is a shaded Japanese tea, grown under cover for around three weeks before harvest in regions such as Uji. Shading slows the leaf and raises its sweetness and savoury umami. It is brewed cool and slow, in very small amounts, and taken almost like a broth — a concentrated, contemplative cup rather than a thirst-quencher.","params":[["Water","50–60°C · 120–140°F"],["Leaf","4 g per 60 ml"],["Time","1.5–2.5 min"],["Vessel","Houhin or small kyusu"]],"steps":["Cool the water well below boiling — this is the coolest brew in the gallery.","Use a generous amount of leaf for a very small amount of water.","Pour the cool water over the leaves and wait patiently; the low heat draws out sweetness, not bitterness.","Pour into tiny cups, just a mouthful or two each.","Savour it slowly, then re-steep — the second and third infusions are prized.","On the last infusion, the tender leaves can be eaten with a little ponzu or salt."],"sensory":{"Taste":"Intense sweetness and umami, low in bitterness, almost like a light broth.","Aroma":"Deep, green, and oceanic.","Sound":"Very little — this is a quiet, slow preparation.","Temperature":"Barely warm; the flavour lives in the cool.","Texture":"Thick, coating, and mouth-filling despite the small sip.","Presence":"A few millilitres asks you to slow down to meet it."},"practice":"Resist the urge to add more water or heat. Gyokuro teaches restraint — that concentration and patience can give more than volume.","attention":"A thimble of tea, taken slowly, can hold as much attention as a whole pot. Let the smallness be the point.","journal":["What was it like to drink so little, so slowly?","How did the low temperature change what you noticed?","Did savouring a small amount feel like enough — or did you want more, and why?"]},
+
+{"id":"white","name":"White Tea","type":["white"],"vessel":"glass","note":"Barely processed — soft, downy, and gentle.","sub":"Withered and dried buds · Fujian, China","tradition":"White tea is among the least processed of all teas: buds and young leaves are simply withered and dried, with no pan-firing or rolling. It is long associated with the coastal counties of Fujian in China, home to styles such as Silver Needle and White Peony. Its gentleness rewards patience — warm water and unhurried steeping rather than force.","params":[["Water","80–85°C · 175–185°F"],["Leaf","3–5 g per 200 ml"],["Time","3–5 min (or short gongfu steeps)"],["Vessel","Tall glass or gaiwan"]],"steps":["Warm the glass, then add the downy buds and leaves.","Pour warm — not boiling — water gently over them.","Let it steep longer than a green tea; the flavour is subtle and slow to emerge.","Watch the silvery buds stand and slowly sink as they hydrate.","Sip and re-steep generously — white tea gives many gentle infusions.","Aged white teas can take hotter water and reveal deeper, honeyed notes."],"sensory":{"Taste":"Soft and mellow — hay, melon, cucumber, and light honey.","Aroma":"Faint and sweet, like warm straw or fresh flowers.","Sound":"Stillness; the occasional shift of a bud in the glass.","Temperature":"Gentle warmth suits its delicacy.","Texture":"Light, clean, and silky, with almost no astringency.","Presence":"You have to lean in to notice it — a lesson in quiet attention."},"practice":"White tea can seem to taste of 'almost nothing' at first. Sit with it. Learning to notice a faint, gentle cup trains the palate more than a bold one ever could.","attention":"Its subtlety cannot be rushed or forced louder. Meeting it means slowing your own senses down to its register.","journal":["What did you notice only after sitting quietly with the cup?","How would you describe a flavour that is barely there?","Where else in your day might 'quiet' be worth paying closer attention to?"]},
+
+{"id":"yellow","name":"Yellow Tea","type":["yellow"],"vessel":"glass","note":"A rare cousin of green — mellow and rounded.","sub":"Sealed-yellowing tea · China","tradition":"Yellow tea is a small and rare Chinese category, made much like green tea but given an extra slow, gentle step — sealing the warm leaf so it 'yellows,' softening the fresh green edge into a rounder, mellower cup. Junshan Yinzhen, from an island in Hunan's Dongting Lake, is its most storied example. It is often brewed in a glass so the buds can be watched standing upright and slowly falling.","params":[["Water","75–80°C · 165–175°F"],["Leaf","3–4 g per 150 ml"],["Time","1–3 min"],["Vessel","Tall glass"]],"steps":["Warm a tall glass with hot water and discard it.","Add the buds and pour cooled water down the side.","Watch the buds as they hydrate — the finest stand vertically before sinking.","Steep gently and taste; the character is mellower and less grassy than green.","Re-steep several times, watching the 'dance' of the buds each round."],"sensory":{"Taste":"Sweet, smooth, and rounded, with the grassy edge of green softened away.","Aroma":"Warm, mellow, and lightly toasty.","Sound":"Quiet; the tea is watched as much as tasted.","Temperature":"Warm and even, never scalding.","Texture":"Smooth and gentle, with a soft finish.","Presence":"The upright, drifting buds turn the glass into something to watch."},"practice":"Let this be a watching tea as much as a drinking one. Following the slow rise and fall of the buds is itself a form of settling attention.","attention":"Yellow tea's extra 'yellowing' step exists purely to soften and round — a reminder that some things improve only with unhurried time.","journal":["What did you see in the glass that you'd have missed in an opaque cup?","How does 'mellow' differ from 'mild' to you?","When has waiting made something gentler or better in your own life?"]},
+
+{"id":"oolong","name":"Oolong","type":["oolong"],"vessel":"gongfu","note":"Partly oxidised — brewed pour by pour, gongfu.","sub":"Gongfu method · Fujian, Guangdong & Taiwan","tradition":"Oolongs are partly oxidised teas, ranging from green and floral to dark and roasted, made across Fujian, Guangdong, and Taiwan. Many are brewed gongfu — a phrase meaning 'with skill and effort' — a method refined in the Chaoshan region of Guangdong. A high ratio of leaf to water and many short infusions reveal how a single tea unfolds and changes from one pour to the next.","params":[["Water","90–95°C · 195–205°F"],["Leaf","5–7 g per 100 ml"],["Time","10–30 sec, building"],["Vessel","Gaiwan & fairness pitcher"]],"steps":["Warm the gaiwan, pitcher, and cups with hot water.","Add the tightly rolled leaves — enough to cover the base generously.","Rinse: pour water on, then off again quickly, to wake and clean the leaf.","Steep the first infusion just 10–20 seconds and pour into the pitcher, then the cups.","Add a few seconds to each successive steep as the rolled leaf slowly opens.","Continue for many infusions — a good oolong can give eight or more."],"sensory":{"Taste":"Floral and buttery, or roasted and mineral — and shifting each pour.","Aroma":"Cup the empty vessel and smell it; some sets include an aroma cup for exactly this.","Sound":"The quick on-off of the rinse; tea streaming into the pitcher.","Temperature":"Hot and immediate, in small mouthfuls.","Texture":"Creamy and thick, often with a sweet, lingering aftertaste (huigan).","Presence":"The rhythm of many small pours keeps returning your attention to the leaf."},"practice":"Pay attention to how the tea changes pour by pour — often opening, peaking, then softening. Naming what shifts between infusions is the core skill gongfu teaches.","attention":"Gongfu is unhurried by design: many tiny cups, many small pauses. The method turns a single tea into a long, attentive sitting.","journal":["Which infusion was the peak — and how did you know?","What did you smell in the empty warm cup that you couldn't taste?","Did brewing in many small rounds change your sense of time?"]},
+
+{"id":"black","name":"Black Tea","type":["black"],"vessel":"teapot","note":"Fully oxidised — robust, warming, familiar.","sub":"Western style · a pot and a cup","tradition":"Black tea — fully oxidised, and known as 'red tea' in China for its coppery liquor — is brewed across Europe, West Asia, and the Americas in a simple pot, taken plain or with milk. The British ritual of afternoon tea is one relatively recent and well-known expression, but the leaf itself travelled far earlier and belongs to many tables. It is the most forgiving tea to brew, and the everyday cup for much of the world.","params":[["Water","90–100°C · 195–212°F"],["Leaf","2.5–3 g per 250 ml"],["Time","3–5 min"],["Vessel","Porcelain pot & cup"]],"steps":["Warm the pot with a little boiling water, then pour it out.","Add the leaves — roughly a teaspoon per cup, plus 'one for the pot' if you like.","Pour freshly boiled water over the leaves.","Steep 3–5 minutes; longer means stronger and more brisk, not simply better.","Strain into the cup. Add milk, lemon, or sugar to taste — or nothing at all.","A second steep is possible but will be lighter; whole-leaf teas fare best."],"sensory":{"Taste":"Malty, brisk, sometimes with notes of cocoa, stone fruit, or citrus.","Aroma":"Warm and rich, deepening as it brews.","Sound":"The kettle's rise to the boil; tea poured into a waiting cup.","Temperature":"Hot and comforting — the classic warming cup.","Texture":"Full-bodied and brisk, softened and rounded by milk.","Presence":"A familiar ritual can still be done with full attention, if you choose."},"practice":"Brew one cup exactly to a timer, and one 'by feel,' and compare. Even the most everyday tea rewards noticing what a minute more or less actually does.","attention":"Because black tea is so familiar, it is the easiest to make on autopilot. The practice here is to bring attention back to something habitual.","journal":["Do you take it plain or with something — and why, really?","What does this cup connect to for you: a person, a place, a time of day?","How did brewing it deliberately differ from brewing it out of habit?"]},
+
+{"id":"chai","name":"Masala Chai","type":["black"],"vessel":"pan","note":"Simmered with milk and spice — an act of welcome.","sub":"Spiced milk tea · South Asia","tradition":"Across South Asia, masala chai — spiced milk tea — is an everyday act of hospitality and the pulse of street life, sold from railway platforms to roadside stalls and made fresh in countless homes. Strong CTC black tea is simmered with milk, sugar, and spices whose blend shifts by household and region: cardamom, ginger, cinnamon, clove, black pepper, and more. There is no single correct recipe — each family's is its own.","params":[["Water & milk","roughly half and half"],["Tea","1 tsp CTC per cup"],["Spices","cardamom, ginger, others to taste"],["Vessel","Small pan or pot"]],"steps":["Lightly crush the whole spices — cardamom, a slice of ginger, perhaps a clove.","Bring water to a boil with the spices and let them simmer a minute or two.","Add the black tea and let it steep in the simmering water.","Pour in the milk and sugar, and bring back up toward a boil.","Let it rise and froth, lowering the heat before it boils over — repeat once or twice for body.","Strain into cups and serve hot."],"sensory":{"Taste":"Sweet, spiced, and full, the tea's briskness carried by warm milk.","Aroma":"Cardamom and ginger filling the kitchen before the first sip.","Sound":"The simmer, the rise toward the boil, the pour through the strainer.","Temperature":"Piping hot — chai is a warming, restorative drink.","Texture":"Rich, rounded, and comforting from the milk.","Presence":"Making it fills a room with scent; it is hard to be elsewhere."},"practice":"Make it once from a family or regional recipe you look up, and once purely by taste, adjusting spice as you go. Chai is learned by adjusting, not by measuring.","attention":"Chai cannot be walked away from — it rises and froths and needs watching. That small tending is part of the drink.","journal":["Which spice do you reach for most, and what does it do to the cup?","Who taught you, or introduced you to, tea like this?","How does a drink you tend on the stove feel different from one you steep and leave?"]},
+
+{"id":"turkish","name":"Turkish Çay","type":["black"],"vessel":"caydanlik","note":"Brewed strong, poured to taste, offered all day.","sub":"Çaydanlık & tulip glass · Türkiye","tradition":"On Türkiye's Black Sea coast around Rize, tea — çay — is offered constantly, from morning to night, as the everyday medium of hospitality and conversation. It is brewed in a çaydanlık, a stacked double teapot: strong tea in the upper pot, water kept hot in the lower. Each glass is diluted to the drinker's taste, from light (açık) to dark (koyu), and served in a small, waisted tulip glass, taken with sugar but never milk.","params":[["Water","boiling, from the lower pot"],["Leaf","strong brew in the upper pot"],["Time","10–15 min steep"],["Vessel","Çaydanlık & tulip glass"]],"steps":["Fill the lower pot with water and bring it to a boil.","Add loose black tea to the empty upper pot and set it on top to warm.","Pour some hot water from below over the leaves in the upper pot; return the lower pot to a gentle boil.","Let the upper pot steep 10–15 minutes to make a strong concentrate.","Pour a little concentrate into each tulip glass, then top up with hot water to the strength each person likes.","Serve with sugar cubes on the side; keep the pots hot for refills all day."],"sensory":{"Taste":"Brisk, full, and coppery — mellowed to each drinker's chosen strength.","Aroma":"Warm and malty, rising from the small glass.","Sound":"The constant low simmer of the çaydanlık kept ready.","Temperature":"Hot, held by the double pot for hours of hospitality.","Texture":"Clean and brisk, softened by sugar rather than milk.","Presence":"A glass is rarely refused — the ritual is about company as much as tea."},"practice":"Pour one glass light and one dark from the same concentrate, and notice how much the same tea changes with dilution. Adjusting strength to a guest is the heart of the custom.","attention":"Turkish tea is made to keep flowing and to keep people together. Offering and accepting a glass is a small, repeated act of welcome.","journal":["Light or dark — which strength suits you, and why?","When has being offered a drink made you feel genuinely welcomed?","What would it change to keep tea ready for others throughout a day?"]},
+
+{"id":"persian","name":"Persian Tea","type":["black"],"vessel":"samovar","note":"Kept hot on the samovar, sipped through sugar.","sub":"Samovar & estekan · Iran","tradition":"In Iran, tea is central to welcome and to gathering, kept hot on a samovar and poured strong, then diluted with hot water to taste. It is sipped through a lump of rock sugar (nabat) or a sugar cube held between the teeth, and served in a small glass called an estekan. The samovar and the custom around it travelled from Russia in the nineteenth century and became deeply woven into daily hospitality in the Caspian tea-growing provinces and beyond.","params":[["Water","kept hot on the samovar"],["Leaf","strong brew (dam), top pot"],["Time","10–15 min steep"],["Vessel","Samovar & estekan glass"]],"steps":["Heat water in the samovar until steaming.","Brew a strong concentrate in the small teapot set on top, kept warm by the rising heat.","Pour a measure of the dark concentrate into each estekan glass.","Dilute with hot water from the samovar to the strength you prefer.","Take it with rock sugar or a cube held at the front of the mouth as you sip.","Sometimes scented lightly with cardamom, rose, or cinnamon."],"sensory":{"Taste":"Brisk and aromatic amber tea, sweetened as it passes over the sugar.","Aroma":"Warm and fragrant, sometimes touched with rose or cardamom.","Sound":"The soft hiss of the samovar keeping water hot.","Temperature":"Hot and steady, always ready for the next guest.","Texture":"Clean and bright, the sweetness meeting it on the tongue.","Presence":"The samovar at the centre of the room gathers people around it."},"practice":"Try sipping the tea through a piece of rock sugar rather than stirring sugar in. Notice how the sweetness arrives — at the lips first, then the tea behind it.","attention":"A samovar is meant to stay warm for hours of company. The tea is less a single cup than an open, ongoing welcome.","journal":["How did tasting sweetness and tea separately, in sequence, feel?","What draws people together in your home the way a samovar does?","What does 'hospitality' taste like, if it has a flavour?"]},
+
+{"id":"puerh","name":"Pu-erh & Dark Tea","type":["dark"],"vessel":"claypot","note":"Fermented and aged — earthy, deep, and mellow.","sub":"Aged dark tea · Yunnan, China","tradition":"Dark teas such as Yunnan's pu-erh are microbially fermented and often aged for years. Raw (sheng) pu-erh matures slowly over time; ripe (shou) pu-erh is wet-piled to speed the process. Traders on the Ancient Tea Horse Road, carrying compressed cakes north to Tibet, observed that the tea improved on the long journey — an observation that anchored the enduring value placed on aged tea. The leaf is pressed into cakes, rinsed before drinking, and steeped many times.","params":[["Water","95–100°C · 205–212°F"],["Leaf","5–8 g per 100 ml"],["Time","10–20 sec, building"],["Vessel","Seasoned clay pot or gaiwan"]],"steps":["Gently pry a portion of leaf from the pressed cake, trying to keep it intact.","Warm a clay pot or gaiwan and add the leaves.","Rinse once (or twice for aged or ripe tea): pour water on and straight off again.","Steep the first drinking infusion just 10–20 seconds.","Pour completely and taste; add a few seconds each round as it opens.","Continue for many infusions — aged pu-erh can steep well over ten times."],"sensory":{"Taste":"Earthy and woody, deep and mellow; raw pu-erh brisker and more bittersweet.","Aroma":"Damp forest floor, aged wood, dried fruit, sometimes camphor.","Sound":"The crack of the cake as it is separated; the quick rinse.","Temperature":"Hot and full, drawing out the depth.","Texture":"Thick, smooth, and coating, with a warming quality.","Presence":"Drinking something aged for years invites a longer sense of time."},"practice":"Don't skip the rinse — it wakes the compressed leaf and clears any storage dust. Then notice how a tea that has aged for years keeps changing across a single session.","attention":"Pu-erh carries time in it: seasons of aging, a long history of trade. Sitting with it is a way of tasting patience.","journal":["What does 'aged' taste like to you here — and does it feel different to drink?","Raw or ripe, if you tried both — which drew you in, and why?","What in your life has quietly improved by being given time?"]},
+
+{"id":"herbal","name":"Herbal Infusions","type":["herbal"],"vessel":"mug","note":"Caffeine-free tisanes — chamomile, mint, rooibos, tulsi.","sub":"Tisanes · plants other than tea","tradition":"Herbal 'teas' are, strictly, tisanes: infusions of plants other than Camellia sinensis, and so naturally caffeine-free. Traditions of plant infusion and herbal knowledge exist in nearly every culture — chamomile and peppermint across Europe and West Asia, rooibos from the fynbos of South Africa, tulsi (holy basil) in India, yerba-adjacent herbs in the Americas, and countless local remedies besides. Because there is no delicate tea leaf to scorch, most tolerate fully boiling water and a long steep.","params":[["Water","95–100°C · 205–212°F"],["Herb","1–2 tsp or 1 sachet per cup"],["Time","5–7 min, covered"],["Vessel","Mug & infuser, or teapot"]],"steps":["Add the dried flowers, leaves, or bark to an infuser or pot.","Pour fully boiled water over them.","Cover the cup or pot while it steeps — this keeps the fragrant oils from escaping.","Steep a full 5–7 minutes, or longer; most tisanes won't turn bitter.","Roots and barks (like ginger or liquorice) benefit from a gentle simmer instead.","Remove the herbs and sweeten with honey if you like."],"sensory":{"Taste":"Ranges widely — apple-sweet chamomile, cooling mint, honeyed rooibos.","Aroma":"Often the most vivid part; lift the lid and breathe in the released steam.","Sound":"Quiet steeping; the clink of a spoon of honey.","Temperature":"Comforting warmth, easy to sip slowly as it cools.","Texture":"Usually light and clean, sometimes rounded and soft.","Presence":"Caffeine-free, so it suits the slow end of the day and the winding-down."},"practice":"Cover the cup as it steeps, then uncover it right under your nose. Herbal infusions live largely in aroma — catching the released steam is half the experience.","attention":"With no caffeine to chase, an herbal cup is well suited to evenings and to simply resting. Let it be a drink with nowhere to be.","journal":["Which plant did you choose, and what drew you to it today?","What memory or feeling does its scent call up?","How does a caffeine-free cup change the pace of your evening?"]},
+
+{"id":"moroccan","name":"Moroccan Mint Tea","type":["green"],"vessel":"berrad","note":"Green tea, spearmint, and sugar — poured from height.","sub":"Atay · Morocco & the Maghreb","tradition":"In Morocco and across the Maghreb, atay — green tea prepared with fresh spearmint and sugar — is the everyday language of hospitality, and preparing it is often an honoured role held by the host. It is poured from a height into small glasses, which aerates the tea and crowns each glass with a little foam. A guest is traditionally offered three glasses, a custom of welcome captured in a well-known Maghrebi saying likening them to life's changing flavours.","params":[["Water","boiling"],["Base","gunpowder green tea"],["Additions","fresh spearmint & sugar"],["Vessel","Berrad (teapot) & glasses"]],"steps":["Rinse the green tea briefly with a little hot water to soften its edge, then discard that water.","Add fresh spearmint and sugar to the pot with the tea.","Fill with boiling water and let it steep a few minutes.","Pour a glass and return it to the pot once or twice to mix the sugar and tea.","Pour into each glass from high above, so the tea streams down and foams.","Serve hot; offer the traditional three rounds."],"sensory":{"Taste":"Sweet and boldly minty, with the green tea brisk underneath.","Aroma":"A rush of fresh spearmint the moment it is poured.","Sound":"The long stream of tea falling from height into the glass.","Temperature":"Hot and refreshing at once — mint cools as the tea warms.","Texture":"Light and lively, topped with a fine foam.","Presence":"The high pour is a small performance of care and welcome."},"practice":"Practise the high pour over the sink first. Raising the pot as the glass fills is how the foam (the keskes) forms — a made thing, offered to a guest.","attention":"Three glasses, poured and shared without hurry, are a structure for spending time with someone. The tea is the reason to sit together.","journal":["What did it take to pour cleanly from height — and how did it feel to get it right?","Who would you want to share the three glasses with?","How does making a drink for others change the act of making it?"]},
+
+{"id":"blooming","name":"Blooming Tea","type":["green","white"],"vessel":"glasspot","note":"Hand-tied bundles that unfurl into a flower.","sub":"Display tea · China","tradition":"Blooming or 'flowering' teas are hand-tied bundles of tea leaves wrapped around dried flowers, which slowly open into a shape when steeped in a clear vessel. A more recent craft built for the eye as much as the palate, they are made by skilled hands sewing each bundle, most often over a base of green or white tea. The pleasure is largely in the watching — a small, unfolding event in a glass.","params":[["Water","85–90°C · 185–195°F"],["Bundle","1 per glass pot"],["Time","3–5 min to open"],["Vessel","Clear glass pot"]],"steps":["Warm the glass pot so the temperature shift doesn't shock the glass.","Place a single bundle in the centre of the pot.","Pour warm water down the side, filling the pot.","Watch over the next few minutes as the bundle slowly unfurls and 'blooms.'","Once fully open, pour into cups; the tea underneath is usually mild.","Leave the bloom in water to enjoy the look; re-steeps are light."],"sensory":{"Taste":"Usually gentle and mild — the base tea, lightly floral.","Aroma":"Soft and floral from the dried blossoms within.","Sound":"Silence, and the slow shift of leaves opening.","Temperature":"Warm, so the leaves open gracefully rather than fast.","Texture":"Light and clean.","Presence":"An unfolding you can only watch, not hurry — a made moment."},"practice":"Set the pot where the light catches it and simply watch it open, start to finish, without doing anything else. It is a short exercise in undivided attention.","attention":"The bloom opens on its own schedule, over minutes, and cannot be rushed. Watching it through is the whole practice.","journal":["What was it like to watch something unfold slowly and do nothing else?","Did your attention stay, or drift? What pulled it away?","When did you last let something take exactly as long as it needed?"]},
+
+{"id":"coldbrew","name":"Cold Brew & Iced","type":["green","black"],"vessel":"jar","note":"Slow-steeped cold, or brewed hot and chilled.","sub":"Mizudashi & iced tea · Japan and the American South","tradition":"Cold preparations draw a different cup from the same leaf. Japanese mizudashi steeps tea in cold water for hours, yielding a sweet, smooth, low-astringency brew. The American South's sweet iced tea takes the opposite route — a strong hot brew, sweetened and poured over ice — and is a fixture of warm-weather hospitality. Both turn tea into an unhurried, everyday summer drink.","params":[["Cold brew","fridge, 4–12 hours"],["Leaf","slightly more than hot brewing"],["Iced","brew hot double-strength, chill"],["Vessel","Jar or pitcher"]],"steps":["For cold brew: add leaf to a jar of cold, filtered water.","Refrigerate 4–12 hours — green teas need less, black teas more.","Strain and serve as is; the cup will be sweet and gentle, low in bitterness.","For iced tea: brew hot at double strength so ice won't dilute it away.","Sweeten while hot if you like (sugar dissolves better warm), then chill.","Pour over plenty of ice, and add lemon or mint if it suits."],"sensory":{"Taste":"Cold brew: sweet and smooth. Iced: brisk, clean, and refreshing.","Aroma":"Cooler and more subtle than a hot cup — lean in to catch it.","Sound":"Ice against glass; the pour over a full tumbler.","Temperature":"Cold and reviving, made for heat and thirst.","Texture":"Crisp and light, easy to drink slowly on a warm day.","Presence":"A drink that asks you to sit somewhere and cool down."},"practice":"Cold-brew the same tea you know hot, and taste them side by side. The gap between the two cups shows how much temperature alone shapes flavour.","attention":"Cold brew rewards planning ahead — hours of patience for a gentle cup. It builds waiting into the pleasure.","journal":["How different was the cold cup from the hot version of the same tea?","What does this drink pair with — a place, a season, an activity?","Was the wait for cold brew worth it? What else is worth that kind of patience?"]}
+]
+</script>
+
+<script>
+  const TEAS = JSON.parse(document.getElementById("tea-data").textContent);
+
+  /* ---------- vessel line-drawings (viewBox 0 0 120 96) ---------- */
+  function vessel(key){
+    const V = {
+      // lidded bowl on a saucer
+      gaiwan:`<path class="v-line" d="M34 54 Q34 74 60 74 Q86 74 86 54"/>
+        <path class="v-line" d="M30 54 L90 54"/>
+        <path class="v-line" d="M40 54 Q60 44 80 54"/>
+        <path class="v-line" d="M52 44 Q60 40 68 44"/>
+        <path class="v-soft" d="M60 40 L60 36"/>
+        <path class="v-soft" d="M26 82 Q60 90 94 82"/>`,
+      // wide tea bowl with a bamboo whisk
+      chawan:`<path class="v-line" d="M30 58 Q30 78 60 78 Q90 78 90 58"/>
+        <path class="v-line" d="M26 58 L94 58"/>
+        <path class="v-line" d="M40 58 Q60 52 80 58"/>
+        <path class="v-line" d="M70 58 L70 24"/>
+        <path class="v-soft" d="M63 58 L63 30 M67 58 L67 28 M73 58 L73 28 M77 58 L77 30"/>
+        <path class="v-line" d="M66 24 L74 24"/>`,
+      // side-handled pot (kyusu)
+      kyusu:`<path class="v-line" d="M36 46 Q36 70 60 70 Q84 70 84 50"/>
+        <path class="v-line" d="M36 46 Q60 34 84 50"/>
+        <path class="v-line" d="M52 38 Q60 34 68 40"/>
+        <path class="v-soft" d="M60 34 L60 30"/>
+        <path class="v-line" d="M84 50 L98 46 L100 52 L86 58"/>
+        <path class="v-line" d="M36 52 L22 50"/>`,
+      // small handleless pot (houhin)
+      houhin:`<path class="v-line" d="M40 50 Q40 70 60 70 Q80 70 80 52"/>
+        <path class="v-line" d="M40 50 Q60 40 80 52"/>
+        <path class="v-line" d="M53 44 Q60 40 67 45"/>
+        <path class="v-soft" d="M60 40 L60 36"/>
+        <path class="v-line" d="M80 52 L94 50 L95 56 L82 60"/>`,
+      // tall glass with leaves
+      glass:`<path class="v-line" d="M46 20 L44 82 Q60 88 76 82 L74 20"/>
+        <path class="v-line" d="M44 20 L76 20"/>
+        <path class="v-soft" d="M50 54 L54 62 M60 50 L58 60 M68 56 L64 64"/>
+        <path class="v-soft" d="M46 44 Q60 48 74 44"/>`,
+      // gaiwan + fairness pitcher + small cup
+      gongfu:`<path class="v-line" d="M20 54 Q20 68 34 68 Q48 68 48 54"/>
+        <path class="v-line" d="M17 54 L51 54"/>
+        <path class="v-line" d="M25 54 Q34 48 43 54"/>
+        <path class="v-soft" d="M30 46 Q34 43 38 46"/>
+        <path class="v-line" d="M60 46 L58 68 Q70 72 82 68 L80 46 L86 42"/>
+        <path class="v-line" d="M58 46 L80 46"/>
+        <path class="v-line" d="M94 60 Q94 70 102 70 Q110 70 110 60"/>
+        <path class="v-line" d="M92 60 L112 60"/>`,
+      // western teapot + cup on saucer
+      teapot:`<path class="v-line" d="M24 50 Q22 72 48 72 Q74 72 72 50"/>
+        <path class="v-line" d="M24 50 Q48 40 72 50"/>
+        <path class="v-line" d="M40 44 Q48 40 56 44"/>
+        <path class="v-soft" d="M48 40 L48 36"/>
+        <path class="v-line" d="M72 52 Q86 50 88 62 Q88 66 84 68"/>
+        <path class="v-line" d="M24 54 Q10 54 14 66"/>
+        <path class="v-line" d="M90 66 Q90 76 100 76 Q110 76 110 66"/>
+        <path class="v-line" d="M86 66 L114 66"/>
+        <path class="v-line" d="M110 70 Q118 70 116 64"/>`,
+      // saucepan for chai, with steam
+      pan:`<path class="v-line" d="M34 54 L36 74 Q60 80 84 74 L86 54"/>
+        <path class="v-line" d="M30 54 L90 54"/>
+        <path class="v-line" d="M86 58 L108 56"/>
+        <path class="v-soft" d="M50 46 Q46 40 50 34 Q54 30 50 24"/>
+        <path class="v-soft" d="M64 46 Q60 40 64 34 Q68 30 64 24"/>`,
+      // stacked Turkish double teapot + tulip glass
+      caydanlik:`<path class="v-line" d="M40 44 Q38 58 56 58 Q74 58 72 44"/>
+        <path class="v-line" d="M40 44 Q56 36 72 44"/>
+        <path class="v-line" d="M48 36 Q56 32 64 36"/>
+        <path class="v-soft" d="M56 32 L56 28"/>
+        <path class="v-line" d="M44 58 Q42 74 56 74 Q70 74 68 58"/>
+        <path class="v-line" d="M40 58 L72 58"/>
+        <path class="v-line" d="M72 50 Q84 48 86 58"/>
+        <path class="v-line" d="M94 56 Q92 72 100 72 Q108 72 106 56 Q100 60 94 56"/>`,
+      // samovar urn + estekan glass
+      samovar:`<path class="v-line" d="M40 46 Q36 70 56 70 Q76 70 72 46"/>
+        <path class="v-line" d="M40 46 Q56 40 72 46"/>
+        <path class="v-line" d="M50 40 L62 40 L60 32 L52 32 Z"/>
+        <path class="v-line" d="M53 32 L59 32 L57 24 L55 24 Z"/>
+        <path class="v-line" d="M72 56 L82 58 L82 62 L72 62"/>
+        <path class="v-line" d="M46 70 L46 76 M66 70 L66 76"/>
+        <path class="v-line" d="M96 58 Q95 72 102 72 Q109 72 108 58 L96 58"/>
+        <path class="v-line" d="M94 58 L110 58"/>`,
+      // squat clay pot (yixing)
+      claypot:`<path class="v-line" d="M36 52 Q34 68 58 68 Q82 68 80 52"/>
+        <path class="v-line" d="M36 52 Q58 44 80 52"/>
+        <path class="v-line" d="M48 46 Q58 42 68 46"/>
+        <path class="v-soft" d="M58 42 L58 39"/>
+        <path class="v-line" d="M80 54 L92 50 L94 56 L82 60"/>
+        <path class="v-line" d="M36 56 Q26 56 28 64 Q30 68 34 66"/>`,
+      // mug with infuser + steam
+      mug:`<path class="v-line" d="M42 40 L44 74 Q58 78 72 74 L74 40"/>
+        <path class="v-line" d="M42 40 L74 40"/>
+        <path class="v-line" d="M74 46 Q90 46 90 58 Q90 68 76 68"/>
+        <path class="v-soft" d="M52 40 L52 54 Q58 58 64 54 L64 40"/>
+        <path class="v-soft" d="M54 34 Q49 28 54 22 Q59 16 54 10"/>
+        <path class="v-soft" d="M64 34 Q59 28 64 22 Q69 16 64 10"/>`,
+      // Moroccan berrad + stream + glass
+      berrad:`<path class="v-line" d="M38 30 Q34 48 52 48 Q70 48 66 30"/>
+        <path class="v-line" d="M40 30 Q52 24 64 30"/>
+        <path class="v-line" d="M52 24 L52 16 Q52 13 55 14"/>
+        <path class="v-line" d="M66 34 Q80 32 84 22"/>
+        <path class="v-line" d="M38 36 Q28 38 30 48"/>
+        <path class="v-soft" d="M60 50 L64 78"/>
+        <path class="v-line" d="M56 74 Q55 88 64 88 Q73 88 72 74 L56 74"/>
+        <path class="v-line" d="M54 74 L74 74"/>`,
+      // clear glass pot for blooming tea
+      glasspot:`<path class="v-line" d="M34 46 Q30 74 60 74 Q90 74 86 46"/>
+        <path class="v-line" d="M34 46 Q60 38 86 46"/>
+        <path class="v-line" d="M50 40 Q60 36 70 40"/>
+        <path class="v-soft" d="M60 36 L60 32"/>
+        <path class="v-soft" d="M60 62 L52 56 M60 62 L68 56 M60 62 L60 52 M60 62 L54 66 M60 62 L66 66"/>`,
+      // mason jar / pitcher for cold brew
+      jar:`<path class="v-line" d="M42 30 L40 78 Q60 84 80 78 L78 30"/>
+        <path class="v-line" d="M40 30 L80 30 L80 24 L40 24 Z"/>
+        <path class="v-line" d="M40 27 L80 27"/>
+        <path class="v-soft" d="M44 48 Q60 52 76 48"/>
+        <path class="v-soft" d="M50 60 L54 66 M62 58 L60 66 M70 62 L66 68"/>`
+    };
+    return V[key] || V.glass;
+  }
+
+  /* ---------- gallery ---------- */
+  const TYPE_ORDER=["green","white","yellow","oolong","black","dark","herbal"];
+  const TYPE_LABEL={green:"Green",white:"White",yellow:"Yellow",oolong:"Oolong",black:"Black",dark:"Dark",herbal:"Herbal"};
+
+  const gallery=document.getElementById("gallery");
+  TEAS.forEach(t=>{
+    const b=document.createElement("button");
+    b.className="tea-card";
+    b.dataset.id=t.id;
+    b.dataset.types=t.type.join(",");
+    b.setAttribute("aria-haspopup","dialog");
+    const label=t.type.map(x=>TYPE_LABEL[x]).join(" · ");
+    b.innerHTML=
+      `<div class="v-figure"><svg viewBox="0 0 120 96" aria-hidden="true">${vessel(t.vessel)}</svg></div>`+
+      `<p class="tc-type">${label}</p>`+
+      `<p class="tc-name">${t.name}</p>`+
+      `<p class="tc-note">${t.note}</p>`+
+      `<span class="tc-open">Open guide</span>`;
+    b.addEventListener("click",()=>openCard(t.id));
+    gallery.appendChild(b);
+  });
+
+  /* ---------- type filter ---------- */
+  const present=new Set(); TEAS.forEach(t=>t.type.forEach(x=>present.add(x)));
+  const typeList=TYPE_ORDER.filter(x=>present.has(x));
+  const filterEl=document.getElementById("type-filter");
+  filterEl.innerHTML=
+    `<button class="chip is-active" data-type="all" aria-pressed="true">All</button>`+
+    typeList.map(x=>`<button class="chip" data-type="${x}" aria-pressed="false">${TYPE_LABEL[x]}</button>`).join("");
+  const chips=[...filterEl.querySelectorAll(".chip")];
+  const cardEls=[...gallery.querySelectorAll(".tea-card")];
+  const countEl=document.getElementById("count");
+  const emptyEl=document.getElementById("empty");
+  let active="all";
+
+  function applyFilter(){
+    let shown=0;
+    cardEls.forEach(el=>{
+      const types=el.dataset.types.split(",");
+      const on = active==="all" || types.includes(active);
+      el.classList.toggle("is-hidden",!on);
+      if(on) shown++;
+    });
+    countEl.textContent = shown+(shown===1?" preparation":" preparations");
+    emptyEl.classList.toggle("show",shown===0);
+  }
+  chips.forEach(c=>c.addEventListener("click",()=>{
+    active=c.dataset.type;
+    chips.forEach(x=>{const on=x===c;x.classList.toggle("is-active",on);x.setAttribute("aria-pressed",on?"true":"false");});
+    applyFilter();
+  }));
+  applyFilter();
+
+  /* ---------- modal card ---------- */
+  const scrim=document.getElementById("scrim");
+  const card=document.getElementById("card");
+  const closebtn=document.getElementById("closebtn");
+  const tabs=[...card.querySelectorAll(".tab")];
+  let lastFocus=null;
+
+  function fld(label,html){return `<div class="fld"><p class="fld-label">${label}</p>${html}</div>`;}
+
+  function renderSteep(t){
+    const params=`<dl class="params">`+t.params.map(([k,v])=>`<div class="param"><dt>${k}</dt><dd>${v}</dd></div>`).join("")+`</dl>`;
+    const steps=`<ol class="steps">`+t.steps.map(s=>`<li>${s}</li>`).join("")+`</ol>`;
+    return fld("In the tradition",`<p>${t.tradition}</p>`)+
+      fld("At a glance",params)+
+      fld("Step by step",steps);
+  }
+  function renderSavour(t){
+    const senses=`<dl class="senses">`+Object.entries(t.sensory).map(([k,v])=>`<div class="sense"><dt>${k}</dt><dd>${v}</dd></div>`).join("")+`</dl>`;
+    return fld("Sensory exploration",senses)+
+      fld("A guided practice",`<p>${t.practice}</p>`)+
+      fld("Time & attention",`<p>${t.attention}</p>`);
+  }
+  function renderReflect(t){
+    const prompts=`<ul class="prompts">`+t.journal.map(p=>`<li>${p}</li>`).join("")+`</ul>`;
+    return fld("Tea journaling",`<p>Take a few unhurried minutes with these after you drink. There are no right answers — only what you notice.</p>`+prompts);
+  }
+
+  function openCard(id){
+    const t=TEAS.find(x=>x.id===id); if(!t) return;
+    lastFocus=document.activeElement;
+    document.getElementById("card-type").textContent=t.type.map(x=>TYPE_LABEL[x]).join(" · ");
+    document.getElementById("card-title").textContent=t.name;
+    document.getElementById("card-sub").textContent=t.sub;
+    document.getElementById("card-vessel-svg").innerHTML=vessel(t.vessel);
+    document.getElementById("vessel-cap").innerHTML=vesselCaption(t.vessel);
+    document.getElementById("ly-steep").innerHTML=renderSteep(t);
+    document.getElementById("ly-savour").innerHTML=renderSavour(t);
+    document.getElementById("ly-reflect").innerHTML=renderReflect(t);
+    setTab("steep");
+    scrim.hidden=false; card.setAttribute("aria-hidden","false");
+    requestAnimationFrame(()=>{scrim.classList.add("show");card.classList.add("show");});
+    document.body.style.overflow="hidden";
+    closebtn.focus();
+  }
+  function closeCard(){
+    scrim.classList.remove("show");card.classList.remove("show");
+    card.setAttribute("aria-hidden","true");
+    document.body.style.overflow="";
+    setTimeout(()=>{scrim.hidden=true;},300);
+    if(lastFocus) lastFocus.focus();
+  }
+  function setTab(layer){
+    tabs.forEach(tb=>{
+      const on=tb.dataset.layer===layer;
+      tb.classList.toggle("is-active",on);
+      document.getElementById("ly-"+tb.dataset.layer).hidden=!on;
+    });
+  }
+  tabs.forEach(tb=>tb.addEventListener("click",()=>setTab(tb.dataset.layer)));
+
+  function vesselCaption(key){
+    const C={
+      gaiwan:"A <em>gaiwan</em> — a lidded bowl for steeping and sipping.",
+      chawan:"A <em>chawan</em> bowl and bamboo <em>chasen</em> whisk.",
+      kyusu:"A <em>kyusu</em> — a Japanese side-handled teapot.",
+      houhin:"A <em>houhin</em> — a small, handleless pot for fine tea.",
+      glass:"A tall glass, to watch the leaves as they open.",
+      gongfu:"A gongfu set — <em>gaiwan</em>, fairness pitcher, and cup.",
+      teapot:"A porcelain pot and cup, in the Western manner.",
+      pan:"A small pan, for simmering tea with milk and spice.",
+      caydanlik:"A <em>çaydanlık</em> — a stacked pot — and a tulip glass.",
+      samovar:"A <em>samovar</em> and a small <em>estekan</em> glass.",
+      claypot:"A seasoned clay pot, for dark and aged teas.",
+      mug:"A mug with an infuser basket, for herbal steeping.",
+      berrad:"A <em>berrad</em> — a Moroccan teapot — poured from height.",
+      glasspot:"A clear glass pot, to watch the tea bloom.",
+      jar:"A jar or pitcher, for cold-brewing and iced tea."
+    };
+    return C[key]||"";
+  }
+
+  scrim.addEventListener("click",closeCard);
+  closebtn.addEventListener("click",closeCard);
+  document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!scrim.hidden)closeCard();});
+</script>
 </body>
 </html>
