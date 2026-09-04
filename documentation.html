@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noai, noimageai" />
+<title>Documentation · Studio Day</title>
+<meta name="description" content="Six setups that between them cover every photograph and every minute of footage the practice needs." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+<style>
+  .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:0 0 34px;}
+  .tile{background:var(--panel);border:1px solid var(--hair);border-radius:8px;padding:20px 18px 18px;
+    cursor:pointer;text-align:left;font-family:inherit;transition:all .2s var(--ease);
+    display:flex;flex-direction:column;gap:10px;}
+  .tile:hover{border-color:var(--stone);background:var(--hair-soft);}
+  .tile.is-sel{border-color:var(--ink-strong);background:var(--paper);
+    box-shadow:0 0 0 1px var(--ink-strong);}
+  .tile.is-hidden{display:none;}
+  .tile svg{width:100%;height:84px;display:block;}
+  .tile .t-name{font-size:16.5px;font-weight:500;color:var(--ink-strong);margin:0;letter-spacing:-.01em;}
+  .tile .t-sub{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--stone);font-weight:600;margin:0;}
+  .tile .t-note{font-size:13px;color:var(--ink);margin:0;line-height:1.5;}
+  .rig{stroke:var(--stone);fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;}
+  .rig-solid{fill:var(--stone);stroke:none;}
+  .rig-work{stroke:var(--ink-strong);stroke-width:2;fill:none;}
+  .tile.is-sel .rig{stroke:var(--ink-strong);}
+  .tile.is-sel .rig-solid{fill:var(--ink-strong);}
+  .paramgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:0;margin:0 0 22px;
+    border-top:1px solid var(--hair);}
+  .paramgrid div{padding:11px 14px 11px 0;border-bottom:1px solid var(--hair-soft);}
+  .paramgrid .pk{font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--stone);font-weight:600;display:block;margin:0 0 3px;}
+  .paramgrid .pv{font-size:14.5px;color:var(--ink-strong);}
+  .feeds{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 16px;}
+  .feed{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;
+    border:1px solid var(--hair);border-radius:100px;padding:4px 11px;color:var(--stone);}
+  .feed.hi{color:var(--paper);background:var(--ink-strong);border-color:var(--ink-strong);}
+  @media(max-width:860px){ .gallery{grid-template-columns:repeat(2,1fr);} }
+  @media(max-width:520px){ .gallery{grid-template-columns:1fr;} .paramgrid{grid-template-columns:1fr;} }
+</style>
+</head>
+<body>
+  <div class="wrap">
+
+    <nav class="topbar" aria-label="Studio Day">
+      <a class="mark" href="index.html">Studio&nbsp;Day</a>
+      <div class="navlinks">
+        <a href="atlas.html">Atlas</a>
+        <a href="writing.html">Writing</a>
+        <a href="documentation.html" aria-current="page">Documentation</a>
+        <a href="year.html">The Year</a>
+        <a href="studies.html">Studies</a>
+        <a href="teaching.html">Teaching</a>
+        <a href="support.html">Support</a>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <p class="eyebrow"><span>Documentation</span><span class="status">Six setups</span></p>
+      <h1>Six setups, <em>many uses</em></h1>
+      <p class="lede">The practice needs photographs for the website, images for grant applications, plates for the annual book, and footage for video and teaching. That sounds like four jobs. It is six setups, and most of them feed more than one destination at once. Filter by what you need and the list shrinks to the rigs that actually produce it.</p>
+    </header>
+
+    <section aria-label="Documentation setups">
+      <div class="controls">
+        <div class="chips" id="outfilter" role="group" aria-label="Filter by what the setup feeds"></div>
+        <span class="count" id="count"></span>
+      </div>
+      <div class="gallery" id="gallery"></div>
+
+      <div class="panel" id="panel" aria-live="polite">
+        <p class="panel-empty" id="panel-empty">Choose a setup. Each opens what the rig is, how it is built, everything it feeds, and what tends to go wrong with it.</p>
+        <div id="panel-content" hidden></div>
+      </div>
+    </section>
+
+    <section class="essay">
+      <h2>The one rule</h2>
+      <p>Whatever is built has to live set up. A rig that needs assembling will not get used, and a documentation session that begins with twenty minutes of construction will quietly stop happening by March.</p>
+      <p>The front room has bookshelves on the far wall, two desks, and one window. One desk stays a making desk. The other becomes the documentation position and stays that way. Five of the six setups below share that corner.</p>
+
+      <h2>Why window light and panel light are separated</h2>
+      <p>Two of these setups need to be repeatable month after month and the rest do not, and that difference decides the lighting.</p>
+      <p>The record shot has to match across a year of releases and has to match the object that arrives in the post. Daylight in Surrey in November is not daylight in July, so that setup runs on panels with the curtains closed. Everything else can take the window, because a presentation photograph only has to be good rather than identical to the one taken six months ago.</p>
+
+      <h2>The order to build them in</h2>
+      <p>The flat copy stand first, because the studies release, the catalogue and the annual book all depend on it and none of them can proceed without it. The overhead slab second, because it is the cheapest presentation shot and it suits work on paper directly. Everything else after that, and only once the two before it are routine.</p>
+
+      <h2>What has not been tested</h2>
+      <p>Whether flat work propped against a sweep reads well or looks awkward is still open. The reference photography that shaped these setups is all of ceramics, and a pot solves the problem of standing up on its own. A panel does not.</p>
+      <p>Whether work on paper is photographed or scanned for the record shot is also still open. Scanning is more accurate and slower.</p>
+    </section>
+
+    <footer>
+      <span class="copy">© 2026 Andrea Robin Studio</span>
+      <div class="fnav">
+        <a href="index.html">Studio Day</a>
+        <a href="year.html">The Year</a>
+        <a href="studies.html">Studies</a>
+      </div>
+    </footer>
+
+  </div>
+
+<script>
+(function(){
+"use strict";
+
+var OUTPUTS = {
+  website:  "Website",
+  grant:    "Grant applications",
+  book:     "Annual book",
+  video:    "Video",
+  teaching: "Teaching",
+  cards:    "Thank you cards"
+};
+
+var RIGS = {
+  flatcopy:
+    '<g class="rig"><rect x="46" y="20" width="28" height="34" class="rig-work"/>' +
+    '<rect x="10" y="26" width="16" height="16" transform="rotate(-30 18 34)"/>' +
+    '<rect x="94" y="26" width="16" height="16" transform="rotate(30 102 34)"/>' +
+    '<path d="M60 62 L60 74"/><path d="M52 74 h16 v10 h-16 z"/>' +
+    '<path d="M26 40 L44 44 M94 40 L76 44"/></g>',
+  overhead:
+    '<g class="rig"><rect x="30" y="46" width="60" height="30" rx="2"/>' +
+    '<rect x="50" y="54" width="20" height="14" class="rig-work"/>' +
+    '<path d="M52 20 h16 v10 h-16 z"/><path d="M60 30 L60 42"/>' +
+    '<path d="M56 38 L60 44 L64 38"/>' +
+    '<path d="M14 30 q6 8 0 16" /><path d="M8 32 q6 6 0 12"/></g>',
+  sweep:
+    '<g class="rig"><path d="M22 20 q0 42 0 42 q0 14 14 14 h64"/>' +
+    '<ellipse cx="62" cy="66" rx="12" ry="9" class="rig-work"/>' +
+    '<path d="M74 70 q12 4 20 3"/>' +
+    '<path d="M16 26 h14 v11 h-14 z"/><path d="M30 34 L46 52"/></g>',
+  table:
+    '<g class="rig"><path d="M14 62 h92"/><path d="M22 62 v18 M98 62 v18"/>' +
+    '<path d="M46 54 q6 -8 14 -4 q8 -4 14 4" class="rig-work"/>' +
+    '<path d="M76 14 h16 v10 h-16 z"/><path d="M76 24 L58 48"/>' +
+    '<path d="M60 44 L58 50 L64 49"/></g>',
+  seated:
+    '<g class="rig"><path d="M14 16 h30 v46 h-30 z"/><path d="M14 30 h30 M14 46 h30"/>' +
+    '<circle cx="62" cy="34" r="9" class="rig-work"/><path d="M52 62 q10 -14 20 -14 q10 0 10 14" class="rig-work"/>' +
+    '<path d="M94 30 h14 v11 h-14 z"/><path d="M94 36 L74 36"/>' +
+    '<path d="M104 58 v18 M100 76 h8"/></g>',
+  wide:
+    '<g class="rig"><path d="M12 18 h96 v56 h-96 z"/>' +
+    '<path d="M12 18 L34 34 v40 M108 18 L86 34 v40 M34 34 h52"/>' +
+    '<rect x="46" y="44" width="26" height="18" class="rig-work"/>' +
+    '<path d="M96 82 h14 v-8 h-14 z"/><path d="M96 78 L78 68"/></g>'
+};
+
+var SETUPS = [
+  {
+    id:"flatcopy", rig:"flatcopy", name:"Flat copy",
+    sub:"The record shot", 
+    note:"A document rather than a photograph. Everything that has to be accurate runs through here.",
+    outputs:["website","grant","book"],
+    what:"Work parallel to the sensor, lit evenly corner to corner, colour corrected against a grey card. This is what a buyer judges the piece by, what the monthly studies release needs in an identical crop, and what every grant panel and the annual book will be looking at. It is the only setup where getting it wrong is expensive, because a colour cast means the object that arrives in the post is not the object that was bought.",
+    params:[["Light","Two daylight LED panels at 45\u00b0"],["Ambient","None. Curtains closed, or shoot after dark"],["Camera","Parallel to the work, centred on its middle"],["Reference","Grey card in the first frame of every session"]],
+    steps:[
+      "Close the curtains. Window light is the enemy of a shot that has to match across a year.",
+      "Set both panels at 45\u00b0, equal distance and equal height either side.",
+      "Level the camera with its electronic display rather than by eye, and centre it on the middle of the work at the height of the middle of the work.",
+      "Photograph a grey card as the first frame, then the work.",
+      "Shoot RAW. Correct to the card in Lightroom before anything else.",
+      "Crop to the same ratio every month, without exception."
+    ],
+    watch:"Glare from varnish and graphite is the failure mode. The reliable fix is cross-polarisation, a polarising filter on the lens with polarising sheets over both panels, rotated until the reflections disappear. It costs about a stop of light and adds setup time, and it is unnecessary for matte work on paper. Test before buying anything. The reference photography that shaped these setups offers no help here, because every object in it was ceramic and glossy highlights were simply allowed to blow out.",
+    checks:[
+      "Is the grey card in frame one?",
+      "Is the camera actually level, or does it only look level?",
+      "Is the crop the same as last month's, measured rather than remembered?"
+    ]
+  },
+  {
+    id:"overhead", rig:"overhead", name:"Overhead on stone",
+    sub:"Presentation, flat work",
+    note:"A textured slab, soft window light, camera straight down. The natural fit for work on paper.",
+    outputs:["website","book","cards"],
+    what:"Work lying flat on a mottled grey slab, photographed from directly above in soft daylight. This is the closest thing in the reference photography to the actual material of the practice, and it sidesteps the problem of how to stand a flat work up without it looking awkward. It is also where the thank you cards come from, and where an Instagram process photograph was already being made in 2019 without the setup being named.",
+    params:[["Ground","Paving slab, concrete offcut, or matte porcelain tile"],["Light","Window, camera-left, diffused if hard"],["Camera","Directly overhead, 90\u00b0"],["Crop","Portrait, roughly 9:10"]],
+    steps:[
+      "Lay the slab on the documentation desk with the window falling from the left.",
+      "Diffuse the window with a white sheet or tracing paper if the light is hard.",
+      "Set the camera directly overhead and square to the slab.",
+      "Place the work small in frame with generous space around it.",
+      "Let a soft shadow fall to the lower right. It is what stops the object floating.",
+      "Choose a ground tone that sits close to the work's dominant tone rather than against it."
+    ],
+    watch:"Tonal closeness between object and ground is doing more work here than any technique, and it costs nothing. The reference collection reads as one body because every frame lives inside one narrow warm-neutral family. That is a decision about which paper or slab to buy, made once.",
+    checks:[
+      "Is the camera square to the slab, or slightly off?",
+      "Is there a grounding shadow?",
+      "Does the ground tone sit near the work's tone, or fight it?"
+    ]
+  },
+  {
+    id:"sweep", rig:"sweep", name:"The sweep",
+    sub:"Presentation, objects with volume",
+    note:"One light, one curved backdrop, camera near eye level. Where the gradient comes from.",
+    outputs:["website","book"],
+    what:"A seamless backdrop curving from vertical to horizontal, one soft key light from camera-left, and the camera only fifteen to twenty-five degrees above the object so almost none of its top surface shows. The graduated background is ordinary fall-off across the paper rather than a second light, which makes this a much cheaper rig than it looks. It suits the annual book, stacked prints, and anything that already has depth.",
+    params:[["Ground","Matte paper or painted board, warm mid-grey"],["Light","One soft key, camera-left, slightly behind"],["Camera","15\u201325\u00b0 above the object"],["Crop","Portrait, roughly 9:10"]],
+    steps:[
+      "Curve the sweep from the wall down onto the desk so there is no visible corner.",
+      "Place one soft light to camera-left, slightly above and slightly behind the object.",
+      "Drop the camera to near eye level so the object reads as standing rather than as being looked down on.",
+      "Position the object small in frame with its base around two thirds down.",
+      "Let the fall-off darken the ground toward the far corners. That is the gradient.",
+      "Keep the shadow falling to the right, the same direction every time."
+    ],
+    watch:"Flat work propped against a sweep has not been tested and may look awkward. Nothing in the reference material solves it, because a pot stands up on its own and a panel does not. Try it before committing anything to it.",
+    checks:[
+      "Is there a visible corner where the sweep meets the desk?",
+      "Is the light still camera-left, matching every other shot?",
+      "Is the object small enough in frame?"
+    ]
+  },
+  {
+    id:"table", rig:"table", name:"The table",
+    sub:"Process footage, hands",
+    note:"High angle over the working surface. Hands, materials, and the work in progress.",
+    outputs:["video","book","teaching"],
+    what:"A fixed high angle looking down at the working surface, catching the hands and the material and very little else. This is the bulk of any process footage, the source of the process stills the annual book needs, and the demonstration segments a teaching module runs on. One act of filming, three destinations.",
+    params:[["Position","Fixed, high angle over the work table"],["Light","Window, or the panels if working after dark"],["Surface","White drop cloth over the working surface"],["Mount","Overhead arm or a tall tripod that stays put"]],
+    steps:[
+      "Lay a white drop cloth over the working surface. It is a twenty dollar sheet and it is what makes an ordinary table read as a studio.",
+      "Fix the camera high and angled down, framing the hands and a generous margin of the surface.",
+      "Leave it there. This is the setup that most needs to live standing.",
+      "Roll it while working rather than staging anything for it.",
+      "Pull stills from the footage rather than stopping to photograph."
+    ],
+    watch:"If the camera starts changing how the work is made, that matters more than any of the footage. The work has to stay the point. Editing rather than filming is also the real cost here, at four to eight hours a month, which is why the footage accumulates to the archive before anything is committed to publishing it.",
+    checks:[
+      "Is the cloth clean, or has it been collecting since March?",
+      "Is the frame wide enough that hands do not leave it?",
+      "Is this being filmed because the work is happening, or is the work being arranged for the film?"
+    ]
+  },
+  {
+    id:"seated", rig:"seated", name:"The seated position",
+    sub:"Talking to camera",
+    note:"At the desk, bookshelves behind, window to one side. The shot that carries an argument.",
+    outputs:["video","teaching","grant"],
+    what:"Seated at the desk with the bookshelves on the far wall behind and the window falling from one side. This is the only setup where a person is in frame and it is the one that carries anything spoken: a narrated essay, a taught session, or a video component for an application that asks for one. The shelves work as a background because they are the actual working shelves rather than a styled set.",
+    params:[["Background","Bookshelves, far wall, unstyled"],["Light","Window to one side, panel as fill if needed"],["Camera","Eye level, opposite the seat"],["Sound","The nearer the microphone, the better everything else works"]],
+    steps:[
+      "Sit with the shelves behind and the window falling across one side of the face.",
+      "Set the camera at eye level rather than below it.",
+      "Add a panel as fill on the shadow side if the window is doing too much.",
+      "Get the microphone close. Poor sound is more noticeable than poor picture and cannot be fixed afterward.",
+      "Keep the same seat, the same distance and the same framing every time."
+    ],
+    watch:"A grant application that asks for a video is asking for evidence of a practice rather than for production values. Speaking clearly about the work from an actual working room is the whole requirement, and the shelves behind are doing more than any lighting choice would.",
+    checks:[
+      "Is the microphone close enough?",
+      "Is the camera at eye level?",
+      "Is anything in the shelves that should not be on the internet?"
+    ]
+  },
+  {
+    id:"wide", rig:"wide", name:"The wide room",
+    sub:"Context",
+    note:"A static wide of the working room. Rarely needed, and needed properly when it is.",
+    outputs:["video","book","grant"],
+    what:"A static wide showing the room as it works, with movement through the frame rather than a camera that moves. It opens a video, gives the annual book its sense of where the year happened, and answers the studio photograph that almost every grant application and residency asks for. It is used least often of the six and is the one most likely to be needed at short notice.",
+    params:[["Position","Far corner, on a tripod, camera static"],["Light","Whatever the room actually has"],["Height","Roughly standing eye level"],["Movement","In the frame, never of the frame"]],
+    steps:[
+      "Set the tripod in the far corner so the frame takes in the desks, the shelves and the window.",
+      "Keep the camera still and let the movement happen inside the frame.",
+      "Do not tidy beyond what is true. A working room reads as one.",
+      "Shoot it once a season rather than once a year, so there is always a current one when an application asks."
+    ],
+    watch:"This is the shot most often needed in a hurry, usually the week an application is due. Having a current one already filed is worth more than having a better one taken under pressure.",
+    checks:[
+      "Is there a version of this from the last three months?",
+      "Does the frame include the window, the shelves and both desks?",
+      "Is anything in shot that should not be?"
+    ]
+  }
+];
+
+var gallery = document.getElementById("gallery");
+var filterWrap = document.getElementById("outfilter");
+var countEl = document.getElementById("count");
+var panelEmpty = document.getElementById("panel-empty");
+var panelContent = document.getElementById("panel-content");
+var activeOut = "all";
+var selectedId = null;
+
+function buildFilters(){
+  var html = '<button class="chip is-active" data-out="all" aria-pressed="true">All setups</button>';
+  Object.keys(OUTPUTS).forEach(function(k){
+    html += '<button class="chip" data-out="' + k + '" aria-pressed="false">' + OUTPUTS[k] + '</button>';
+  });
+  filterWrap.innerHTML = html;
+  Array.prototype.forEach.call(filterWrap.querySelectorAll(".chip"), function(btn){
+    btn.addEventListener("click", function(){
+      activeOut = btn.getAttribute("data-out");
+      Array.prototype.forEach.call(filterWrap.querySelectorAll(".chip"), function(b){
+        var on = b === btn;
+        b.classList.toggle("is-active", on);
+        b.setAttribute("aria-pressed", on ? "true" : "false");
+      });
+      applyFilter();
+    });
+  });
+}
+
+function buildGallery(){
+  gallery.innerHTML = SETUPS.map(function(s){
+    return '<button class="tile" type="button" data-id="' + s.id + '">' +
+      '<svg viewBox="0 0 120 96" aria-hidden="true">' + RIGS[s.rig] + '</svg>' +
+      '<p class="t-sub">' + s.sub + '</p>' +
+      '<p class="t-name">' + s.name + '</p>' +
+      '<p class="t-note">' + s.note + '</p>' +
+    '</button>';
+  }).join("");
+  Array.prototype.forEach.call(gallery.querySelectorAll(".tile"), function(t){
+    t.addEventListener("click", function(){ select(t.getAttribute("data-id")); });
+  });
+}
+
+function applyFilter(){
+  var shown = 0;
+  Array.prototype.forEach.call(gallery.querySelectorAll(".tile"), function(t){
+    var s = SETUPS.filter(function(x){ return x.id === t.getAttribute("data-id"); })[0];
+    var on = activeOut === "all" || s.outputs.indexOf(activeOut) !== -1;
+    t.classList.toggle("is-hidden", !on);
+    if (on) shown++;
+  });
+  countEl.textContent = activeOut === "all"
+    ? shown + " setups"
+    : shown + (shown === 1 ? " setup feeds " : " setups feed ") + OUTPUTS[activeOut].toLowerCase();
+}
+
+function li(arr){ return arr.map(function(x){ return "<li>" + x + "</li>"; }).join(""); }
+
+function select(id){
+  selectedId = id;
+  var s = SETUPS.filter(function(x){ return x.id === id; })[0];
+  if (!s) return;
+
+  Array.prototype.forEach.call(gallery.querySelectorAll(".tile"), function(t){
+    t.classList.toggle("is-sel", t.getAttribute("data-id") === id);
+  });
+
+  var feeds = Object.keys(OUTPUTS).map(function(k){
+    var on = s.outputs.indexOf(k) !== -1;
+    return '<span class="feed' + (on ? " hi" : "") + '">' + OUTPUTS[k] + '</span>';
+  }).join("");
+
+  panelEmpty.hidden = true;
+  panelContent.hidden = false;
+  panelContent.innerHTML =
+    '<p class="p-eyebrow">' + s.sub + '</p>' +
+    '<h2 class="p-title">' + s.name + '</h2>' +
+    '<p class="p-sub">' + s.note + '</p>' +
+    '<div class="tabs" role="tablist">' +
+      '<button class="tab is-active" data-layer="build" role="tab">Build it</button>' +
+      '<button class="tab" data-layer="feeds" role="tab">What it feeds</button>' +
+      '<button class="tab" data-layer="watch" role="tab">Watch for</button>' +
+    '</div>' +
+    '<div class="layer" data-layer="build">' +
+      '<p>' + s.what + '</p>' +
+      '<div class="paramgrid">' + s.params.map(function(p){
+        return '<div><span class="pk">' + p[0] + '</span><span class="pv">' + p[1] + '</span></div>';
+      }).join("") + '</div>' +
+      '<h3>Step by step</h3><ol>' + li(s.steps) + '</ol>' +
+    '</div>' +
+    '<div class="layer" data-layer="feeds" hidden>' +
+      '<h3>Destinations</h3>' +
+      '<div class="feeds">' + feeds + '</div>' +
+      '<p>Highlighted destinations are the ones this setup actually serves. The unhighlighted ones need a different rig, which is the whole reason there are six of these rather than one.</p>' +
+      '<h3>Before you shoot</h3><ul>' + li(s.checks) + '</ul>' +
+    '</div>' +
+    '<div class="layer" data-layer="watch" hidden>' +
+      '<h3>What tends to go wrong</h3><p>' + s.watch + '</p>' +
+    '</div>';
+
+  var tabs = panelContent.querySelectorAll(".tab");
+  Array.prototype.forEach.call(tabs, function(tab){
+    tab.addEventListener("click", function(){
+      var want = tab.getAttribute("data-layer");
+      Array.prototype.forEach.call(tabs, function(t){
+        t.classList.toggle("is-active", t === tab);
+      });
+      Array.prototype.forEach.call(panelContent.querySelectorAll(".layer"), function(l){
+        l.hidden = l.getAttribute("data-layer") !== want;
+      });
+    });
+  });
+}
+
+buildFilters();
+buildGallery();
+applyFilter();
+})();
+</script>
+</body>
+</html>
